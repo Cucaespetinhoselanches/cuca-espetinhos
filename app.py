@@ -15,23 +15,23 @@ menu = {
     },
     "X SALADA": {
         "preco": 29.90,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
     },
     "X BACON": {
         "preco": 35.90,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
     },
     "X-EGG": {
         "preco": 30.90,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
     },
     "X-CATUPIRY EMPANADO": {
         "preco": 32.90,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
     },
     "FRANGÃO": {
         "preco": 32.90,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
     },
     "PORÇÃO BATATA FRITA": {
         "preco": 29.90,
@@ -55,47 +55,47 @@ menu = {
     },
     "ESPETO QUEIJO COALHO": {
         "preco": 9.00,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     "ESPETO PANCETA": {
         "preco": 12.00,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     "ESPETO ALCATRA": {
         "preco": 12.00,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     "ESPETO PICANHA": {
         "preco": 18.00,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     "ESPETO FRALDINHA": {
         "preco": 12.00,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     "ESPETO LINGUIÇA": {
         "preco": 9.00,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     "ESPETO LINGUIÇA GOURMET": {
         "preco": 9.00,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     "ESPETO KAFTA": {
         "preco": 12.00,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     "ESPETO KAFTA GOURMET": {
         "preco": 12.00,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     "ESPETO CORAÇÃO": {
         "preco": 18.00,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     "ESPETO FRANGO": {
         "preco": 12.00,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     "Refrigerante Lata": {
         "preco": 6.00,
