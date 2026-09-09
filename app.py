@@ -11,7 +11,7 @@ st.title("🍢 Cuca Espetinhos e Lanches")
 menu = {
     "X BURGER": {
         "preco": 19.90,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
     },
     "X SALADA": {
         "preco": 29.90,
@@ -35,7 +35,7 @@ menu = {
     },
     "PORÇÃO BATATA FRITA": {
         "preco": 29.90,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://plus.unsplash.com/premium_photo-1672774750509-bc9ff226f3e8?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9yJUMzJUE3JUMzJUEzbyUyMGJhdGF0YSUyMGZyaXRhfGVufDB8fDB8fHww",
     },
     "PORÇÃO MANDIOCA FRITA": {
         "preco": 29.90,
@@ -51,7 +51,7 @@ menu = {
     },
     "ESPETO PÃO DE ALHO": {
         "preco": 9.00,
-        "imagem": "https://espeto.jpg",
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
     "ESPETO QUEIJO COALHO": {
         "preco": 9.00,
