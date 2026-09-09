@@ -1,10 +1,56 @@
 import urllib.parse
 import streamlit as st
+import urllib.parse
+import streamlit as st
+
+# ==================== COLE O ITEM 2 AQUI ====================
+@st.dialog("📋 Confirmar e Enviar Pedido")
+def modal_confirmacao(numero_wa, mensagem_texto):
+    st.write("### Revise os detalhes do seu pedido:")
+    st.info(mensagem_texto)
+
+    link_whatsapp = f"https://wa.me/{numero_wa}?text={urllib.parse.quote(mensagem_texto)}"
+
+    st.write("---")
+    col_voltar, col_enviar = st.columns([1, 2])
+
+    with col_voltar:
+        if st.button("❌ Alterar Pedido", use_container_width=True):
+            st.rerun()
+
+    with col_enviar:
+        st.link_button(
+            "📲 CONFIRMAR E ENVIAR",
+            link_whatsapp,
+            type="primary",
+            use_container_width=True,
+        )
+
+
+# ============================================================
 
 st.set_page_config(
     page_title="Cuca Espetinhos e Lanches", page_icon="🍢", layout="centered"
 )
-
+# --- ESTILIZAÇÃO DO BOTÃO WHATSAPP (VERDE E GRANDE) ---
+st.markdown("""
+    <style>
+    div.stLinkButton > a[kind="primary"], div.stButton > button[kind="primary"] {
+        width: 100% !important;
+        height: 3.5em !important;
+        font-size: 20px !important;
+        font-weight: bold !important;
+        background-color: #25D366 !important; /* Verde oficial WhatsApp */
+        color: white !important;
+        border: none !important;
+        border-radius: 12px !important;
+    }
+    div.stLinkButton > a[kind="primary"]:hover, div.stButton > button[kind="primary"]:hover {
+        background-color: #1EBE5D !important;
+        color: white !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 # Exibe o logo local salvo na pasta do projeto
 st.image("logo.png", width=200)
 
@@ -318,11 +364,8 @@ if carrinho:
         numero_whatsapp = "5512992093751"
         link = f"https://wa.me/{numero_whatsapp}?text={urllib.parse.quote(mensagem)}"
 
-        st.success("✅ Pedido gerado com sucesso!")
-        st.markdown(
-            f"[👉 **Clique aqui para abrir o WhatsApp e enviar seu pedido**]({link})",
-            unsafe_allow_html=True,
-        )
+        # Ao invés do texto com link, abre a janela de confirmação:
+modal_confirmacao(numero_whatsapp, mensagem)
     elif tipo_entrega == "Entrega" and not rua_numero:
         st.warning("Por favor, preencha o seu nome, selecione o bairro e informe a rua e número.")
     elif not nome:
