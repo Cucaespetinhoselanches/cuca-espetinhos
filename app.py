@@ -1,9 +1,7 @@
 import urllib.parse
 import streamlit as st
-import urllib.parse
-import streamlit as st
 
-# ==================== COLE O ITEM 2 AQUI ====================
+# ==================== FUNÇÃO DO MODAL DE CONFIRMAÇÃO ====================
 @st.dialog("📋 Confirmar e Enviar Pedido")
 def modal_confirmacao(numero_wa, mensagem_texto):
     st.write("### Revise os detalhes do seu pedido:")
@@ -25,13 +23,12 @@ def modal_confirmacao(numero_wa, mensagem_texto):
             type="primary",
             use_container_width=True,
         )
-
-
-# ============================================================
+# =======================================================================
 
 st.set_page_config(
     page_title="Cuca Espetinhos e Lanches", page_icon="🍢", layout="centered"
 )
+
 # --- ESTILIZAÇÃO DO BOTÃO WHATSAPP (VERDE E GRANDE) ---
 st.markdown("""
     <style>
@@ -51,6 +48,7 @@ st.markdown("""
     }
     </style>
 """, unsafe_allow_html=True)
+
 # Exibe o logo local salvo na pasta do projeto
 st.image("logo.png", width=200)
 
@@ -362,10 +360,10 @@ if carrinho:
         )
 
         numero_whatsapp = "5512992093751"
-        link = f"https://wa.me/{numero_whatsapp}?text={urllib.parse.quote(mensagem)}"
 
-        # Ao invés do texto com link, abre a janela de confirmação:
-modal_confirmacao(numero_whatsapp, mensagem)
+        # Abre o modal de confirmação do pedido
+        modal_confirmacao(numero_whatsapp, mensagem)
+
     elif tipo_entrega == "Entrega" and not rua_numero:
         st.warning("Por favor, preencha o seu nome, selecione o bairro e informe a rua e número.")
     elif not nome:
