@@ -205,11 +205,11 @@ menu = {
     },
     "Suco Del Valle 200ml": {
         "preco": 8.00,
-        "imagem": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400",
+        "imagem": "https://m.media-amazon.com/images/I/51Z3PJFvmaL._AC_UF350,350_QL80_.jpg",
     },
     "Suco 1L": {
         "preco": 10.00,
-        "imagem": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400",
+        "imagem": "https://cdn.awsli.com.br/800x800/1345/1345272/produto/55987814/01943f4345.jpg",
     },
     "Cerveja Original 300ml Garrafinha": {
         "preco": 6.00,
