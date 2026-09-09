@@ -181,7 +181,7 @@ if carrinho:
             f"*Total a Pagar:* R$ {total_final:.2f}"
         )
 
-        numero_whatsapp = "5512991892340"
+        numero_whatsapp = "5512992093751"
         link = f"https://wa.me/{numero_whatsapp}?text={urllib.parse.quote(mensagem)}"
 
         st.success("✅ Pedido gerado com sucesso!")
