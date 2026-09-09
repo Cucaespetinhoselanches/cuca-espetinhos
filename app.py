@@ -35,7 +35,7 @@ menu = {
     },
     "PORÇÃO BATATA FRITA": {
         "preco": 29.90,
-        "imagem": "https://plus.unsplash.com/premium_photo-1672774750509-bc9ff226f3e8?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9yJUMzJUE3JUMzJUEzbyUyMGJhdGF0YSUyMGZyaXRhfGVufDB8fDB8fHww",
+        "imagem": "https://plus.unsplash.com/premium_photo-1672774750509-bc9ff226f3e8?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9yJUMzJUE3JUMzJUE3byUyMGJhdGF0YSUyMGZyaXRhfGVufDB8fDB8fHww",
     },
     "PORÇÃO MANDIOCA FRITA": {
         "preco": 29.90,
@@ -103,9 +103,30 @@ menu = {
     },
 }
 
+# Tabela de Bairros e Taxas de Entrega
+taxas_bairros = {
+    "Nova Jacareí": 3.00,
+    "Igarapés": 5.00,
+    "Esperança": 4.00,
+    "São Luiz": 5.00,
+    "Portal": 5.00,
+    "Jardim São Paulo": 5.00,
+    "Terras de São João": 5.00,
+    "1º de Maio": 5.00,
+    "Jardim Alvorada": 5.00,
+    "Imperial": 5.00,
+    "Pedramar": 7.00,
+    "Ijal": 5.00,
+    "São João": 6.00,
+    "Centro": 8.00,
+    "Panorama": 7.00,
+    "Jardim Dindinha": 7.00,
+    "Jardim Emília": 7.00,
+    "Outro Bairro (A combinar)": 0.00,
+}
+
 carrinho = []
 subtotal_produtos = 0.0
-taxa_entrega = 5.00  # Valor da taxa de entrega
 
 st.subheader("Faça seu Pedido")
 
@@ -139,12 +160,22 @@ if carrinho:
     )
 
     endereco = ""
+    taxa_entrega = 0.00
     total_final = subtotal_produtos
 
     if tipo_entrega == "Entrega":
-        endereco = st.text_input("Endereço de Entrega (Rua, Número, Bairro):")
+        bairro = st.selectbox("Selecione o seu Bairro:", list(taxas_bairros.keys()))
+        taxa_entrega = taxas_bairros[bairro]
+        rua_numero = st.text_input("Rua e Número:")
+
+        if rua_numero:
+            endereco = f"{rua_numero} - {bairro}"
+
         total_final += taxa_entrega
-        st.info(f"🛵 **Taxa de entrega:** R$ {taxa_entrega:.2f}")
+        if taxa_entrega > 0:
+            st.info(f"🛵 **Taxa de entrega para {bairro}:** R$ {taxa_entrega:.2f}")
+        else:
+            st.warning("⚠️ Taxa de entrega para este bairro será confirmada pelo WhatsApp.")
     else:
         st.info("🏪 **Retirada no Balcão:** Sem taxa de entrega.")
 
@@ -156,7 +187,7 @@ if carrinho:
 
     pronto_para_enviar = False
     if tipo_entrega == "Entrega":
-        if nome and endereco:
+        if nome and rua_numero:
             pronto_para_enviar = True
     else:
         if nome:
@@ -189,7 +220,7 @@ if carrinho:
             f"[👉 **Clique aqui para abrir o WhatsApp e enviar seu pedido**]({link})",
             unsafe_allow_html=True,
         )
-    elif tipo_entrega == "Entrega" and not endereco:
-        st.warning("Por favor, preencha o seu nome e o endereço de entrega para prosseguir.")
+    elif tipo_entrega == "Entrega" and not rua_numero:
+        st.warning("Por favor, preencha o seu nome, selecione o bairro e informe a rua e número.")
     elif not nome:
         st.warning("Por favor, preencha o seu nome para prosseguir.")
