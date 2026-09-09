@@ -14,6 +14,7 @@ def modal_confirmacao(numero_wa, mensagem_texto):
 
     with col_voltar:
         if st.button("❌ Alterar Pedido", use_container_width=True):
+            st.session_state["mostrar_modal"] = False
             st.rerun()
 
     with col_enviar:
@@ -361,8 +362,13 @@ if carrinho:
 
         numero_whatsapp = "5512992093751"
 
-        # Abre o modal de confirmação do pedido
-        modal_confirmacao(numero_whatsapp, mensagem)
+        # Botão para o usuário acionar o modal
+        if st.button("🚀 AVANÇAR PARA CONFIRMAÇÃO", type="primary", use_container_width=True):
+            st.session_state["mostrar_modal"] = True
+
+        # Exibe o modal apenas quando ativado pelo session_state
+        if st.session_state.get("mostrar_modal", False):
+            modal_confirmacao(numero_whatsapp, mensagem)
 
     elif tipo_entrega == "Entrega" and not rua_numero:
         st.warning("Por favor, preencha o seu nome, selecione o bairro e informe a rua e número.")
