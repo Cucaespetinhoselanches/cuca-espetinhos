@@ -102,7 +102,7 @@ if carrinho:
             f"*Total:* R$ {total:.2f}"
         )
 
-        numero_whatsapp = "5511999999999"  # Substitua pelo número real
+        numero_whatsapp = "5512991892340"  # Substitua pelo número real
         link = f"https://wa.me/{numero_whatsapp}?text={urllib.parse.quote(mensagem)}"
 
         st.markdown(
