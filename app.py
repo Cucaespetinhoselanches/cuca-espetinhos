@@ -1,6 +1,10 @@
 import urllib.parse
 import streamlit as st
 
+# Inicializa a memória da sessão para controle do modal
+if "mostrar_modal" not in st.session_state:
+    st.session_state["mostrar_modal"] = False
+
 # ==================== FUNÇÃO DO MODAL DE CONFIRMAÇÃO ====================
 @st.dialog("📋 Confirmar e Enviar Pedido")
 def modal_confirmacao(numero_wa, mensagem_texto):
@@ -384,6 +388,6 @@ if carrinho:
             modal_confirmacao(numero_whatsapp, mensagem)
 
     elif tipo_entrega == "Entrega" and not rua_numero:
-        st.warning("Por favor, preencha o seu nome, selecione o bairro e informe a rua e número.")
+        st.warning("Por favor, preencha o seu nome e informe a rua e número para liberar o pedido.")
     elif not nome:
-        st.warning("Por favor, preencha o seu nome para prosseguir.")
+        st.warning("Por favor, preencha o seu nome para liberar o pedido.")
