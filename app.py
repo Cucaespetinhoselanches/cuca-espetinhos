@@ -5,395 +5,325 @@ st.set_page_config(
     page_title="Cuca Espetinhos e Lanches", page_icon="🍢", layout="centered"
 )
 
-# --- ESTILIZAÇÃO CSS (Botão do WhatsApp em Destaque) ---
-st.markdown(
-    """
-    <style>
-    /* Estiliza o botão final de envio do WhatsApp para ter destaque total */
-    div.stLinkButton > a[kind="primary"], div.stButton > button[kind="primary"] {
-        width: 100% !important;
-        height: 3.5em !important;
-        font-size: 20px !important;
-        font-weight: bold !important;
-        background-color: #25D366 !important; /* Verde WhatsApp */
-        color: white !important;
-        border: none !important;
-        border-radius: 12px !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-    }
-    div.stLinkButton > a[kind="primary"]:hover, div.stButton > button[kind="primary"]:hover {
-        background-color: #1EBE5D !important;
-        color: white !important;
-    }
-    </style>
-""",
-    unsafe_allow_html=True,
-)
-
 # Exibe o logo local salvo na pasta do projeto
 st.image("logo.png", width=200)
 
 st.title("🍢 Cuca Espetinhos e Lanches")
 
-# Cardápio Completo
+# Cardápio
 menu = {
-    # Espetinhos Tradicionais
-    "ESPETINHO DE CARNE": {
-        "preco": 12.00,
-        "imagem": "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=500",
-        "categoria": "Espetinhos Tradicionais",
-    },
-    "ESPETINHO DE FRANGO": {
-        "preco": 10.00,
-        "imagem": "https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=500",
-        "categoria": "Espetinhos Tradicionais",
-    },
-    "ESPETINHO DE LINGUIÇA": {
-        "preco": 10.00,
-        "imagem": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500",
-        "categoria": "Espetinhos Tradicionais",
-    },
-    "ESPETINHO DE QUEIJO COALHO": {
-        "preco": 11.00,
-        "imagem": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=500",
-        "categoria": "Espetinhos Tradicionais",
-    },
-    "ESPETINHO DE CORAÇÃO": {
-        "preco": 12.00,
-        "imagem": "https://images.unsplash.com/photo-1544025162-d76694265947?w=500",
-        "categoria": "Espetinhos Tradicionais",
-    },
-    "ESPETINHO DE KAFTA": {
-        "preco": 12.00,
-        "imagem": "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=500",
-        "categoria": "Espetinhos Tradicionais",
-    },
-    # Espetinhos Especiais
-    "ESPETINHO DE MEDALHÃO DE FRANGO": {
-        "preco": 14.00,
-        "imagem": "https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=500",
-        "categoria": "Espetinhos Especiais",
-    },
-    "ESPETINHO DE MEDALHÃO DE CARNE": {
-        "preco": 15.00,
-        "imagem": "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=500",
-        "categoria": "Espetinhos Especiais",
-    },
-    "ESPETINHO DE PÃO DE ALHO": {
-        "preco": 9.00,
-        "imagem": "https://images.unsplash.com/photo-1573140247632-f8fd74997d5c?w=500",
-        "categoria": "Espetinhos Especiais",
-    },
-    "ESPETINHO DE QUEIJO COM GOIABADA": {
-        "preco": 11.00,
-        "imagem": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=500",
-        "categoria": "Espetinhos Especiais",
-    },
-    # Lanches
     "X BURGER": {
         "preco": 19.90,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500",
-        "categoria": "Lanches",
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
     },
     "X SALADA": {
-        "preco": 22.90,
-        "imagem": "https://images.unsplash.com/photo-1550547660-d9450f859349?w=500",
-        "categoria": "Lanches",
+        "preco": 29.90,
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
     },
     "X BACON": {
-        "preco": 25.90,
-        "imagem": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=500",
-        "categoria": "Lanches",
+        "preco": 35.90,
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
     },
-    "X TUDO": {
+    "X-EGG": {
+        "preco": 30.90,
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    "X-CATUPIRY EMPANADO": {
+        "preco": 32.90,
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    "FRANGÃO": {
+        "preco": 32.90,
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    "HOT CALABRESA": {
+        "preco": 16.50,
+        "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
+    },
+    "HOT BACON": {
+        "preco": 16.50,
+        "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
+    },
+    "HOT SALADA": {
+        "preco": 12.50,
+        "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
+    },
+    "HOT PURE": {
+        "preco": 14.50,
+        "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
+    },
+    "PORÇÃO BATATA FRITA": {
         "preco": 29.90,
-        "imagem": "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=500",
-        "categoria": "Lanches",
+        "imagem": "https://plus.unsplash.com/premium_photo-1672774750509-bc9ff226f3e8?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9yJUMzJUE3JUMzJUE3byUyMGJhdGF0YSUyMGZyaXRhfGVufDB8fDB8fHww",
     },
-    "LANCHE DE ESPETINHO NO PÃO": {
+    "PORÇÃO MANDIOCA FRITA": {
+        "preco": 29.90,
+        "imagem": "https://media.istockphoto.com/id/903103922/pt/foto/brazilian-food-mandioca-frita-deep-fried-cassava-root.webp?a=1&b=1&s=612x612&w=0&k=20&c=KwVZFUrGJlRkXM6_nyBNPt_6sbpHJ1x0pR49fA2wIgY=",
+    },
+    "PORÇÃO ANÉIS DE CEBOLA": {
+        "preco": 28.90,
+        "imagem": "https://images.unsplash.com/photo-1766589152292-3c052f0d87aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvciVDMyVBNyVDMyVBM28lMjBhbmVpcyUyMGRlJTIwY2Vib2xhfGVufDB8fDB8fHww",
+    },
+    "PORÇÃO COMBO DE PORÇÕES": {
+        "preco": 49.90,
+        "imagem": "https://images.unsplash.com/photo-1702827495434-629df15aa136?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHBvciVDMyVBNyVDMyVBM28lMjBjb21ib3xlbnwwfHwwfHx8MA%3D%3D",
+    },
+    "ESPETO PÃO DE ALHO": {
+        "preco": 9.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO ROMEU E JULIETA (Bacon/Goiabada/Queijo)": {
+        "preco": 15.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO QUEIJO COALHO": {
+        "preco": 9.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO PANCETA": {
+        "preco": 12.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO ALCATRA": {
+        "preco": 12.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO PICANHA": {
         "preco": 18.00,
-        "imagem": "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=500",
-        "categoria": "Lanches",
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    # Acompanhamentos e Porções
-    "PORÇÃO DE MANDIOCA FRITA": {
-        "preco": 20.00,
-        "imagem": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500",
-        "categoria": "Acompanhamentos e Porções",
+    "ESPETO FRALDINHA": {
+        "preco": 12.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    "PORÇÃO DE BATATA FRITA": {
-        "preco": 20.00,
-        "imagem": "https://images.unsplash.com/photo-1576107232684-1279f3908594?w=500",
-        "categoria": "Acompanhamentos e Porções",
+    "ESPETO LINGUIÇA": {
+        "preco": 9.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    "PORÇÃO DE BATATA COM BACON E CHEDDAR": {
-        "preco": 28.00,
-        "imagem": "https://images.unsplash.com/photo-1585109649139-366815a0d713?w=500",
-        "categoria": "Acompanhamentos e Porções",
+    "ESPETO LINGUIÇA GOURMET": {
+        "preco": 9.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    "FAROFA DA CASA": {
-        "preco": 5.00,
-        "imagem": "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=500",
-        "categoria": "Acompanhamentos e Porções",
+    "ESPETO KAFTA": {
+        "preco": 12.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    "VINAGRETE": {
-        "preco": 5.00,
-        "imagem": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500",
-        "categoria": "Acompanhamentos e Porções",
+    "ESPETO KAFTA GOURMET": {
+        "preco": 12.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    # Bebidas
-    "REFRIGERANTE LATA": {
+    "ESPETO CORAÇÃO": {
+        "preco": 18.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO FRANGO": {
+        "preco": 12.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "Refrigerante Lata": {
         "preco": 6.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500",
-        "categoria": "Bebidas",
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
     },
-    "REFRIGERANTE 2L": {
-        "preco": 14.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500",
-        "categoria": "Bebidas",
+    "Suco Del Valle 200ml": {
+        "preco": 8.00,
+        "imagem": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400",
     },
-    "CERVEJA LATA": {
-        "preco": 7.00,
-        "imagem": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500",
-        "categoria": "Bebidas",
-    },
-    "CERVEJA LONG NECK": {
+    "Suco 1L": {
         "preco": 10.00,
-        "imagem": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=500",
-        "categoria": "Bebidas",
+        "imagem": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400",
     },
-    "SUCO LATA": {
+    "Cerveja Original 300ml Garrafinha": {
+        "preco": 6.00,
+        "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
+    },
+    "Cerveja Budweiser 300ml Garrafinha": {
+        "preco": 6.00,
+        "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
+    },
+    "Cerveja Antarctica 300ml Garrafinha": {
+        "preco": 5.00,
+        "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
+    },
+    "Cerveja Brahma 300ml Garrafinha": {
+        "preco": 5.00,
+        "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
+    },
+    "Cerveja Império 300ml Garrafinha": {
+        "preco": 5.00,
+        "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
+    },
+    "Cerveja Skol 269ml Lata": {
+        "preco": 5.00,
+        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+    },
+    "Cerveja Budweiser 269ml Lata": {
+        "preco": 6.00,
+        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+    },
+    "Cerveja Original 269ml Lata": {
+        "preco": 6.00,
+        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+    },
+    "Cerveja Amstel 269ml Lata": {
+        "preco": 5.00,
+        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+    },
+    "Cerveja Império 269ml Lata": {
+        "preco": 5.00,
+        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+    },
+    "Cerveja Brahma Duplo Malte 269ml Lata": {
+        "preco": 6.00,
+        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+    },
+    "Cerveja Long Neck Heineken": {
+        "preco": 10.00,
+        "imagem": "https://images.unsplash.com/photo-1618885472179-5e474019f2a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    "Cerveja Long Neck Budweiser": {
+        "preco": 10.00,
+        "imagem": "https://images.unsplash.com/photo-1587669284207-e8ee0fc74144?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    "Cerveja Long Neck Corona": {
+        "preco": 10.00,
+        "imagem": "https://images.unsplash.com/photo-1600213903598-25be92abde40?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    "Energético Monster 473ml": {
+        "preco": 14.00,
+        "imagem": "https://images.unsplash.com/photo-1622543925917-763c34d1a86e?w=400",
+    },
+    "Cerveja Amstel 350ml Lata": {
+        "preco": 6.00,
+        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+    },
+    "Cerveja Império 350ml Lata": {
+        "preco": 6.00,
+        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+    },
+    "Cerveja Brahma Duplo Malte 350ml Lata": {
         "preco": 7.00,
-        "imagem": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=500",
-        "categoria": "Bebidas",
-    },
-    "ÁGUA MINERAL": {
-        "preco": 4.00,
-        "imagem": "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=500",
-        "categoria": "Bebidas",
+        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
     },
 }
 
-# Adicionais para lanches
-adicionais = {
-    "Bacon": 4.00,
-    "Queijo": 3.00,
-    "Ovo": 2.50,
-    "Hambúrguer Extra": 7.00,
-    "Maionese da Casa": 3.00,
+# Tabela de Bairros e Taxas de Entrega
+taxas_bairros = {
+    "Nova Jacareí": 3.00,
+    "Igarapés": 5.00,
+    "Esperança": 4.00,
+    "São Luiz": 5.00,
+    "Portal": 5.00,
+    "Jardim São Paulo": 5.00,
+    "Terras de São João": 5.00,
+    "1º de Maio": 5.00,
+    "Jardim Alvorada": 5.00,
+    "Imperial": 5.00,
+    "Pedramar": 7.00,
+    "Ijal": 5.00,
+    "São João": 6.00,
+    "Centro": 8.00,
+    "Panorama": 7.00,
+    "Jardim Dindinha": 7.00,
+    "Jardim Emília": 7.00,
+    "Outro Bairro (A combinar)": 0.00,
 }
 
-# Inicialização do estado do carrinho no Streamlit
-if "carrinho" not in st.session_state:
-    st.session_state.carrinho = {}
+carrinho = []
+subtotal_produtos = 0.0
 
-if "adicionais_lanches" not in st.session_state:
-    st.session_state.adicionais_lanches = {}
+st.subheader("Faça seu Pedido")
 
-# --- MODAL DE CONFIRMAÇÃO DO PEDIDO ---
-@st.dialog("📋 Confirmar e Enviar Pedido")
-def modal_confirmacao(numero_wa, resumo_texto):
-    st.write("### Por favor, revise os dados antes de enviar:")
-    st.info(resumo_texto)
-
-    link_whatsapp = f"https://api.whatsapp.com/send?phone={numero_wa}&text={urllib.parse.quote(resumo_texto)}"
-
-    st.write("---")
-    col_voltar, col_enviar = st.columns([1, 2])
-
-    with col_voltar:
-        if st.button("❌ Alterar Pedido", use_container_width=True):
-            st.rerun()
-
-    with col_enviar:
-        st.link_button(
-            "📲 CONFIRMAR E ENVIAR",
-            link_whatsapp,
-            type="primary",
-            use_container_width=True,
+for item, info in menu.items():
+    col1, col2 = st.columns([1, 2])
+    with col1:
+        st.image(info["imagem"], width=100)
+    with col2:
+        qtd = st.number_input(
+            f"**{item}** - R$ {info['preco']:.2f}",
+            min_value=0,
+            step=1,
+            key=item,
         )
-
-
-# --- EXIBIÇÃO DO CARDÁPIO POR CATEGORIAS ---
-st.subheader("📋 Nosso Cardápio")
-
-categorias = [
-    "Espetinhos Tradicionais",
-    "Espetinhos Especiais",
-    "Lanches",
-    "Acompanhamentos e Porções",
-    "Bebidas",
-]
-
-for cat in categorias:
-    st.markdown(f"### {cat}")
-
-    for item, info in menu.items():
-        if info["categoria"] == cat:
-            col1, col2, col3 = st.columns([1, 2, 1])
-
-            with col1:
-                st.image(info["imagem"], use_container_width=True)
-
-            with col2:
-                st.write(f"**{item}**")
-                st.write(f"R$ {info['preco']:.2f}".replace(".", ","))
-
-                # Opção de adicionais se o item for um Lanche
-                if cat == "Lanches":
-                    adds_selecionados = st.multiselect(
-                        f"Adicionais para {item}:",
-                        options=list(adicionais.keys()),
-                        format_func=lambda x: f"{x} (+R$ {adicionais[x]:.2f})".replace(
-                            ".", ","
-                        ),
-                        key=f"add_select_{item}",
-                    )
-                    st.session_state.adicionais_lanches[item] = adds_selecionados
-
-            with col3:
-                if st.button("Adicionar", key=f"add_{item}"):
-                    st.session_state.carrinho[item] = (
-                        st.session_state.carrinho.get(item, 0) + 1
-                    )
-                    st.toast(f"{item} adicionado ao carrinho!", icon="🛒")
-                    st.rerun()
-
-    st.markdown("---")
-
-# --- CARRINHO E FINALIZAÇÃO ---
-st.subheader("🛒 Seu Carrinho")
-
-if not st.session_state.carrinho:
-    st.write("Seu carrinho está vazio.")
-else:
-    total_geral = 0.0
-    resumo_itens_wa = []
-
-    for item, qtd in list(st.session_state.carrinho.items()):
-        preco_unitario = menu[item]["preco"]
-        subtotal = preco_unitario * qtd
-
-        # Calcula adicionais para Lanches
-        valor_adicionais = 0.0
-        lista_adds_str = ""
-        adds_item = st.session_state.adicionais_lanches.get(item, [])
-
-        if adds_item:
-            for add in adds_item:
-                valor_adicionais += adicionais[add]
-            lista_adds_str = f" (Adicionais: {', '.join(adds_item)})"
-
-        subtotal += valor_adicionais * qtd
-        total_geral += subtotal
-
-        col_desc, col_qtd, col_del = st.columns([2, 1, 1])
-
-        with col_desc:
-            st.write(
-                f"**{item}**{lista_adds_str}\n\nR$ {preco_unitario + valor_adicionais:.2f}".replace(
-                    ".", ","
-                )
+        if qtd > 0:
+            subtotal_item = info["preco"] * qtd
+            carrinho.append(
+                {"item": item, "qtd": qtd, "subtotal": subtotal_item}
             )
+            subtotal_produtos += subtotal_item
 
-        with col_qtd:
-            st.write(f"Qtd: {qtd}")
-
-        with col_del:
-            if st.button("🗑️", key=f"rem_{item}"):
-                del st.session_state.carrinho[item]
-                st.rerun()
-
-        resumo_itens_wa.append(
-            f"• {qtd}x {item}{lista_adds_str} - R$ {subtotal:.2f}".replace(
-                ".", ","
-            )
-        )
-
+if carrinho:
     st.divider()
+    st.write(f"### Subtotal dos itens: R$ {subtotal_produtos:.2f}")
 
-    # Opções de Entrega ou Retirada
-    tipo_pedido = st.radio(
-        "Como deseja receber seu pedido?", ["Entrega (Delivery)", "Retirada no Balcão"]
+    nome = st.text_input("Seu Nome:")
+    tipo_entrega = st.radio(
+        "Opção de Entrega:",
+        ["Entrega", "Retirar no Local"],
+        horizontal=True,
     )
 
-    taxa_entrega = 0.0
-    if tipo_pedido == "Entrega (Delivery)":
-        taxa_entrega = 5.00  # Taxa fixa de entrega de R$ 5,00
-        st.info("Taxa de entrega: R$ 5,00")
-        endereco = st.text_input("Endereço completo de entrega:")
-        referencia = st.text_input("Ponto de referência (opcional):")
+    endereco = ""
+    taxa_entrega = 0.00
+    total_final = subtotal_produtos
+
+    if tipo_entrega == "Entrega":
+        bairro = st.selectbox("Selecione o seu Bairro:", list(taxas_bairros.keys()))
+        taxa_entrega = taxas_bairros[bairro]
+        rua_numero = st.text_input("Rua e Número:")
+
+        if rua_numero:
+            endereco = f"{rua_numero} - {bairro}"
+
+        total_final += taxa_entrega
+        if taxa_entrega > 0:
+            st.info(f"🛵 **Taxa de entrega para {bairro}:** R$ {taxa_entrega:.2f}")
+        else:
+            st.warning("⚠️ Taxa de entrega para este bairro será confirmada pelo WhatsApp.")
     else:
-        endereco = "Retirada no Balcão"
-        referencia = "N/A"
+        st.info("🏪 **Retirada no Balcão:** Sem taxa de entrega.")
 
-    total_geral += taxa_entrega
+    st.write(f"### **Total Final: R$ {total_final:.2f}**")
 
-    st.markdown(
-        f"### **Total Final: R$ {total_geral:.2f}**".replace(".", ",")
-    )
-
-    # Dados do Cliente
-    st.markdown("---")
-    st.subheader("👤 Dados do Cliente")
-    nome_cliente = st.text_input("Seu nome:")
     pagamento = st.selectbox(
-        "Forma de Pagamento:",
-        ["Pix", "Cartão de Débito", "Cartão de Crédito", "Dinheiro"],
+        "Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"]
     )
 
-    troco_para = ""
-    if pagamento == "Dinheiro":
-        troco_para = st.text_input(
-            "Precisa de troco para quanto? (Ex: R$ 50,00):"
+    pronto_para_enviar = False
+    if tipo_entrega == "Entrega":
+        if nome and rua_numero:
+            pronto_para_enviar = True
+    else:
+        if nome:
+            pronto_para_enviar = True
+
+    if pronto_para_enviar:
+        itens_txt = "\n".join(
+            [f"{i['qtd']}x {i['item']} (R$ {i['subtotal']:.2f})" for i in carrinho]
         )
 
-    observacoes = st.text_area(
-        "Observações do pedido (ex: tirar cebola, ponto da carne, etc):"
-    )
-
-    # Botão para abrir o diálogo/modal de confirmação
-    if st.button(
-        "🚀 AVANÇAR PARA CONFIRMAÇÃO", type="primary", use_container_width=True
-    ):
-        if not nome_cliente:
-            st.error("Por favor, preencha o seu nome antes de continuar.")
-        elif tipo_pedido == "Entrega (Delivery)" and not endereco:
-            st.error("Por favor, preencha o endereço de entrega.")
+        if tipo_entrega == "Entrega":
+            detalhes_tipo = f"*Tipo:* Entrega\n*Endereço:* {endereco}\n*Taxa de Entrega:* R$ {taxa_entrega:.2f}"
         else:
-            # Monta o texto completo para enviar via WhatsApp
-            mensagem_wa = f"🍢 *NOVO PEDIDO - CUCA ESPETINHOS*\n\n"
-            mensagem_wa += f"👤 *Cliente:* {nome_cliente}\n"
-            mensagem_wa += f"📦 *Tipo:* {tipo_pedido}\n"
+            detalhes_tipo = "*Tipo:* Retirada no Local"
 
-            if tipo_pedido == "Entrega (Delivery)":
-                mensagem_wa += f"📍 *Endereço:* {endereco}\n"
-                if referencia:
-                    mensagem_wa += f"🚩 *Ref:* {referencia}\n"
+        mensagem = (
+            f"Olá! Gostaria de fazer um pedido na *Cuca Espetinhos e Lanches*:\n\n"
+            f"*Cliente:* {nome}\n"
+            f"{detalhes_tipo}\n"
+            f"*Pagamento:* {pagamento}\n\n"
+            f"*Itens:*\n{itens_txt}\n\n"
+            f"*Total a Pagar:* R$ {total_final:.2f}"
+        )
 
-            mensagem_wa += f"\n📋 *ITENS DO PEDIDO:*\n"
-            mensagem_wa += "\n".join(resumo_itens_wa) + "\n\n"
+        numero_whatsapp = "5512992093751"
+        link = f"https://wa.me/{numero_whatsapp}?text={urllib.parse.quote(mensagem)}"
 
-            if taxa_entrega > 0:
-                mensagem_wa += f"🛵 *Taxa de Entrega:* R$ {taxa_entrega:.2f}\n".replace(
-                    ".", ","
-                )
-
-            mensagem_wa += f"💰 *TOTAL:* R$ {total_geral:.2f}\n".replace(
-                ".", ","
-            )
-            mensagem_wa += f"💳 *Forma de Pagamento:* {pagamento}\n"
-
-            if troco_para:
-                mensagem_wa += f"💵 *Troco para:* {troco_para}\n"
-
-            if observacoes:
-                mensagem_wa += f"📝 *Obs:* {observacoes}\n"
-
-            # Número de telefone do estabelecimento (com DDD e DDI 55)
-            NUMERO_WHATSAPP = "5512999999999"  # <--- Altere para o seu número real
-
-            # Abre o modal de confirmação antes de redirecionar para o WhatsApp
-            modal_confirmacao(NUMERO_WHATSAPP, mensagem_wa)
+        st.success("✅ Pedido gerado com sucesso!")
+        st.markdown(
+            f"[👉 **Clique aqui para abrir o WhatsApp e enviar seu pedido**]({link})",
+            unsafe_allow_html=True,
+        )
+    elif tipo_entrega == "Entrega" and not rua_numero:
+        st.warning("Por favor, preencha o seu nome, selecione o bairro e informe a rua e número.")
+    elif not nome:
+        st.warning("Por favor, preencha o seu nome para prosseguir.")
