@@ -101,6 +101,86 @@ menu = {
         "preco": 6.00,
         "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
     },
+    "Suco Del Valle 200ml": {
+        "preco": 8.00,
+        "imagem": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400",
+    },
+    "Suco 1L": {
+        "preco": 10.00,
+        "imagem": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=400",
+    },
+    "Cerveja Original 300ml Garrafinha": {
+        "preco": 6.00,
+        "imagem": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400",
+    },
+    "Cerveja Budweiser 300ml Garrafinha": {
+        "preco": 6.00,
+        "imagem": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400",
+    },
+    "Cerveja Antarctica 300ml Garrafinha": {
+        "preco": 5.00,
+        "imagem": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400",
+    },
+    "Cerveja Brahma 300ml Garrafinha": {
+        "preco": 5.00,
+        "imagem": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400",
+    },
+    "Cerveja Império 300ml Garrafinha": {
+        "preco": 5.00,
+        "imagem": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400",
+    },
+    "Cerveja Skol 269ml Lata": {
+        "preco": 5.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Cerveja Budweiser 269ml Lata": {
+        "preco": 6.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Cerveja Original 269ml Lata": {
+        "preco": 6.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Cerveja Amstel 269ml Lata": {
+        "preco": 5.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Cerveja Império 269ml Lata": {
+        "preco": 5.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Cerveja Brahma Duplo Malte 269ml Lata": {
+        "preco": 6.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Cerveja Long Neck Heineken": {
+        "preco": 10.00,
+        "imagem": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400",
+    },
+    "Cerveja Long Neck Budweiser": {
+        "preco": 10.00,
+        "imagem": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400",
+    },
+    "Cerveja Long Neck Corona": {
+        "preco": 10.00,
+        "imagem": "https://images.unsplash.com/photo-1608270586620-248524c67de9?w=400",
+    },
+    "Energético Monster 473ml": {
+        "preco": 14.00,
+        "imagem": "https://images.unsplash.com/photo-1622543925917-763c34d1a86e?w=400",
+    },
+    "Cerveja Amstel 350ml Lata": {
+        "preco": 6.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Cerveja Império 350ml Lata": {
+        "preco": 6.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Cerveja Brahma Duplo Malte 350ml Lata": {
+        "preco": 7.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
 }
 
 # Tabela de Bairros e Taxas de Entrega
