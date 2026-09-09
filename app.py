@@ -269,7 +269,7 @@ menu = {
     },
     "Energético Monster 473ml": {
         "preco": 14.00,
-        "imagem": "https://images.unsplash.com/photo-1622543925917-763c34d1a86e?w=400",
+        "imagem": "https://www.naturaldaterra.com.br/energetico-monster-energy-473ml-gelado/p",
     },
     "Cerveja Amstel 350ml Lata": {
         "preco": 6.00,
