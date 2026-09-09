@@ -5,6 +5,9 @@ st.set_page_config(
     page_title="Cuca Espetinhos e Lanches", page_icon="🍢", layout="centered"
 )
 
+# Exibe o logo local salvo na pasta do projeto
+st.image("logo.png", width=200)
+
 st.title("🍢 Cuca Espetinhos e Lanches")
 
 # Cardápio
