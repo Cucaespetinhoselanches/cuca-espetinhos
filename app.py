@@ -238,12 +238,25 @@ for item, info in menu.items():
     with col1:
         st.image(info["imagem"], width=100)
     with col2:
+        # Exibe o Nome do item em fonte maior (ex: 20px) e o Preço em destaque (ex: 24px)
+        st.markdown(
+            f"""
+            <div style="margin-bottom: 5px;">
+                <span style="font-size: 20px; font-weight: bold;">{item}</span><br>
+                <span style="font-size: 26px; font-weight: bold; color: #2E7D32;">R$ {info['preco']:.2f}</span>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        
         qtd = st.number_input(
-            f"**{item}** - R$ {info['preco']:.2f}",
+            "Quantidade",
             min_value=0,
             step=1,
             key=item,
+            label_visibility="collapsed"  # Oculta o label padrão do input para não duplicar
         )
+        
         if qtd > 0:
             subtotal_item = info["preco"] * qtd
             carrinho.append(
