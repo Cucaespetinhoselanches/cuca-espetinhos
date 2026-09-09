@@ -30,19 +30,32 @@ st.set_page_config(
     page_title="Cuca Espetinhos e Lanches", page_icon="🍢", layout="centered"
 )
 
-# --- ESTILIZAÇÃO DO BOTÃO WHATSAPP (VERDE E GRANDE) ---
+# --- ESTILIZAÇÃO DOS BOTÕES (LETRAS MAIORES E MAIS ALTURA) ---
 st.markdown("""
     <style>
+    /* Aumenta a fonte e o tamanho de TODOS os botões do Streamlit */
+    div.stButton > button {
+        font-size: 20px !important;
+        font-weight: bold !important;
+        min-height: 3.2em !important;
+        border-radius: 10px !important;
+    }
+
+    /* Estilização específica do botão VERDE (Primary / WhatsApp) */
     div.stLinkButton > a[kind="primary"], div.stButton > button[kind="primary"] {
         width: 100% !important;
         height: 3.5em !important;
-        font-size: 20px !important;
+        font-size: 22px !important;
         font-weight: bold !important;
         background-color: #25D366 !important; /* Verde oficial WhatsApp */
         color: white !important;
         border: none !important;
         border-radius: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
     }
+    
     div.stLinkButton > a[kind="primary"]:hover, div.stButton > button[kind="primary"]:hover {
         background-color: #1EBE5D !important;
         color: white !important;
