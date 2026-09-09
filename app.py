@@ -34,9 +34,26 @@ st.set_page_config(
     page_title="Cuca Espetinhos e Lanches", page_icon="🍢", layout="centered"
 )
 
-# --- ESTILIZAÇÃO DOS BOTÕES (LETRAS MAIORES E MAIS ALTURA) ---
+# --- ESTILIZAÇÃO CUSTOMIZADA DE FONTES E BOTÕES ---
 st.markdown("""
     <style>
+    /* Aumenta a fonte geral dos rótulos de campos e entradas */
+    label, div[data-testid="stMarkdownContainer"] p {
+        font-size: 18px !important;
+    }
+
+    /* Aumenta os títulos das seções */
+    h1 { font-size: 32px !important; }
+    h2 { font-size: 26px !important; }
+    h3 { font-size: 22px !important; }
+
+    /* Destaque para os preços nos itens */
+    .preco-destaque {
+        font-size: 20px !important;
+        font-weight: bold !important;
+        color: #2e7d32 !important; /* Verde escuro para contraste */
+    }
+
     /* Aumenta a fonte e o tamanho de TODOS os botões do Streamlit */
     div.stButton > button {
         font-size: 20px !important;
@@ -300,11 +317,14 @@ for item, info in menu.items():
     with col1:
         st.image(info["imagem"], width=100)
     with col2:
+        label_item = f"**{item}** — <span class='preco-destaque'>R$ {info['preco']:.2f}</span>"
+        st.markdown(label_item, unsafe_allow_html=True)
         qtd = st.number_input(
-            f"**{item}** - R$ {info['preco']:.2f}",
+            "Quantidade:",
             min_value=0,
             step=1,
             key=item,
+            label_visibility="collapsed"
         )
         if qtd > 0:
             subtotal_item = info["preco"] * qtd
@@ -315,7 +335,7 @@ for item, info in menu.items():
 
 if carrinho:
     st.divider()
-    st.write(f"### Subtotal dos itens: R$ {subtotal_produtos:.2f}")
+    st.write(f"## **Subtotal dos itens: R$ {subtotal_produtos:.2f}**")
 
     nome = st.text_input("Seu Nome:")
     tipo_entrega = st.radio(
@@ -344,7 +364,7 @@ if carrinho:
     else:
         st.info("🏪 **Retirada no Balcão:** Sem taxa de entrega.")
 
-    st.write(f"### **Total Final: R$ {total_final:.2f}**")
+    st.write(f"## **Total Final: R$ {total_final:.2f}**")
 
     pagamento = st.selectbox(
         "Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"]
