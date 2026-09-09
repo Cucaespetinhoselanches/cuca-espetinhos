@@ -39,15 +39,15 @@ menu = {
     },
     "PORÇÃO MANDIOCA FRITA": {
         "preco": 29.90,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://media.istockphoto.com/id/903103922/pt/foto/brazilian-food-mandioca-frita-deep-fried-cassava-root.webp?a=1&b=1&s=612x612&w=0&k=20&c=KwVZFUrGJlRkXM6_nyBNPt_6sbpHJ1x0pR49fA2wIgY=",
     },
     "PORÇÃO ANÉIS DE CEBOLA": {
         "preco": 28.90,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://images.unsplash.com/photo-1766589152292-3c052f0d87aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvciVDMyVBNyVDMyVBM28lMjBhbmVpcyUyMGRlJTIwY2Vib2xhfGVufDB8fDB8fHww",
     },
     "PORÇÃO COMBO DE PORÇÕES": {
         "preco": 49.90,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://images.unsplash.com/photo-1702827495434-629df15aa136?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHBvciVDMyVBNyVDMyVBM28lMjBjb21ib3xlbnwwfHwwfHx8MA%3D%3D",
     },
     "ESPETO PÃO DE ALHO": {
         "preco": 9.00,
