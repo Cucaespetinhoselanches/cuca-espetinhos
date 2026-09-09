@@ -11,15 +11,15 @@ st.title("🍢 Cuca Espetinhos e Lanches")
 menu = {
     "X BURGER": {
         "preco": 19.90,
-        "imagem": "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?w=400",
+        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
     },
     "X SALADA": {
         "preco": 29.90,
-        "imagem": "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=400",
+        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
     },
     "X BACON": {
         "preco": 35.90,
-        "imagem": "https://images.unsplash.com/photo-1544025162-d76694265947?w=400",
+        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
     },
     "X-EGG": {
         "preco": 30.90,
@@ -51,7 +51,7 @@ menu = {
     },
     "ESPETO PÃO DE ALHO": {
         "preco": 9.00,
-        "imagem": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400",
+        "imagem": "https://espeto.jpg",
     },
     "ESPETO QUEIJO COALHO": {
         "preco": 9.00,
