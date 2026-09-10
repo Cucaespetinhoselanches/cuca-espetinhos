@@ -1,17 +1,18 @@
 import urllib.parse
 import streamlit as st
+import streamlit.components.v1 as components  # Import para rodar o JavaScript
 
 # ==================== ESTADOS DA SESSÃO ====================
 if "mostrar_modal" not in st.session_state:
     st.session_state["mostrar_modal"] = False
 
 if "etapa_pedido" not in st.session_state:
-    st.session_state["etapa_pedido"] = "cardapio"  # 'cardapio' ou 'dados_entrega'
+    st.session_state["etapa_pedido"] = "cardapio"
 
 if "ultimo_item_alterado" not in st.session_state:
     st.session_state["ultimo_item_alterado"] = None
 
-# Funções de Callback para transição suave de estado
+# Callback Functions
 def registrar_alteracao_item(nome_item):
     if st.session_state.get(nome_item, 0) > 0:
         st.session_state["ultimo_item_alterado"] = nome_item
@@ -23,7 +24,7 @@ def continuar_comprando():
     st.session_state["ultimo_item_alterado"] = None
     st.session_state["etapa_pedido"] = "cardapio"
 
-# ==================== FUNÇÃO DO MODAL DE CONFIRMAÇÃO ====================
+# ==================== MODAL DE CONFIRMAÇÃO ====================
 @st.dialog("📋 Confirmar e Enviar Pedido")
 def modal_confirmacao(numero_wa, mensagem_texto):
     st.markdown(
@@ -60,7 +61,7 @@ st.set_page_config(
     page_title="Cuca Espetinhos e Lanches", page_icon="🍢", layout="centered"
 )
 
-# --- ESTILIZAÇÃO CUSTOMIZADA DE FONTES E BOTÕES ---
+# Estilização CSS
 st.markdown(
     """
     <style>
@@ -165,7 +166,7 @@ for item, info in menu.items():
     with col2:
         label_item = f"**{item}** — <span class='preco-destaque'>R$ {info['preco']:.2f}</span>"
         st.markdown(label_item, unsafe_allow_html=True)
-        
+
         qtd = st.number_input(
             "Quantidade:",
             min_value=0,
@@ -173,7 +174,7 @@ for item, info in menu.items():
             key=item,
             label_visibility="collapsed",
             on_change=registrar_alteracao_item,
-            args=(item,)
+            args=(item,),
         )
         if qtd > 0:
             subtotal_item = info["preco"] * qtd
@@ -182,7 +183,7 @@ for item, info in menu.items():
             )
             subtotal_produtos += subtotal_item
 
-    # PERGUNTA LOCALIZADA EXIBIDA LOGO ABAIXO DO ITEM SELECCIONADO
+    # Pergunta exibida logo abaixo do item selecionado
     if (
         st.session_state.get("ultimo_item_alterado") == item
         and qtd > 0
@@ -190,7 +191,7 @@ for item, info in menu.items():
     ):
         st.info(f"✅ **{qtd}x {item}** adicionado ao pedido!")
         st.markdown("**Deseja inserir mais produtos ou encerrar o pedido?**")
-        
+
         col_mais, col_encerrar = st.columns(2)
         with col_mais:
             st.button(
@@ -213,6 +214,9 @@ for item, info in menu.items():
 
 # ==================== DADOS DE ENTREGA E PAGAMENTO ====================
 if carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
+    # ÂNCORA PARA A ROLAGEM AUTOMÁTICA
+    st.markdown("<div id='secao-entrega'></div>", unsafe_allow_html=True)
+
     st.divider()
     st.subheader("📦 Dados de Entrega e Pagamento")
     st.write(f"### **Subtotal dos itens: R$ {subtotal_produtos:.2f}**")
@@ -302,3 +306,16 @@ if carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
         st.warning("Por favor, informe seu nome, rua e número para enviar.")
     elif not nome:
         st.warning("Por favor, preencha o seu nome para liberar o pedido.")
+
+    # JAVASCRIPT: Executa o rolamento automático suave para a seção de entrega
+    components.html(
+        """
+        <script>
+            var elemento = window.parent.document.getElementById('secao-entrega');
+            if (elemento) {
+                elemento.scrollIntoView({behavior: 'smooth'});
+            }
+        </script>
+        """,
+        height=0,
+    )
