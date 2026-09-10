@@ -351,11 +351,7 @@ menu_categorias = {
     },
     },
     "🥤 Refrigerantes": {
-        "Refrigerante Lata 350ml": {
-        "preco": 6.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
-    },
-    "Refrigerante COCA NORMAL Lata 350ml": {
+        "Refrigerante COCA NORMAL Lata 350ml": {
         "preco": 6.00,
         "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
     },
