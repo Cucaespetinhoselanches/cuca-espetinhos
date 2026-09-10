@@ -1,4 +1,3 @@
-import os
 import urllib.parse
 import streamlit as st
 import streamlit.components.v1 as components
@@ -212,12 +211,8 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Carregamento seguro da logo do topo
-caminho_logo = "logo.png"
-if os.path.exists(caminho_logo):
-    st.image(caminho_logo, use_container_width=True)
-else:
-    st.warning("⚠️ Imagem 'logo.png' não foi encontrada no repositório. Verifique o nome do arquivo.")
+# Imagem do topo sem corte
+st.image("logo.png", use_container_width=True)
 
 st.title("🍢 Cuca Espetinhos e Lanches")
 st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 25px;'>Monte seu pedido de forma rápida e prática</p>", unsafe_allow_html=True)
