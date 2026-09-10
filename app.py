@@ -70,7 +70,7 @@ def modal_confirmacao(numero_wa, mensagem_texto):
             use_container_width=True,
         )
 
-# --- ESTILIZAÇÃO CSS CUSTOMIZADA (DARK MODE + ABAS DESTACADAS) ---
+# --- ESTILIZAÇÃO CSS CUSTOMIZADA (DARK MODE + ABAS + QUANTIDADE MAIOR) ---
 st.markdown(
     """
     <style>
@@ -111,7 +111,7 @@ st.markdown(
         border-radius: 10px !important;
     }
 
-    /* DESTAQUE GRANDE PARA AS ABAS (ESPETOS, LANCHES, BEBIDAS, ETC) */
+    /* DESTAQUE GRANDE PARA AS ABAS */
     button[data-baseweb="tab"] {
         font-size: 20px !important;
         font-weight: 800 !important;
@@ -142,6 +142,23 @@ st.markdown(
         display: inline-block;
         margin-top: 6px;
         margin-bottom: 6px;
+    }
+
+    /* DESTAQUE PARA O CAMPO DE QUANTIDADE (NUMBER INPUT) */
+    div[data-testid="stNumberInput"] input {
+        font-size: 22px !important;
+        font-weight: 800 !important;
+        color: #ffffff !important;
+        text-align: center !important;
+        height: 48px !important;
+    }
+
+    div[data-testid="stNumberInput"] button {
+        height: 48px !important;
+        width: 48px !important;
+        background-color: #334155 !important;
+        color: #ffffff !important;
+        border-radius: 8px !important;
     }
 
     /* BOTÕES COM ALTO CONTRASTE */
