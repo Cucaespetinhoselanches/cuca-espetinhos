@@ -459,31 +459,31 @@ menu_categorias = {
     "🍺 Cervejas": {
         "Cerveja Original 300ml Garrafinha": {
             "preco": 6.00,
-            "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRllDI7RJyBsZMII0SR2UZhiYstauUqjyhKbGznH27HEw&s=10",
         },
         "Cerveja Budweiser 300ml Garrafinha": {
             "preco": 6.00,
-            "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
+            "imagem": "https://phygital-files.mercafacil.com/comercial-catanio-supermercado/uploads/produto/cerveja_budweiser_garrafinha_300ml_61022027-0c5d-4d8b-9f9f-620188027143.jpg",
         },
         "Cerveja Antarctica 300ml Garrafinha": {
             "preco": 5.00,
-            "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
+            "imagem": "https://nunesbebidas.com.br/wp-content/uploads/2021/05/Nunes-Bebidas-CERVEJA-ANTARTICA-BOA-GARRAFA-300ML.jpg",
         },
         "Cerveja Brahma 300ml Garrafinha": {
             "preco": 5.00,
-            "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
+            "imagem": "https://assets.ibecom.com.br/ib.item.image.large/l-27778dbad9724b6fb9695e6315f029e1.jpeg",
         },
         "Cerveja Império 300ml Garrafinha": {
             "preco": 5.00,
-            "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
+            "imagem": "https://assets.ibecom.com.br/ib.item.image.large/l-ab81028dfcae4433a707b191cbe67d8c.jpeg",
         },
         "Cerveja Skol 269ml Lata": {
             "preco": 5.00,
-            "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSWuMoEZy8_ZGbuqI12QrAUkAjTrwh2VPt6KqEXh8CR6pzKGxtSKXBlQfz&s=10",
         },
         "Cerveja Budweiser 269ml Lata": {
             "preco": 6.00,
-            "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+            "imagem": "https://mambodelivery.vtexassets.com/arquivos/ids/212124-800-450?v=638537266038970000&width=800&height=450&aspect=true",
         },
         "Cerveja Original 269ml Lata": {
             "preco": 6.00,
@@ -491,15 +491,15 @@ menu_categorias = {
         },
         "Cerveja Amstel 269ml Lata": {
             "preco": 5.00,
-            "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+            "imagem": "https://m.media-amazon.com/images/I/61gLfj5ExrL._AC_UF1000,1000_QL80_.jpg",
         },
         "Cerveja Império 269ml Lata": {
             "preco": 5.00,
-            "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+            "imagem": "https://bretas.vtexassets.com/arquivos/ids/202744-800-auto?v=638376354703200000&width=800&height=auto&aspect=true",
         },
         "Cerveja Brahma Duplo Malte 269ml Lata": {
             "preco": 6.00,
-            "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+            "imagem": "https://a-static.mlcdn.com.br/420x420/cerveja-brahma-duplo-malte-lager-15-unidades-lata-269ml/jrr/0f7b0dc65aa911ecb4ca4201ac18503a/3faba7ce5a536589f67a76512b5cbf98.jpg",
         },
         "Cerveja Long Neck Heineken": {
             "preco": 10.00,
