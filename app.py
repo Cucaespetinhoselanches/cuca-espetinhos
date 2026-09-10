@@ -13,19 +13,14 @@ if "mostrar_modal" not in st.session_state:
 if "etapa_pedido" not in st.session_state:
     st.session_state["etapa_pedido"] = "cardapio"
 
-if "ultimo_item_alterado" not in st.session_state:
-    st.session_state["ultimo_item_alterado"] = None
+if "carrinho" not in st.session_state:
+    st.session_state["carrinho"] = {}
 
-# Funções Callback
-def registrar_alteracao_item(chave_item):
-    if st.session_state.get(chave_item, 0) > 0:
-        st.session_state["ultimo_item_alterado"] = chave_item
-
-def avancar_para_entrega():
+# Funções de Navegação
+def ir_para_entrega():
     st.session_state["etapa_pedido"] = "dados_entrega"
 
-def continuar_comprando():
-    st.session_state["ultimo_item_alterado"] = None
+def voltar_ao_cardapio():
     st.session_state["etapa_pedido"] = "cardapio"
 
 # ==================== MODAL DE CONFIRMAÇÃO ====================
@@ -208,10 +203,7 @@ taxas_bairros = {
     "Outro Bairro (A combinar)": 0.00,
 }
 
-# MONTAR CARRINHO PERMANENTE NA SESSÃO
-carrinho = []
-subtotal_produtos = 0.0
-
+# ==================== CARDÁPIO / SELEÇÃO DE ITENS ====================
 abas = st.tabs(list(menu_categorias.keys()))
 
 for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
@@ -231,51 +223,46 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                     min_value=0,
                     step=1,
                     key=chave_item,
-                    label_visibility="collapsed",
-                    on_change=registrar_alteracao_item,
-                    args=(chave_item,),
+                    label_visibility="collapsed"
                 )
                 
-            if qtd > 0:
-                subtotal_item = info["preco"] * qtd
-                carrinho.append(
-                    {"item": item, "qtd": qtd, "subtotal": subtotal_item}
-                )
-                subtotal_produtos += subtotal_item
+                # Salva o item diretamente no estado da sessão
+                if qtd > 0:
+                    st.session_state["carrinho"][chave_item] = {
+                        "item": item,
+                        "qtd": qtd,
+                        "subtotal": info["preco"] * qtd
+                    }
+                elif chave_item in st.session_state["carrinho"]:
+                    del st.session_state["carrinho"][chave_item]
 
-            # Exibe confirmação no item alterado
-            if (
-                st.session_state.get("ultimo_item_alterado") == chave_item
-                and qtd > 0
-                and st.session_state["etapa_pedido"] == "cardapio"
-            ):
-                st.info(f"✅ **{qtd}x {item}** adicionado!")
-                st.markdown("**O que deseja fazer agora?**")
+# Cálculo do Subtotal Geral
+itens_carrinho = list(st.session_state["carrinho"].values())
+subtotal_produtos = sum(i["subtotal"] for i in itens_carrinho)
 
-                col_mais, col_encerrar = st.columns(2)
-                with col_mais:
-                    st.button(
-                        "➕ Adicionar Mais",
-                        key=f"btn_mais_{chave_item}",
-                        use_container_width=True,
-                        on_click=continuar_comprando,
-                    )
-
-                with col_encerrar:
-                    st.button(
-                        "✅ Finalizar Pedido",
-                        key=f"btn_encerrar_{chave_item}",
-                        type="primary",
-                        use_container_width=True,
-                        on_click=avancar_para_entrega,
-                    )
-
-# ==================== DADOS DE ENTREGA E PAGAMENTO ====================
-if carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
-    st.markdown("<div id='secao-entrega'></div>", unsafe_allow_html=True)
-
+# Resumo fixo / Botão de Avançar quando houver itens
+if itens_carrinho and st.session_state["etapa_pedido"] == "cardapio":
     st.write("---")
-    st.subheader("📦 Entrega & Pagamento")
+    st.success(f"🛒 **Subtotal dos itens:** R$ {subtotal_produtos:.2f}")
+    st.button(
+        "✅ FINALIZAR PEDIDO E INFORMAR ENTREGA",
+        type="primary",
+        use_container_width=True,
+        on_click=ir_para_entrega,
+        key="btn_ir_entrega"
+    )
+
+# ==================== ETAPA DE ENTREGA E PAGAMENTO ====================
+if st.session_state["etapa_pedido"] == "dados_entrega":
+    st.markdown("<div id='secao-entrega'></div>", unsafe_allow_html=True)
+    st.write("---")
+    
+    col_titulo, col_voltar_btn = st.columns([3, 1])
+    with col_titulo:
+        st.subheader("📦 Entrega & Pagamento")
+    with col_voltar_btn:
+        st.button("✏️ Alterar Itens", on_click=voltar_ao_cardapio, use_container_width=True)
+
     st.markdown(f"### Subtotal: **R$ {subtotal_produtos:.2f}**")
 
     nome = st.text_input("Seu Nome:", key="input_nome")
@@ -315,54 +302,45 @@ if carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
         "Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"], key="input_pagamento"
     )
 
-    # Validação do preenchimento
-    pronto_para_enviar = False
+    # BOTÃO PRINCIPAL DE ENVIO - SEMPRE VISÍVEL
+    itens_txt = "\n".join(
+        [
+            f"{i['qtd']}x {i['item']} (R$ {i['subtotal']:.2f})"
+            for i in itens_carrinho
+        ]
+    )
+
     if tipo_entrega == "Entrega":
-        if nome.strip() and rua_numero.strip():
-            pronto_para_enviar = True
+        detalhes_tipo = f"*Tipo:* Entrega\n*Endereço:* {endereco}\n*Taxa:* R$ {taxa_entrega:.2f}"
     else:
-        if nome.strip():
-            pronto_para_enviar = True
+        detalhes_tipo = "*Tipo:* Retirada no Local"
 
-    if pronto_para_enviar:
-        itens_txt = "\n".join(
-            [
-                f"{i['qtd']}x {i['item']} (R$ {i['subtotal']:.2f})"
-                for i in carrinho
-            ]
-        )
+    mensagem = (
+        f"Olá! Gostaria de fazer um pedido na *Cuca Espetinhos e Lanches*:\n\n"
+        f"*Cliente:* {nome}\n"
+        f"{detalhes_tipo}\n"
+        f"*Pagamento:* {pagamento}\n\n"
+        f"*Itens:*\n{itens_txt}\n\n"
+        f"*Total a Pagar:* R$ {total_final:.2f}"
+    )
 
-        if tipo_entrega == "Entrega":
-            detalhes_tipo = f"*Tipo:* Entrega\n*Endereço:* {endereco}\n*Taxa:* R$ {taxa_entrega:.2f}"
+    numero_whatsapp = "5512992093751"
+
+    if st.button(
+        "🚀 AVANÇAR PARA CONFIRMAÇÃO",
+        type="primary",
+        use_container_width=True,
+        key="btn_confirmar_final"
+    ):
+        if tipo_entrega == "Entrega" and not rua_numero.strip():
+            st.error("Por favor, preencha a Rua e Número antes de continuar.")
+        elif not nome.strip():
+            st.error("Por favor, preencha o seu Nome antes de continuar.")
         else:
-            detalhes_tipo = "*Tipo:* Retirada no Local"
-
-        mensagem = (
-            f"Olá! Gostaria de fazer um pedido na *Cuca Espetinhos e Lanches*:\n\n"
-            f"*Cliente:* {nome}\n"
-            f"{detalhes_tipo}\n"
-            f"*Pagamento:* {pagamento}\n\n"
-            f"*Itens:*\n{itens_txt}\n\n"
-            f"*Total a Pagar:* R$ {total_final:.2f}"
-        )
-
-        numero_whatsapp = "5512992093751"
-
-        if st.button(
-            "🚀 AVANÇAR PARA CONFIRMAÇÃO",
-            type="primary",
-            use_container_width=True,
-            key="btn_avancar_confirmacao"
-        ):
             st.session_state["mostrar_modal"] = True
 
-        if st.session_state.get("mostrar_modal", False):
-            modal_confirmacao(numero_whatsapp, mensagem)
-
-    elif tipo_entrega == "Entrega" and not rua_numero.strip():
-        st.warning("Por favor, preencha o endereço completo para liberar o botão de confirmação.")
-    elif not nome.strip():
-        st.warning("Por favor, informe seu nome para liberar o botão de confirmação.")
+    if st.session_state.get("mostrar_modal", False):
+        modal_confirmacao(numero_whatsapp, mensagem)
 
     components.html(
         """
