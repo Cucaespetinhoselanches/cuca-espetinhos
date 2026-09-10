@@ -1,9 +1,13 @@
 import urllib.parse
 import streamlit as st
 
-# Inicializa a memória da sessão para controle do modal
+# ==================== ESTADOS DA SESSÃO ====================
 if "mostrar_modal" not in st.session_state:
     st.session_state["mostrar_modal"] = False
+
+# Controla a exibição das etapas do formulário
+if "etapa_pedido" not in st.session_state:
+    st.session_state["etapa_pedido"] = "cardapio"  # 'cardapio' ou 'dados_entrega'
 
 # ==================== FUNÇÃO DO MODAL DE CONFIRMAÇÃO ====================
 @st.dialog("📋 Confirmar e Enviar Pedido")
@@ -12,11 +16,13 @@ def modal_confirmacao(numero_wa, mensagem_texto):
         "<h3 style='color: #000000; font-weight: 800; margin-bottom: 15px;'>"
         "📋 Revise os detalhes do seu pedido:"
         "</h3>",
-        unsafe_allow_html=True
+        unsafe_allow_html=True,
     )
     st.info(mensagem_texto)
 
-    link_whatsapp = f"https://wa.me/{numero_wa}?text={urllib.parse.quote(mensagem_texto)}"
+    link_whatsapp = (
+        f"https://wa.me/{numero_wa}?text={urllib.parse.quote(mensagem_texto)}"
+    )
 
     st.write("---")
     col_voltar, col_enviar = st.columns([1, 2])
@@ -33,6 +39,8 @@ def modal_confirmacao(numero_wa, mensagem_texto):
             type="primary",
             use_container_width=True,
         )
+
+
 # =======================================================================
 
 st.set_page_config(
@@ -40,7 +48,8 @@ st.set_page_config(
 )
 
 # --- ESTILIZAÇÃO CUSTOMIZADA DE FONTES E BOTÕES ---
-st.markdown("""
+st.markdown(
+    """
     <style>
     /* Aumenta a fonte geral dos rótulos de campos e entradas */
     label, div[data-testid="stMarkdownContainer"] p {
@@ -56,14 +65,14 @@ st.markdown("""
     .preco-destaque {
         font-size: 20px !important;
         font-weight: bold !important;
-        color: #2e7d32 !important; /* Verde escuro para contraste */
+        color: #2e7d32 !important;
     }
 
-    /* Aumenta a fonte e o tamanho de TODOS os botões do Streamlit */
+    /* Estilização padrão de botões */
     div.stButton > button {
-        font-size: 20px !important;
+        font-size: 18px !important;
         font-weight: bold !important;
-        min-height: 3.2em !important;
+        min-height: 3em !important;
         border-radius: 10px !important;
     }
 
@@ -79,17 +88,12 @@ st.markdown("""
         justify-content: center !important;
     }
 
-    /* Ajuste de fonte e contraste do texto dos botões */
     div.stLinkButton > a[kind="primary"] p, div.stButton > button[kind="primary"] p {
-        font-size: 24px !important;
+        font-size: 22px !important;
         font-weight: 900 !important;
         color: #0b3d18 !important;
     }
     
-    div.stLinkButton > a[kind="primary"]:hover, div.stButton > button[kind="primary"]:hover {
-        background-color: #1EBE5D !important;
-    }
-
     /* Aumenta a fonte e o contraste do texto exibido no resumo do pedido (st.info) */
     div[data-testid="stNotification"] {
         background-color: #e3f2fd !important;
@@ -103,14 +107,13 @@ st.markdown("""
         line-height: 1.6 !important;
     }
     </style>
-""", unsafe_allow_html=True)
+""",
+    unsafe_allow_html=True,
+)
 
-# Exibe o logo
 st.image("logo.png", width=200)
-
 st.title("🍢 Cuca Espetinhos e Lanches")
 
-# Cardápio
 menu = {
     "X BURGER": {
         "preco": 19.90,
@@ -128,123 +131,21 @@ menu = {
         "preco": 30.90,
         "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
     },
-    "X-CATUPIRY EMPANADO": {
-        "preco": 32.90,
-        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
-    },
-    "FRANGÃO": {
-        "preco": 32.90,
-        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
-    },
     "HOT CALABRESA": {
         "preco": 16.50,
         "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
-    },
-    "HOT BACON": {
-        "preco": 16.50,
-        "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
-    },
-    "HOT SALADA": {
-        "preco": 12.50,
-        "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
-    },
-    "HOT PURE": {
-        "preco": 14.50,
-        "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
-    },
-    "PORÇÃO BATATA FRITA ou PORÇÃO DE MANDIOCA FRITA": {
-        "preco": 29.90,
-        "imagem": "https://plus.unsplash.com/premium_photo-1672774750509-bc9ff226f3e8?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9yJUMzJUE3JUMzJUE3byUyMGJhdGF0YSUyMGZyaXRhfGVufDB8fDB8fHww",
-    },
-    "PORÇÃO ANÉIS DE CEBOLA": {
-        "preco": 28.90,
-        "imagem": "https://images.unsplash.com/photo-1766589152292-3c052f0d87aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvciVDMyVBNyVDMyVBM28lMjBhbmVpcyUyMGRlJTIwY2Vib2xhfGVufDB8fDB8fHww",
-    },
-    "PORÇÃO COMBO DE PORÇÕES": {
-        "preco": 49.90,
-        "imagem": "https://images.unsplash.com/photo-1702827495434-629df15aa136?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHBvciVDMyVBNyVDMyVBM28lMjBjb21ib3xlbnwwfHwwfHx8MA%3D%3D",
-    },
-    "ESPETO PÃO DE ALHO ou QUEIJO COALHO ou LINGUIÇA": {
-        "preco": 9.00,
-        "imagem": "https://i.pinimg.com/474x/ca/88/97/ca8897789a429b07bc7a9f238c348223.jpg",
-    },
-    "ESPETO ROMEU E JULIETA (Bacon/Goiabada/Queijo)": {
-        "preco": 15.00,
-        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
-    },
-    "ESPETO PANCETA ou ALCATRA ou FRALDINHA ou KAFTA ou FRANGO": {
-        "preco": 12.00,
-        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
-    },
-    "ESPETO PICANHA ou CORAÇÃO": {
-        "preco": 18.00,
-        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
     },
     "Refrigerante Lata": {
         "preco": 6.00,
         "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
     },
-    "Suco Del Valle 200ml": {
-        "preco": 8.00,
-        "imagem": "https://m.media-amazon.com/images/I/51Z3PJFvmaL._AC_UF350,350_QL80_.jpg",
-    },
-    "Suco 1L": {
-        "preco": 10.00,
-        "imagem": "https://cdn.awsli.com.br/800x800/1345/1345272/produto/55987814/01943f4345.jpg",
-    },
-    "Cerveja Original ou Budweiser  300ml Garrafinha": {
-        "preco": 6.00,
-        "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
-    },
-    "Cerveja Antarctica ou BRAHMA ou IMPERIO 300ml Garrafinha": {
-        "preco": 5.00,
-        "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
-    },
-    "Cerveja Skol ou AMSTEL ou IMPERIO 269ml Lata": {
-        "preco": 5.00,
-        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
-    },
-    "Cerveja Budweiser ou ORIGINAL oU Brahma Duplo Malte 269ml Lata": {
-        "preco": 6.00,
-        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
-    },
-    "Cerveja Long Neck Heineken ou Budweiser ou CORONA": {
-        "preco": 10.00,
-        "imagem": "https://images.unsplash.com/photo-1618885472179-5e474019f2a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2FycmFmYSUyMGRlJTIwZ2FycmFmYXxlbnwwfHwwfHx8MA%3D%3D",
-    },
-    "Energético Monster 473ml": {
-        "preco": 14.00,
-        "imagem": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Monster_Energy_drink_%28cropped%29.jpg/960px-Monster_Energy_drink_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
-    },
-    "Cerveja Amstel ou IMPERIO 350ml Lata": {
-        "preco": 6.00,
-        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
-    },
-    "Cerveja Brahma Duplo Malte 350ml Lata": {
-        "preco": 7.00,
-        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
-    },
 }
 
-# Tabela de Bairros e Taxas de Entrega
 taxas_bairros = {
     "Nova Jacareí": 3.00,
     "Igarapés": 5.00,
     "Esperança": 4.00,
-    "São Luiz": 5.00,
-    "Portal": 5.00,
-    "Jardim São Paulo": 5.00,
-    "Terras de São João": 5.00,
-    "1º de Maio": 5.00,
-    "Jardim Alvorada": 5.00,
-    "Imperial": 5.00,
-    "Pedramar": 7.00,
-    "Ijal": 5.00,
-    "São João": 6.00,
     "Centro": 8.00,
-    "Panorama": 7.00,
-    "Jardim Dindinha": 7.00,
-    "Jardim Emília": 7.00,
     "Outro Bairro (A combinar)": 0.00,
 }
 
@@ -253,6 +154,7 @@ subtotal_produtos = 0.0
 
 st.subheader("Faça seu Pedido")
 
+# Exibe o cardápio
 for item, info in menu.items():
     col1, col2 = st.columns([1, 2])
     with col1:
@@ -265,7 +167,7 @@ for item, info in menu.items():
             min_value=0,
             step=1,
             key=item,
-            label_visibility="collapsed"
+            label_visibility="collapsed",
         )
         if qtd > 0:
             subtotal_item = info["preco"] * qtd
@@ -274,90 +176,115 @@ for item, info in menu.items():
             )
             subtotal_produtos += subtotal_item
 
+# Caso o usuário tenha selecionado ao menos 1 item
 if carrinho:
     st.divider()
     st.write(f"## **Subtotal dos itens: R$ {subtotal_produtos:.2f}**")
 
-    # MENSAGEM DE ORIENTAÇÃO PARA O CLIENTE CONTINUAR OU CONCLUIR
-    st.success("✅ **Item adicionado com sucesso!**\n\nDeseja escolher mais alguma bebida, espetinho ou acompanhamento antes de finalizar?")
+    # PERGUNTA E BOTÕES DE AÇÃO INTERATIVOS
+    st.markdown("### **Deseja incluir mais itens ao seu pedido?**")
+    col_btn_mais, col_btn_encerrar = st.columns(2)
 
-    col_mais, col_finalizar = st.columns(2)
-    with col_mais:
-        st.info("👇 **Para adicionar mais itens:** Role a página para cima ou veja as opções abaixo no cardápio.")
-    with col_finalizar:
-        st.info("👇 **Para finalizar seu pedido:** Preencha seus dados de entrega logo abaixo.")
+    with col_btn_mais:
+        if st.button("➕ Inserir Mais Produtos", use_container_width=True):
+            st.session_state["etapa_pedido"] = "cardapio"
+            st.toast(
+                "Continue escolhendo seus itens no cardápio acima!", icon="🛒"
+            )
 
-    st.write("---")
+    with col_btn_encerrar:
+        if st.button(
+            "✅ Encerrar Pedido", type="primary", use_container_width=True
+        ):
+            st.session_state["etapa_pedido"] = "dados_entrega"
 
-    nome = st.text_input("Seu Nome:")
-    tipo_entrega = st.radio(
-        "Opção de Entrega:",
-        ["Entrega", "Retirar no Local"],
-        horizontal=True,
-    )
+    # Exibe a etapa de endereço/pagamento quando o usuário clica em Encerrar
+    if st.session_state["etapa_pedido"] == "dados_entrega":
+        st.write("---")
+        st.subheader("📦 Dados de Entrega e Pagamento")
 
-    endereco = ""
-    taxa_entrega = 0.00
-    total_final = subtotal_produtos
-
-    if tipo_entrega == "Entrega":
-        bairro = st.selectbox("Selecione o seu Bairro:", list(taxas_bairros.keys()))
-        taxa_entrega = taxas_bairros[bairro]
-        rua_numero = st.text_input("Rua e Número:")
-
-        if rua_numero:
-            endereco = f"{rua_numero} - {bairro}"
-
-        total_final += taxa_entrega
-        if taxa_entrega > 0:
-            st.info(f"🛵 **Taxa de entrega para {bairro}:** R$ {taxa_entrega:.2f}")
-        else:
-            st.warning("⚠️ Taxa de entrega para este bairro será confirmada pelo WhatsApp.")
-    else:
-        st.info("🏪 **Retirada no Balcão:** Sem taxa de entrega.")
-
-    st.write(f"## **Total Final: R$ {total_final:.2f}**")
-
-    pagamento = st.selectbox(
-        "Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"]
-    )
-
-    pronto_para_enviar = False
-    if tipo_entrega == "Entrega":
-        if nome and rua_numero:
-            pronto_para_enviar = True
-    else:
-        if nome:
-            pronto_para_enviar = True
-
-    if pronto_para_enviar:
-        itens_txt = "\n".join(
-            [f"{i['qtd']}x {i['item']} (R$ {i['subtotal']:.2f})" for i in carrinho]
+        nome = st.text_input("Seu Nome:")
+        tipo_entrega = st.radio(
+            "Opção de Entrega:",
+            ["Entrega", "Retirar no Local"],
+            horizontal=True,
         )
+
+        endereco = ""
+        taxa_entrega = 0.00
+        total_final = subtotal_produtos
 
         if tipo_entrega == "Entrega":
-            detalhes_tipo = f"*Tipo:* Entrega\n*Endereço:* {endereco}\n*Taxa de Entrega:* R$ {taxa_entrega:.2f}"
-        else:
-            detalhes_tipo = "*Tipo:* Retirada no Local"
+            bairro = st.selectbox(
+                "Selecione o seu Bairro:", list(taxas_bairros.keys())
+            )
+            taxa_entrega = taxas_bairros[bairro]
+            rua_numero = st.text_input("Rua e Número:")
 
-        mensagem = (
-            f"Olá! Gostaria de fazer um pedido na *Cuca Espetinhos e Lanches*:\n\n"
-            f"*Cliente:* {nome}\n"
-            f"{detalhes_tipo}\n"
-            f"*Pagamento:* {pagamento}\n\n"
-            f"*Itens:*\n{itens_txt}\n\n"
-            f"*Total a Pagar:* R$ {total_final:.2f}"
+            if rua_numero:
+                endereco = f"{rua_numero} - {bairro}"
+
+            total_final += taxa_entrega
+            if taxa_entrega > 0:
+                st.info(
+                    f"🛵 **Taxa de entrega para {bairro}:** R$ {taxa_entrega:.2f}"
+                )
+            else:
+                st.warning(
+                    "⚠️ Taxa de entrega para este bairro será confirmada pelo WhatsApp."
+                )
+        else:
+            st.info("🏪 **Retirada no Balcão:** Sem taxa de entrega.")
+
+        st.write(f"## **Total Final: R$ {total_final:.2f}**")
+
+        pagamento = st.selectbox(
+            "Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"]
         )
 
-        numero_whatsapp = "5512992093751"
+        pronto_para_enviar = False
+        if tipo_entrega == "Entrega":
+            if nome and rua_numero:
+                pronto_para_enviar = True
+        else:
+            if nome:
+                pronto_para_enviar = True
 
-        if st.button("🚀 AVANÇAR PARA CONFIRMAÇÃO", type="primary", use_container_width=True):
-            st.session_state["mostrar_modal"] = True
+        if pronto_para_enviar:
+            itens_txt = "\n".join(
+                [
+                    f"{i['qtd']}x {i['item']} (R$ {i['subtotal']:.2f})"
+                    for i in carrinho
+                ]
+            )
 
-        if st.session_state.get("mostrar_modal", False):
-            modal_confirmacao(numero_whatsapp, mensagem)
+            if tipo_entrega == "Entrega":
+                detalhes_tipo = f"*Tipo:* Entrega\n*Endereço:* {endereco}\n*Taxa de Entrega:* R$ {taxa_entrega:.2f}"
+            else:
+                detalhes_tipo = "*Tipo:* Retirada no Local"
 
-    elif tipo_entrega == "Entrega" and not rua_numero:
-        st.warning("Por favor, preencha o seu nome e informe a rua e número para liberar o pedido.")
-    elif not nome:
-        st.warning("Por favor, preencha o seu nome para liberar o pedido.")
+            mensagem = (
+                f"Olá! Gostaria de fazer um pedido na *Cuca Espetinhos e Lanches*:\n\n"
+                f"*Cliente:* {nome}\n"
+                f"{detalhes_tipo}\n"
+                f"*Pagamento:* {pagamento}\n\n"
+                f"*Itens:*\n{itens_txt}\n\n"
+                f"*Total a Pagar:* R$ {total_final:.2f}"
+            )
+
+            numero_whatsapp = "5512992093751"
+
+            if st.button(
+                "🚀 AVANÇAR PARA CONFIRMAÇÃO",
+                type="primary",
+                use_container_width=True,
+            ):
+                st.session_state["mostrar_modal"] = True
+
+            if st.session_state.get("mostrar_modal", False):
+                modal_confirmacao(numero_whatsapp, mensagem)
+
+        elif tipo_entrega == "Entrega" and not rua_numero:
+            st.warning("Por favor, informe seu nome, rua e número para enviar.")
+        elif not nome:
+            st.warning("Por favor, preencha o seu nome para liberar o pedido.")
