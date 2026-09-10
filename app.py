@@ -405,59 +405,59 @@ menu_categorias = {
     },
     "Refrigerante COCA COLA 2L": {
         "preco": 17.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://gbarbosa.vtexassets.com/arquivos/ids/214289/655268ba8d0743e14888f712.jpg?v=638354963814100000",
     },
     "Refrigerante PEPSI 2L": {
         "preco": 17.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://hiperideal.vtexassets.com/arquivos/ids/228374/7892840800000-RefrigerantePEPSIGarrafa2L-1.jpg?v=638733302785230000",
     },
     "Refrigerante COCA ZERO 2.5L": {
         "preco": 17.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/230310/45911-1779911965249.png.png?v=639155088729770000",
     },
     "Refrigerante COCA ZERO 1L": {
         "preco": 10.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://mercantilatacado.vtexassets.com/arquivos/ids/168646/653fe3aa752720c144887a35.jpg?v=638342826762370000",
     },
     "Refrigerante H20 500ml": {
         "preco": 8.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://savegnagoio.vtexassets.com/arquivos/ids/447261-800-800?v=638525058304970000&width=800&height=800&aspect=true",
     },
     "Refrigerante TONICA SCHWEPPES 600ml": {
         "preco": 8.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://almacenestampico.com/wp-content/uploads/2023/03/Almacenes-Tampico-Uruguay-agua-tonica-schwepps-600Mesa-de-trabajo-1.jpg",
     },
     "Refrigerante FANTA UVA 600ml": {
         "preco": 8.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://io.convertiez.com.br/m/farmaciasaopaulo/shop/products/images/16728/medium/fanta-uva-600ml_25847.jpg",
     },
     "Refrigerante SPRITE 600ml": {
         "preco": 8.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxBTxJckfXC_FK2APRFPRLnVY8tC68jlixc3fnLgPZAg&s",
     },
     "Refrigerante GUARANITA 600ml": {
         "preco": 8.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://tauste.com.br/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/1/5/1584431777359902.jpg",
     },
     "Refrigerante COCA COLA 600ml": {
         "preco": 8.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://bretas.vtexassets.com/arquivos/ids/182991-800-auto?v=638375498920300000&width=800&height=auto&aspect=true",
     },
     "Refrigerante COCA COLA ZERO 600ml": {
         "preco": 8.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/232442/Refrigerante-COCA-COLA-Zero-Acucar-Pet-600ml.jpg?v=639179091417330000",
     },
     "Refrigerante FANTA 600ml": {
         "preco": 8.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://phygital-files.mercafacil.com/miliozzi/uploads/produto/refrigerante_fanta_laranja_600ml_pet_a8b5c222-e21b-480c-8288-90e22dbb20d7.jpg",
     },
     "AGUA MINERAL SEM GAS 500ml": {
         "preco": 3.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://io.convertiez.com.br/m/farmaponte/shop/products/images/22004/medium/agua-mineral-crystal-sem-gas-garrafa-1-unidade-com-500ml_17652.webp",
     },
     "AGUA MINERAL COM GAS 500ml": {
         "preco": 4.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://apoioentrega.vteximg.com.br/arquivos/ids/1911515/139272_0.png?v=639213665179000000",
     },
     },
     "🍺 Cervejas": {
