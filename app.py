@@ -131,15 +131,11 @@ menu = {
         "preco": 14.50,
         "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
     },
-    "PORÇÃO BATATA FRITA": {
+    "PORÇÃO BATATA FRITA ou PORÇÃO DE MANDIOCA FRITA": {
         "preco": 29.90,
         "imagem": "https://plus.unsplash.com/premium_photo-1672774750509-bc9ff226f3e8?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9yJUMzJUE3JUMzJUE3byUyMGJhdGF0YSUyMGZyaXRhfGVufDB8fDB8fHww",
     },
-    "PORÇÃO MANDIOCA FRITA": {
-        "preco": 29.90,
-        "imagem": "https://media.istockphoto.com/id/903103922/pt/foto/brazilian-food-mandioca-frita-deep-fried-cassava-root.webp?a=1&b=1&s=612x612&w=0&k=20&c=KwVZFUrGJlRkXM6_nyBNPt_6sbpHJ1x0pR49fA2wIgY=",
-    },
-    "PORÇÃO ANÉIS DE CEBOLA": {
+        "PORÇÃO ANÉIS DE CEBOLA": {
         "preco": 28.90,
         "imagem": "https://images.unsplash.com/photo-1766589152292-3c052f0d87aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvciVDMyVBNyVDMyVBM28lMjBhbmVpcyUyMGRlJTIwY2Vib2xhfGVufDB8fDB8fHww",
     },
@@ -147,7 +143,7 @@ menu = {
         "preco": 49.90,
         "imagem": "https://images.unsplash.com/photo-1702827495434-629df15aa136?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHBvciVDMyVBNyVDMyVBM28lMjBjb21ib3xlbnwwfHwwfHx8MA%3D%3D",
     },
-    "ESPETO PÃO DE ALHO": {
+    "ESPETO PÃO DE ALHO ou QUEIJO COALHO ou LINGUIÇA": {
         "preco": 9.00,
        "imagem": "https://i.pinimg.com/474x/ca/88/97/ca8897789a429b07bc7a9f238c348223.jpg",
     },
@@ -155,48 +151,12 @@ menu = {
         "preco": 15.00,
         "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
     },
-    "ESPETO QUEIJO COALHO": {
-        "preco": 9.00,
-        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
-    },
-    "ESPETO PANCETA": {
+    "ESPETO PANCETA ou ALCATRA ou FRALDINHA ou KAFTA ou FRANGO": {
         "preco": 12.00,
         "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
     },
-    "ESPETO ALCATRA": {
-        "preco": 12.00,
-        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
-    },
-    "ESPETO PICANHA": {
+    "ESPETO PICANHA ou CORAÇÃO": {
         "preco": 18.00,
-        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
-    },
-    "ESPETO FRALDINHA": {
-        "preco": 12.00,
-        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
-    },
-    "ESPETO LINGUIÇA": {
-        "preco": 9.00,
-        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
-    },
-    "ESPETO LINGUIÇA GOURMET": {
-        "preco": 9.00,
-        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
-    },
-    "ESPETO KAFTA": {
-        "preco": 12.00,
-        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
-    },
-    "ESPETO KAFTA GOURMET": {
-        "preco": 12.00,
-        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
-    },
-    "ESPETO CORAÇÃO": {
-        "preco": 18.00,
-        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
-    },
-    "ESPETO FRANGO": {
-        "preco": 12.00,
         "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
     },
     "Refrigerante Lata": {
@@ -211,71 +171,31 @@ menu = {
         "preco": 10.00,
         "imagem": "https://cdn.awsli.com.br/800x800/1345/1345272/produto/55987814/01943f4345.jpg",
     },
-    "Cerveja Original 300ml Garrafinha": {
+    "Cerveja Original ou Budweiser  300ml Garrafinha": {
         "preco": 6.00,
         "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
     },
-    "Cerveja Budweiser 300ml Garrafinha": {
-        "preco": 6.00,
-        "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
-    },
-    "Cerveja Antarctica 300ml Garrafinha": {
+    "Cerveja Antarctica ou BRAHMA ou IMPERIO 300ml Garrafinha": {
         "preco": 5.00,
         "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
     },
-    "Cerveja Brahma 300ml Garrafinha": {
-        "preco": 5.00,
-        "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
-    },
-    "Cerveja Império 300ml Garrafinha": {
-        "preco": 5.00,
-        "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
-    },
-    "Cerveja Skol 269ml Lata": {
+   "Cerveja Skol ou AMSTEL ou IMPERIO 269ml Lata": {
         "preco": 5.00,
         "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
     },
-    "Cerveja Budweiser 269ml Lata": {
+    "Cerveja Budweiser ou ORIGINAL oU Brahma Duplo Malte 269ml Lata": {
         "preco": 6.00,
         "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
     },
-    "Cerveja Original 269ml Lata": {
-        "preco": 6.00,
-        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
-    },
-    "Cerveja Amstel 269ml Lata": {
-        "preco": 5.00,
-        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
-    },
-    "Cerveja Império 269ml Lata": {
-        "preco": 5.00,
-        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
-    },
-    "Cerveja Brahma Duplo Malte 269ml Lata": {
-        "preco": 6.00,
-        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
-    },
-    "Cerveja Long Neck Heineken": {
+    "Cerveja Long Neck Heineken ou Budweiser ou CORONA": {
         "preco": 10.00,
         "imagem": "https://images.unsplash.com/photo-1618885472179-5e474019f2a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D",
-    },
-    "Cerveja Long Neck Budweiser": {
-        "preco": 10.00,
-        "imagem": "https://images.unsplash.com/photo-1587669284207-e8ee0fc74144?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D",
-    },
-    "Cerveja Long Neck Corona": {
-        "preco": 10.00,
-        "imagem": "https://images.unsplash.com/photo-1600213903598-25be92abde40?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D",
     },
     "Energético Monster 473ml": {
         "preco": 14.00,
         "imagem": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Monster_Energy_drink_%28cropped%29.jpg/960px-Monster_Energy_drink_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
     },
-    "Cerveja Amstel 350ml Lata": {
-        "preco": 6.00,
-        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
-    },
-    "Cerveja Império 350ml Lata": {
+    "Cerveja Amstel ou IMPERIO 350ml Lata": {
         "preco": 6.00,
         "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
     },
