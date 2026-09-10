@@ -12,17 +12,19 @@ if "etapa_pedido" not in st.session_state:
 if "ultimo_item_alterado" not in st.session_state:
     st.session_state["ultimo_item_alterado"] = None
 
-# Callbacks
-def registrar_alteracao_item(nome_item):
-    if st.session_state.get(nome_item, 0) > 0:
-        st.session_state["ultimo_item_alterado"] = nome_item
+# Funções Callback sem conflito de execução
+def registrar_alteracao_item(chave_item):
+    if st.session_state.get(chave_item, 0) > 0:
+        st.session_state["ultimo_item_alterado"] = chave_item
 
 def avancar_para_entrega():
     st.session_state["etapa_pedido"] = "dados_entrega"
+    st.rerun()
 
 def continuar_comprando():
     st.session_state["ultimo_item_alterado"] = None
     st.session_state["etapa_pedido"] = "cardapio"
+    st.rerun()
 
 # ==================== MODAL DE CONFIRMAÇÃO ====================
 @st.dialog("📋 Confirmar e Enviar Pedido")
@@ -61,16 +63,14 @@ st.set_page_config(
     page_title="Cuca Espetinhos e Lanches", page_icon="🍢", layout="centered"
 )
 
-# --- ESTILIZAÇÃO CSS CUSTOMIZADA (DESIGN MODERNO & CLEAN) ---
+# --- ESTILIZAÇÃO CSS CUSTOMIZADA ---
 st.markdown(
     """
     <style>
-    /* Configuração Geral do Fundo */
     .stApp {
         background-color: #f8f9fa;
     }
 
-    /* Títulos Principais */
     h1 {
         font-size: 30px !important;
         font-weight: 800 !important;
@@ -79,7 +79,6 @@ st.markdown(
         margin-bottom: 5px !important;
     }
 
-    /* Cards dos Produtos */
     div[data-testid="stColumn"] > div {
         background-color: #ffffff;
         border-radius: 16px;
@@ -89,19 +88,19 @@ st.markdown(
         margin-bottom: 10px;
     }
 
-    /* REDUÇÃO DO TAMANHO DAS FOTOS */
+    /* Fotos menores */
     div[data-testid="stImage"] img {
         max-height: 85px !important;
         object-fit: cover !important;
         border-radius: 10px !important;
     }
 
-    /* AUMENTO DA FONTE DOS PREÇOS */
+    /* Fonte do preço maior */
     .preco-badge {
         background-color: #e8f5e9;
         color: #1b5e20;
         font-weight: 900;
-        font-size: 24px !important; /* Preço bem destacado */
+        font-size: 24px !important;
         padding: 4px 12px;
         border-radius: 8px;
         display: inline-block;
@@ -109,7 +108,6 @@ st.markdown(
         margin-bottom: 6px;
     }
 
-    /* Estilização das Abas */
     button[data-baseweb="tab"] {
         font-size: 16px !important;
         font-weight: 700 !important;
@@ -117,7 +115,6 @@ st.markdown(
         padding: 8px 16px !important;
     }
 
-    /* Botões Principais e Interativos */
     div.stButton > button {
         border-radius: 10px !important;
         font-weight: 700 !important;
@@ -136,7 +133,6 @@ st.markdown(
         font-size: 18px !important;
     }
 
-    /* Ajuste para Notificações Inline */
     div[data-testid="stNotification"] {
         background-color: #f0fdf4 !important;
         border-left: 5px solid #22c55e !important;
@@ -152,7 +148,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Header com Imagem Centralizada
 col_center = st.columns([1, 2, 1])
 with col_center[1]:
     st.image("logo.png", use_container_width=True)
@@ -160,7 +155,6 @@ with col_center[1]:
 st.title("🍢 Cuca Espetinhos e Lanches")
 st.markdown("<p style='text-align: center; color: #64748b; font-size: 16px; margin-bottom: 25px;'>Monte seu pedido de forma rápida e prática</p>", unsafe_allow_html=True)
 
-# Estrutura do Menu Dividido por Categorias
 menu_categorias = {
     "🥪 Lanches": {
         "X BURGER": {
@@ -223,27 +217,28 @@ taxas_bairros = {
 carrinho = []
 subtotal_produtos = 0.0
 
-# Criação das Abas no Streamlit
 abas = st.tabs(list(menu_categorias.keys()))
 
 for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
     with aba:
         for item, info in itens.items():
+            chave_item = f"{categoria}_{item}"
             col1, col2 = st.columns([1, 2])
+            
             with col1:
                 st.image(info["imagem"], use_container_width=True)
             with col2:
-                st.markdown(f"**{item}**", unsafe_allow_html=True)
+                st.markdown(f"**{item}**")
                 st.markdown(f"<span class='preco-badge'>R$ {info['preco']:.2f}</span>", unsafe_allow_html=True)
                 
                 qtd = st.number_input(
                     "Qtd:",
                     min_value=0,
                     step=1,
-                    key=f"{categoria}_{item}",
+                    key=chave_item,
                     label_visibility="collapsed",
                     on_change=registrar_alteracao_item,
-                    args=(f"{categoria}_{item}",),
+                    args=(chave_item,),
                 )
                 
                 if qtd > 0:
@@ -253,9 +248,9 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                     )
                     subtotal_produtos += subtotal_item
 
-            # Pergunta Dinâmica Exibida Logo Abaixo do Produto Selecionado
+            # Exibe confirmação logo abaixo do item alterado
             if (
-                st.session_state.get("ultimo_item_alterado") == f"{categoria}_{item}"
+                st.session_state.get("ultimo_item_alterado") == chave_item
                 and qtd > 0
                 and st.session_state["etapa_pedido"] == "cardapio"
             ):
@@ -266,7 +261,7 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                 with col_mais:
                     st.button(
                         "➕ Adicionar Mais",
-                        key=f"btn_mais_{categoria}_{item}",
+                        key=f"btn_mais_{chave_item}",
                         use_container_width=True,
                         on_click=continuar_comprando,
                     )
@@ -274,7 +269,7 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                 with col_encerrar:
                     st.button(
                         "✅ Finalizar Pedido",
-                        key=f"btn_encerrar_{categoria}_{item}",
+                        key=f"btn_encerrar_{chave_item}",
                         type="primary",
                         use_container_width=True,
                         on_click=avancar_para_entrega,
@@ -370,7 +365,6 @@ if carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     elif not nome:
         st.warning("Por favor, informe seu nome para prosseguir.")
 
-    # Rolagem Automática via JavaScript
     components.html(
         """
         <script>
