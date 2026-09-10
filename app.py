@@ -70,7 +70,7 @@ def modal_confirmacao(numero_wa, mensagem_texto):
             use_container_width=True,
         )
 
-# --- ESTILIZAÇÃO CSS CUSTOMIZADA (DARK MODE + ABAS + LOGO AUMENTADA SEM CORTES) ---
+# --- ESTILIZAÇÃO CSS CUSTOMIZADA (DARK MODE + ABAS + LOGO AUMENTADA) ---
 st.markdown(
     """
     <style>
@@ -89,11 +89,9 @@ st.markdown(
         margin-bottom: 5px !important;
     }
 
-    /* FOTO/LOGO DO BAR - INTEIRA SEM CORTES */
+    /* FOTO/LOGO DO BAR AUMENTADA E SEM CORTES */
     .foto-bar img {
-        width: 100% !important;
-        max-height: none !important;
-        height: auto !important;
+        max-height: 280px !important;
         object-fit: contain !important;
         border-radius: 12px;
         margin: 0 auto;
