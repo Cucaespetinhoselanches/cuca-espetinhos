@@ -71,7 +71,7 @@ def modal_confirmacao(numero_wa, mensagem_texto):
             use_container_width=True,
         )
 
-# --- ESTILIZAÇÃO CSS CUSTOMIZADA (DARK MODE + ABAS + LOGO INTEIRA SEM CORTE) ---
+# --- ESTILIZAÇÃO CSS CUSTOMIZADA (DARK MODE + TAMANHO REDUZIDO DAS IMAGENS) ---
 st.markdown(
     """
     <style>
@@ -90,17 +90,20 @@ st.markdown(
         margin-bottom: 5px !important;
     }
 
-    /* FOTO/LOGO DO BAR - INTEIRA SEM CORTE */
-    div[data-testid="stImage"] img {
-        max-height: none !important;
-        height: auto !important;
-        width: 100% !important;
+    /* LIMITA O TAMANHO DA LOGO */
+    .logo-container img {
+        max-height: 150px !important;
+        width: auto !important;
+        margin: 0 auto;
+        display: block;
         object-fit: contain !important;
     }
 
-    div[data-testid="stImage"] > div {
-        max-height: none !important;
-        height: auto !important;
+    /* REDUZ O TAMANHO DAS IMAGENS DOS PRODUTOS NO CARDÁPIO */
+    div[data-testid="stColumn"] img {
+        max-height: 120px !important;
+        object-fit: cover !important;
+        border-radius: 10px !important;
     }
 
     /* CARDS DOS PRODUTOS EM TOM ESCURO DESTACADO */
@@ -143,26 +146,26 @@ st.markdown(
         background-color: #15803d !important;
         color: #ffffff !important;
         font-weight: 900;
-        font-size: 24px !important;
-        padding: 4px 12px;
+        font-size: 20px !important;
+        padding: 4px 10px;
         border-radius: 8px;
         display: inline-block;
-        margin-top: 6px;
-        margin-bottom: 6px;
+        margin-top: 4px;
+        margin-bottom: 4px;
     }
 
     /* DESTAQUE PARA O CAMPO DE QUANTIDADE (NUMBER INPUT) */
     div[data-testid="stNumberInput"] input {
-        font-size: 22px !important;
+        font-size: 20px !important;
         font-weight: 800 !important;
         color: #ffffff !important;
         text-align: center !important;
-        height: 48px !important;
+        height: 42px !important;
     }
 
     div[data-testid="stNumberInput"] button {
-        height: 48px !important;
-        width: 48px !important;
+        height: 42px !important;
+        width: 42px !important;
         background-color: #334155 !important;
         color: #ffffff !important;
         border-radius: 8px !important;
@@ -213,7 +216,6 @@ st.markdown(
 )
 
 # ==================== CARREGAMENTO SEGURO DA LOGO ====================
-# Procura automaticamente variações do arquivo na pasta do projeto
 opcoes_logo = [
     "logo.png", "logo.jpg", "logo.jpeg", "logo.webp",
     "Logo.png", "Logo.jpg", "LOGO.PNG", "LOGO.JPG"
@@ -226,9 +228,9 @@ for nome_arquivo in opcoes_logo:
         break
 
 if logo_encontrada:
-    st.image(logo_encontrada, use_container_width=True)
-else:
-    st.warning("⚠️ O arquivo da logo não foi localizado na raiz do repositório.")
+    st.markdown('<div class="logo-container">', unsafe_allow_html=True)
+    st.image(logo_encontrada, use_container_width=False, width=180)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 st.title("🍢 Cuca Espetinhos e Lanches")
 st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 25px;'>Monte seu pedido de forma rápida e prática</p>", unsafe_allow_html=True)
@@ -345,7 +347,8 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
     with aba:
         for item, info in itens.items():
             chave_item = f"{categoria}_{item}"
-            col1, col2 = st.columns([1, 2])
+            # Ajustado a proporção das colunas para [1, 3] para acomodar a imagem menor
+            col1, col2 = st.columns([1, 3])
             
             with col1:
                 st.image(info["imagem"], use_container_width=True)
@@ -370,7 +373,7 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                         "subtotal": info["preco"] * qtd
                     }
 
-            # Alerta e Botões Inline abaixo do último item alterado
+            # Alerta e Botões Inline
             if (
                 st.session_state.get("ultimo_item_alterado") == chave_item
                 and qtd > 0
@@ -451,7 +454,6 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
         "Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"], key="input_pagamento"
     )
 
-    # Prepara a mensagem para envio
     itens_txt = "\n".join(
         [
             f"{i['qtd']}x {i['item']} (R$ {i['subtotal']:.2f})"
