@@ -365,19 +365,19 @@ menu_categorias = {
     },
     "Refrigerante FANTA LARANJA Lata 350ml": {
         "preco": 6.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCj-iJ_ziGZMurwiupsfzkhhmuRr4vDxjEM4V3QapNpg&s=10",
     },
     "Refrigerante SPRITE Lata 350ml": {
         "preco": 6.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://www.drogariaminasbrasil.com.br/media/webp/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/228324e3d/refrigerante-sprite-lata-350ml_jpg.webp",
     },
     "Refrigerante FANTA UVA Lata 350ml": {
         "preco": 6.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy8MfxKAF9fZHoP5jOkB_GVC3llWVFJgX8bqaQQsBNTw&s=10",
     },
     "Refrigerante GUARANA ANTARCTICA Lata 350ml": {
         "preco": 6.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo_of1b4lkVoGXo7VNDcQ2zcyItH2BvZ-A2XFU362rbA&s=10",
     },
     "Refrigerante TONICA SCHWEPPES Lata 350ml": {
         "preco": 6.50,
