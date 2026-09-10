@@ -43,7 +43,7 @@ def voltar_ao_cardapio():
 @st.dialog("📋 Confirmar e Enviar Pedido")
 def modal_confirmacao(numero_wa, mensagem_texto):
     st.markdown(
-        "<h3 style='color: #1a1a1a; font-weight: 800; margin-bottom: 15px;'>"
+        "<h3 style='color: #ffffff; font-weight: 800; margin-bottom: 15px;'>"
         "📋 Revise os detalhes do seu pedido:"
         "</h3>",
         unsafe_allow_html=True,
@@ -70,42 +70,71 @@ def modal_confirmacao(numero_wa, mensagem_texto):
             use_container_width=True,
         )
 
-# --- ESTILIZAÇÃO CSS CUSTOMIZADA ---
+# --- ESTILIZAÇÃO CSS CUSTOMIZADA (DARK MODE + ABAS DESTACADAS) ---
 st.markdown(
     """
     <style>
+    /* FUNDO ESCURO (DARK MODE) */
     .stApp {
-        background-color: #f8f9fa;
+        background-color: #0f172a !important;
+        color: #f8fafc !important;
     }
 
+    /* TÍTULOS PRINCIPAIS */
     h1 {
-        font-size: 30px !important;
+        font-size: 32px !important;
         font-weight: 800 !important;
-        color: #1e293b !important;
+        color: #ffffff !important;
         text-align: center;
         margin-bottom: 5px !important;
     }
 
+    /* CARDS DOS PRODUTOS EM TOM ESCURO DESTACADO */
     div[data-testid="stColumn"] > div {
-        background-color: #ffffff;
+        background-color: #1e293b !important;
         border-radius: 16px;
-        padding: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-        border: 1px solid #f1f5f9;
+        padding: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        border: 1px solid #334155 !important;
         margin-bottom: 10px;
     }
 
-    /* Fotos menores */
+    /* RÓTULOS E TEXTOS DE INPUTS */
+    label, p, span, div {
+        color: #f8fafc !important;
+    }
+
+    /* FOTOS DOS PRODUTOS REDUZIDAS */
     div[data-testid="stImage"] img {
         max-height: 85px !important;
         object-fit: cover !important;
         border-radius: 10px !important;
     }
 
-    /* Fonte do preço maior */
+    /* DESTAQUE GRANDE PARA AS ABAS (LANCHES, BEBIDAS, ETC) */
+    button[data-baseweb="tab"] {
+        font-size: 20px !important;
+        font-weight: 800 !important;
+        border-radius: 12px !important;
+        padding: 12px 24px !important;
+        background-color: #1e293b !important;
+        color: #94a3b8 !important;
+        border: 1px solid #334155 !important;
+        margin-right: 8px !important;
+    }
+
+    /* Aba Selecionada */
+    button[data-baseweb="tab"][aria-selected="true"] {
+        background-color: #ef4444 !important;
+        color: #ffffff !important;
+        border: none !important;
+        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+    }
+
+    /* PREÇO GRANDE E DESTACADO */
     .preco-badge {
-        background-color: #e8f5e9;
-        color: #1b5e20;
+        background-color: #15803d !important;
+        color: #ffffff !important;
         font-weight: 900;
         font-size: 24px !important;
         padding: 4px 12px;
@@ -115,21 +144,18 @@ st.markdown(
         margin-bottom: 6px;
     }
 
-    button[data-baseweb="tab"] {
-        font-size: 16px !important;
-        font-weight: 700 !important;
-        border-radius: 10px !important;
-        padding: 8px 16px !important;
-    }
-
+    /* BOTÕES COM ALTO CONTRASTE */
     div.stButton > button {
         border-radius: 10px !important;
         font-weight: 700 !important;
         font-size: 16px !important;
+        background-color: #334155 !important;
+        color: #ffffff !important;
+        border: 1px solid #475569 !important;
     }
 
     div.stButton > button[kind="primary"], div.stLinkButton > a[kind="primary"] {
-        background-color: #25D366 !important;
+        background-color: #22c55e !important;
         border: none !important;
         border-radius: 12px !important;
     }
@@ -140,15 +166,22 @@ st.markdown(
         font-size: 18px !important;
     }
 
+    /* NOTIFICAÇÃO INLINE (MENSAGEM DE ITEM ADICIONADO) */
     div[data-testid="stNotification"] {
-        background-color: #f0fdf4 !important;
+        background-color: #064e3b !important;
         border-left: 5px solid #22c55e !important;
         border-radius: 12px !important;
     }
     div[data-testid="stNotification"] p {
-        color: #15803d !important;
+        color: #ecfdf5 !important;
         font-size: 16px !important;
         font-weight: 600 !important;
+    }
+
+    /* CAMPOS DE TEXTO / SELEÇÃO */
+    div[data-baseweb="input"] input, div[data-baseweb="select"] {
+        background-color: #0f172a !important;
+        color: #ffffff !important;
     }
     </style>
 """,
@@ -160,7 +193,7 @@ with col_center[1]:
     st.image("logo.png", use_container_width=True)
 
 st.title("🍢 Cuca Espetinhos e Lanches")
-st.markdown("<p style='text-align: center; color: #64748b; font-size: 16px; margin-bottom: 25px;'>Monte seu pedido de forma rápida e prática</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 25px;'>Monte seu pedido de forma rápida e prática</p>", unsafe_allow_html=True)
 
 menu_categorias = {
     "🥪 Lanches": {
