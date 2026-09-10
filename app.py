@@ -83,22 +83,30 @@ st.markdown(
     div[data-testid="stColumn"] > div {
         background-color: #ffffff;
         border-radius: 16px;
-        padding: 12px;
+        padding: 10px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
         border: 1px solid #f1f5f9;
         margin-bottom: 10px;
     }
 
-    /* Destaque para o Preço */
+    /* REDUÇÃO DO TAMANHO DAS FOTOS */
+    div[data-testid="stImage"] img {
+        max-height: 85px !important;
+        object-fit: cover !important;
+        border-radius: 10px !important;
+    }
+
+    /* AUMENTO DA FONTE DOS PREÇOS */
     .preco-badge {
         background-color: #e8f5e9;
-        color: #2e7d32;
-        font-weight: 800;
-        font-size: 18px;
-        padding: 4px 10px;
+        color: #1b5e20;
+        font-weight: 900;
+        font-size: 24px !important; /* Preço bem destacado */
+        padding: 4px 12px;
         border-radius: 8px;
         display: inline-block;
-        margin-top: 4px;
+        margin-top: 6px;
+        margin-bottom: 6px;
     }
 
     /* Estilização das Abas */
