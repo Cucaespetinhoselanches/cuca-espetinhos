@@ -62,24 +62,27 @@ st.markdown("""
         border-radius: 10px !important;
     }
 
-    /* Estilização específica do botão VERDE (Primary / WhatsApp) */
+    /* Estilização dos botões principais (Avançar e Confirmar/Enviar) */
     div.stLinkButton > a[kind="primary"], div.stButton > button[kind="primary"] {
         width: 100% !important;
         height: 3.5em !important;
-        font-size: 22px !important;
-        font-weight: bold !important;
         background-color: #25D366 !important; /* Verde oficial WhatsApp */
-        color: white !important;
         border: none !important;
         border-radius: 12px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
     }
+
+    /* Ajuste de fonte, tamanho e cor escura do texto dentro dos botões principais */
+    div.stLinkButton > a[kind="primary"] p, div.stButton > button[kind="primary"] p {
+        font-size: 26px !important; /* Tamanho maior */
+        font-weight: 900 !important; /* Negrito encorpado */
+        color: #0b3d18 !important; /* Cor verde-escuro para alto contraste */
+    }
     
     div.stLinkButton > a[kind="primary"]:hover, div.stButton > button[kind="primary"]:hover {
         background-color: #1EBE5D !important;
-        color: white !important;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -135,7 +138,7 @@ menu = {
         "preco": 29.90,
         "imagem": "https://plus.unsplash.com/premium_photo-1672774750509-bc9ff226f3e8?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9yJUMzJUE3JUMzJUE3byUyMGJhdGF0YSUyMGZyaXRhfGVufDB8fDB8fHww",
     },
-        "PORÇÃO ANÉIS DE CEBOLA": {
+    "PORÇÃO ANÉIS DE CEBOLA": {
         "preco": 28.90,
         "imagem": "https://images.unsplash.com/photo-1766589152292-3c052f0d87aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvciVDMyVBNyVDMyVBM28lMjBhbmVpcyUyMGRlJTIwY2Vib2xhfGVufDB8fDB8fHww",
     },
@@ -145,7 +148,7 @@ menu = {
     },
     "ESPETO PÃO DE ALHO ou QUEIJO COALHO ou LINGUIÇA": {
         "preco": 9.00,
-       "imagem": "https://i.pinimg.com/474x/ca/88/97/ca8897789a429b07bc7a9f238c348223.jpg",
+        "imagem": "https://i.pinimg.com/474x/ca/88/97/ca8897789a429b07bc7a9f238c348223.jpg",
     },
     "ESPETO ROMEU E JULIETA (Bacon/Goiabada/Queijo)": {
         "preco": 15.00,
@@ -179,7 +182,7 @@ menu = {
         "preco": 5.00,
         "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
     },
-   "Cerveja Skol ou AMSTEL ou IMPERIO 269ml Lata": {
+    "Cerveja Skol ou AMSTEL ou IMPERIO 269ml Lata": {
         "preco": 5.00,
         "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
     },
