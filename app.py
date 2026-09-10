@@ -381,27 +381,27 @@ menu_categorias = {
     },
     "Refrigerante TONICA SCHWEPPES Lata 350ml": {
         "preco": 6.50,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://www.imigrantesbebidas.com.br/bebida/images/products/full/2209-agua-tonica-schweppes-lata-350ml.jpg",
     },
     "Refrigerante FANTA LARANJA Garrafinha 200ml": {
         "preco": 3.50,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://mercantilatacado.vtexassets.com/arquivos/ids/172941/654a33c475d9096810e2cbfc.jpg?v=638349585366670000",
     },
       "Refrigerante COCA COLA Garrafinha 200ml": {
         "preco": 3.50,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/181329/Refrigerante-COCA-COLA-Garrafa-Pet-200ml.jpg?v=637602425279600000",
     },
     "Refrigerante COCA ZERO Garrafinha 200ml": {
         "preco": 3.50,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://prezunic.vtexassets.com/arquivos/ids/210276-800-auto?v=638568370331100000&width=800&height=auto&aspect=true",
     },
       "Refrigerante GUARANITA Garrafinha 200ml": {
         "preco": 3.50,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://phygital-files.mercafacil.com/fernandes-bucket/uploads/produto/cibal_guaranita_200ml_4762cf0e-e46e-4cb8-b0cf-5e3c11785572.jpg",
     },
     "Refrigerante SPRITE Garrafinha 200ml": {
         "preco": 3.50,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/170425/Refrigerante-Limao-Sprite-Garrafa-200ml.jpg?v=637442546240970000",
     },
     "Refrigerante COCA COLA 2L": {
         "preco": 17.00,
