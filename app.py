@@ -135,13 +135,105 @@ menu = {
         "preco": 35.90,
         "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
     },
+    "X-EGG": {
+        "preco": 30.90,
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    "X-CATUPIRY EMPANADO": {
+        "preco": 32.90,
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    "FRANGÃO": {
+        "preco": 32.90,
+        "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
+    },
     "HOT CALABRESA": {
         "preco": 16.50,
         "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
     },
+    "HOT BACON": {
+        "preco": 16.50,
+        "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
+    },
+    "HOT SALADA": {
+        "preco": 12.50,
+        "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
+    },
+    "HOT PURE": {
+        "preco": 14.50,
+        "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
+    },
+    "PORÇÃO BATATA FRITA ou PORÇÃO DE MANDIOCA FRITA": {
+        "preco": 29.90,
+        "imagem": "https://plus.unsplash.com/premium_photo-1672774750509-bc9ff226f3e8?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9yJUMzJUE3JUMzJUE3byUyMGJhdGF0YSUyMGZyaXRhfGVufDB8fDB8fHww",
+    },
+    "PORÇÃO ANÉIS DE CEBOLA": {
+        "preco": 28.90,
+        "imagem": "https://images.unsplash.com/photo-1766589152292-3c052f0d87aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvciVDMyVBNyVDMyVBM28lMjBhbmVpcyUyMGRlJTIwY2Vib2xhfGVufDB8fDB8fHww",
+    },
+    "PORÇÃO COMBO DE PORÇÕES": {
+        "preco": 49.90,
+        "imagem": "https://images.unsplash.com/photo-1702827495434-629df15aa136?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHBvciVDMyVBNyVDMyVBM28lMjBjb21ib3xlbnwwfHwwfHx8MA%3D%3D",
+    },
+    "ESPETO PÃO DE ALHO ou QUEIJO COALHO ou LINGUIÇA": {
+        "preco": 9.00,
+        "imagem": "https://i.pinimg.com/474x/ca/88/97/ca8897789a429b07bc7a9f238c348223.jpg",
+    },
+    "ESPETO ROMEU E JULIETA (Bacon/Goiabada/Queijo)": {
+        "preco": 15.00,
+        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
+    },
+    "ESPETO PANCETA ou ALCATRA ou FRALDINHA ou KAFTA ou FRANGO": {
+        "preco": 12.00,
+        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
+    },
+    "ESPETO PICANHA ou CORAÇÃO": {
+        "preco": 18.00,
+        "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
+    },
     "Refrigerante Lata": {
         "preco": 6.00,
         "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Suco Del Valle 200ml": {
+        "preco": 8.00,
+        "imagem": "https://m.media-amazon.com/images/I/51Z3PJFvmaL._AC_UF350,350_QL80_.jpg",
+    },
+    "Suco 1L": {
+        "preco": 10.00,
+        "imagem": "https://cdn.awsli.com.br/800x800/1345/1345272/produto/55987814/01943f4345.jpg",
+    },
+    "Cerveja Original ou Budweiser  300ml Garrafinha": {
+        "preco": 6.00,
+        "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
+    },
+    "Cerveja Antarctica ou BRAHMA ou IMPERIO 300ml Garrafinha": {
+        "preco": 5.00,
+        "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
+    },
+    "Cerveja Skol ou AMSTEL ou IMPERIO 269ml Lata": {
+        "preco": 5.00,
+        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+    },
+    "Cerveja Budweiser ou ORIGINAL oU Brahma Duplo Malte 269ml Lata": {
+        "preco": 6.00,
+        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+    },
+    "Cerveja Long Neck Heineken ou Budweiser ou CORONA": {
+        "preco": 10.00,
+        "imagem": "https://images.unsplash.com/photo-1618885472179-5e474019f2a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    "Energético Monster 473ml": {
+        "preco": 14.00,
+        "imagem": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/Monster_Energy_drink_%28cropped%29.jpg/960px-Monster_Energy_drink_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail",
+    },
+    "Cerveja Amstel ou IMPERIO 350ml Lata": {
+        "preco": 6.00,
+        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+    },
+    "Cerveja Brahma Duplo Malte 350ml Lata": {
+        "preco": 7.00,
+        "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
     },
 }
 
