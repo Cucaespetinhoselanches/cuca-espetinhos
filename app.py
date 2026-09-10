@@ -352,13 +352,113 @@ menu_categorias = {
     },
     "🥤 Refrigerantes": {
         "Refrigerante Lata 350ml": {
-            "preco": 6.00,
-            "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
-        },
-        "Refrigerante 2 Litros": {
-            "preco": 12.00,
-            "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
-        },
+        "preco": 6.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante COCA NORMAL Lata 350ml": {
+        "preco": 6.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante COCA ZERO Lata 350ml": {
+        "preco": 6.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante FANTA LARANJA Lata 350ml": {
+        "preco": 6.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante SPRITE Lata 350ml": {
+        "preco": 6.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante FANTA UVA Lata 350ml": {
+        "preco": 6.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante GUARANA ANTARCTICA Lata 350ml": {
+        "preco": 6.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante TONICA SCHWEPPES Lata 350ml": {
+        "preco": 6.50,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante FANTA LARANJA Garrafinha 200ml": {
+        "preco": 3.50,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+      "Refrigerante COCA COLA Garrafinha 200ml": {
+        "preco": 3.50,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante COCA ZERO Garrafinha 200ml": {
+        "preco": 3.50,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+      "Refrigerante GUARANITA Garrafinha 200ml": {
+        "preco": 3.50,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante SPRITE Garrafinha 200ml": {
+        "preco": 3.50,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante COCA COLA 2L": {
+        "preco": 17.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante PEPSI 2L": {
+        "preco": 17.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante COCA ZERO 2.5L": {
+        "preco": 17.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante COCA ZERO 1L": {
+        "preco": 10.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante H20 500ml": {
+        "preco": 8.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante TONICA SCHWEPPES 600ml": {
+        "preco": 8.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante FANTA UVA 600ml": {
+        "preco": 8.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante SPRITE 600ml": {
+        "preco": 8.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante GUARANITA 600ml": {
+        "preco": 8.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante COCA COLA 600ml": {
+        "preco": 8.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante COCA COLA ZERO 600ml": {
+        "preco": 8.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "Refrigerante FANTA 600ml": {
+        "preco": 8.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "AGUA MINERAL SEM GAS 500ml": {
+        "preco": 3.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
+    "AGUA MINERAL COM GAS 500ml": {
+        "preco": 4.00,
+        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+    },
     },
     "🍺 Cervejas": {
         "Cerveja Original 300ml Garrafinha": {
