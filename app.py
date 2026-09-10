@@ -357,7 +357,7 @@ menu_categorias = {
     },
     "Refrigerante COCA ZERO Lata 350ml": {
         "preco": 6.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        "imagem": "https://acdn-us.mitiendanube.com/stores/001/165/503/products/coca-zero21-16e7cba0588363da7616192142363168-1024-1024.webp",
     },
     "Refrigerante FANTA LARANJA Lata 350ml": {
         "preco": 6.00,
