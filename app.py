@@ -6,16 +6,22 @@ if "mostrar_modal" not in st.session_state:
     st.session_state["mostrar_modal"] = False
 
 if "etapa_pedido" not in st.session_state:
-    st.session_state["etapa_pedido"] = "cardapio"
+    st.session_state["etapa_pedido"] = "cardapio"  # 'cardapio' ou 'dados_entrega'
 
-# Guarda o nome do último item alterado pelo usuário
 if "ultimo_item_alterado" not in st.session_state:
     st.session_state["ultimo_item_alterado"] = None
 
-# Função disparada no momento em que o usuário altera a quantidade de um item
+# Funções de Callback para transição suave de estado
 def registrar_alteracao_item(nome_item):
-    if st.session_state[nome_item] > 0:
+    if st.session_state.get(nome_item, 0) > 0:
         st.session_state["ultimo_item_alterado"] = nome_item
+
+def avancar_para_entrega():
+    st.session_state["etapa_pedido"] = "dados_entrega"
+
+def continuar_comprando():
+    st.session_state["ultimo_item_alterado"] = None
+    st.session_state["etapa_pedido"] = "cardapio"
 
 # ==================== FUNÇÃO DO MODAL DE CONFIRMAÇÃO ====================
 @st.dialog("📋 Confirmar e Enviar Pedido")
@@ -151,7 +157,7 @@ subtotal_produtos = 0.0
 
 st.subheader("Faça seu Pedido")
 
-# Exibe o cardápio item por item
+# Exibe o cardápio
 for item, info in menu.items():
     col1, col2 = st.columns([1, 2])
     with col1:
@@ -160,7 +166,6 @@ for item, info in menu.items():
         label_item = f"**{item}** — <span class='preco-destaque'>R$ {info['preco']:.2f}</span>"
         st.markdown(label_item, unsafe_allow_html=True)
         
-        # Dispara 'on_change' assim que o usuário clica no item
         qtd = st.number_input(
             "Quantidade:",
             min_value=0,
@@ -177,22 +182,32 @@ for item, info in menu.items():
             )
             subtotal_produtos += subtotal_item
 
-    # PERGUNTA LOCALIZADA: Exibe os botões diretamente abaixo do item recém-selecionado
-    if st.session_state.get("ultimo_item_alterado") == item and qtd > 0:
+    # PERGUNTA LOCALIZADA EXIBIDA LOGO ABAIXO DO ITEM SELECCIONADO
+    if (
+        st.session_state.get("ultimo_item_alterado") == item
+        and qtd > 0
+        and st.session_state["etapa_pedido"] == "cardapio"
+    ):
         st.info(f"✅ **{qtd}x {item}** adicionado ao pedido!")
         st.markdown("**Deseja inserir mais produtos ou encerrar o pedido?**")
         
         col_mais, col_encerrar = st.columns(2)
         with col_mais:
-            if st.button("➕ Inserir mais produtos", key=f"btn_mais_{item}", use_container_width=True):
-                st.session_state["ultimo_item_alterado"] = None
-                st.session_state["etapa_pedido"] = "cardapio"
-                st.rerun()
+            st.button(
+                "➕ Inserir mais produtos",
+                key=f"btn_mais_{item}",
+                use_container_width=True,
+                on_click=continuar_comprando,
+            )
 
         with col_encerrar:
-            if st.button("✅ Encerrar pedido", key=f"btn_encerrar_{item}", type="primary", use_container_width=True):
-                st.session_state["etapa_pedido"] = "dados_entrega"
-                st.rerun()
+            st.button(
+                "✅ Encerrar pedido",
+                key=f"btn_encerrar_{item}",
+                type="primary",
+                use_container_width=True,
+                on_click=avancar_para_entrega,
+            )
 
         st.write("---")
 
