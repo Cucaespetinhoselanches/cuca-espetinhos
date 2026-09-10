@@ -13,12 +13,28 @@ if "mostrar_modal" not in st.session_state:
 if "etapa_pedido" not in st.session_state:
     st.session_state["etapa_pedido"] = "cardapio"
 
+if "ultimo_item_alterado" not in st.session_state:
+    st.session_state["ultimo_item_alterado"] = None
+
 if "carrinho" not in st.session_state:
     st.session_state["carrinho"] = {}
 
-# Funções de Navegação
-def ir_para_entrega():
+# Funções Callback e Navegação
+def registrar_alteracao_item(chave_item):
+    if st.session_state.get(chave_item, 0) > 0:
+        st.session_state["ultimo_item_alterado"] = chave_item
+    else:
+        if chave_item in st.session_state["carrinho"]:
+            del st.session_state["carrinho"][chave_item]
+        if st.session_state.get("ultimo_item_alterado") == chave_item:
+            st.session_state["ultimo_item_alterado"] = None
+
+def avancar_para_entrega():
     st.session_state["etapa_pedido"] = "dados_entrega"
+
+def continuar_comprando():
+    st.session_state["ultimo_item_alterado"] = None
+    st.session_state["etapa_pedido"] = "cardapio"
 
 def voltar_ao_cardapio():
     st.session_state["etapa_pedido"] = "cardapio"
@@ -79,12 +95,14 @@ st.markdown(
         margin-bottom: 10px;
     }
 
+    /* Fotos menores */
     div[data-testid="stImage"] img {
         max-height: 85px !important;
         object-fit: cover !important;
         border-radius: 10px !important;
     }
 
+    /* Fonte do preço maior */
     .preco-badge {
         background-color: #e8f5e9;
         color: #1b5e20;
@@ -203,7 +221,7 @@ taxas_bairros = {
     "Outro Bairro (A combinar)": 0.00,
 }
 
-# ==================== CARDÁPIO / SELEÇÃO DE ITENS ====================
+# ==================== EXIBIÇÃO DO CARDÁPIO ====================
 abas = st.tabs(list(menu_categorias.keys()))
 
 for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
@@ -223,40 +241,54 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                     min_value=0,
                     step=1,
                     key=chave_item,
-                    label_visibility="collapsed"
+                    label_visibility="collapsed",
+                    on_change=registrar_alteracao_item,
+                    args=(chave_item,),
                 )
                 
-                # Salva o item diretamente no estado da sessão
                 if qtd > 0:
                     st.session_state["carrinho"][chave_item] = {
                         "item": item,
                         "qtd": qtd,
                         "subtotal": info["preco"] * qtd
                     }
-                elif chave_item in st.session_state["carrinho"]:
-                    del st.session_state["carrinho"][chave_item]
 
-# Cálculo do Subtotal Geral
+            # Alerta e Botões Inline abaixo do último item alterado
+            if (
+                st.session_state.get("ultimo_item_alterado") == chave_item
+                and qtd > 0
+                and st.session_state["etapa_pedido"] == "cardapio"
+            ):
+                st.info(f"✅ **{qtd}x {item}** adicionado!")
+                st.markdown("**O que deseja fazer agora?**")
+
+                col_mais, col_encerrar = st.columns(2)
+                with col_mais:
+                    st.button(
+                        "➕ Adicionar Mais",
+                        key=f"btn_mais_{chave_item}",
+                        use_container_width=True,
+                        on_click=continuar_comprando,
+                    )
+
+                with col_encerrar:
+                    st.button(
+                        "✅ Finalizar Pedido",
+                        key=f"btn_encerrar_{chave_item}",
+                        type="primary",
+                        use_container_width=True,
+                        on_click=avancar_para_entrega,
+                    )
+
+# Obter itens do carrinho permanente
 itens_carrinho = list(st.session_state["carrinho"].values())
 subtotal_produtos = sum(i["subtotal"] for i in itens_carrinho)
 
-# Resumo fixo / Botão de Avançar quando houver itens
-if itens_carrinho and st.session_state["etapa_pedido"] == "cardapio":
-    st.write("---")
-    st.success(f"🛒 **Subtotal dos itens:** R$ {subtotal_produtos:.2f}")
-    st.button(
-        "✅ FINALIZAR PEDIDO E INFORMAR ENTREGA",
-        type="primary",
-        use_container_width=True,
-        on_click=ir_para_entrega,
-        key="btn_ir_entrega"
-    )
-
-# ==================== ETAPA DE ENTREGA E PAGAMENTO ====================
-if st.session_state["etapa_pedido"] == "dados_entrega":
+# ==================== DADOS DE ENTREGA E PAGAMENTO ====================
+if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     st.markdown("<div id='secao-entrega'></div>", unsafe_allow_html=True)
+
     st.write("---")
-    
     col_titulo, col_voltar_btn = st.columns([3, 1])
     with col_titulo:
         st.subheader("📦 Entrega & Pagamento")
@@ -302,7 +334,7 @@ if st.session_state["etapa_pedido"] == "dados_entrega":
         "Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"], key="input_pagamento"
     )
 
-    # BOTÃO PRINCIPAL DE ENVIO - SEMPRE VISÍVEL
+    # Prepara a mensagem para envio
     itens_txt = "\n".join(
         [
             f"{i['qtd']}x {i['item']} (R$ {i['subtotal']:.2f})"
@@ -330,12 +362,12 @@ if st.session_state["etapa_pedido"] == "dados_entrega":
         "🚀 AVANÇAR PARA CONFIRMAÇÃO",
         type="primary",
         use_container_width=True,
-        key="btn_confirmar_final"
+        key="btn_avancar_confirmacao"
     ):
         if tipo_entrega == "Entrega" and not rua_numero.strip():
-            st.error("Por favor, preencha a Rua e Número antes de continuar.")
+            st.error("Por favor, preencha a Rua e o Número para continuar.")
         elif not nome.strip():
-            st.error("Por favor, preencha o seu Nome antes de continuar.")
+            st.error("Por favor, informe seu nome para continuar.")
         else:
             st.session_state["mostrar_modal"] = True
 
