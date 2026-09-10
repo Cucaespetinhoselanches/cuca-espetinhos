@@ -111,7 +111,7 @@ st.markdown(
         border-radius: 10px !important;
     }
 
-    /* DESTAQUE GRANDE PARA AS ABAS (LANCHES, BEBIDAS, ETC) */
+    /* DESTAQUE GRANDE PARA AS ABAS (ESPETOS, LANCHES, BEBIDAS, ETC) */
     button[data-baseweb="tab"] {
         font-size: 20px !important;
         font-weight: 800 !important;
@@ -196,6 +196,24 @@ st.title("🍢 Cuca Espetinhos e Lanches")
 st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 25px;'>Monte seu pedido de forma rápida e prática</p>", unsafe_allow_html=True)
 
 menu_categorias = {
+    "🍢 Espetos": {
+        "ESPETO PÃO DE ALHO ou QUEIJO COALHO ou LINGUIÇA": {
+            "preco": 9.00,
+            "imagem": "https://i.pinimg.com/474x/ca/88/97/ca8897789a429b07bc7a9f238c348223.jpg",
+        },
+        "ESPETO ROMEU E JULIETA (Bacon/Goiabada/Queijo)": {
+            "preco": 15.00,
+            "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
+        },
+        "ESPETO PANCETA ou ALCATRA ou FRALDINHA ou KAFTA ou FRANGO": {
+            "preco": 12.00,
+            "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
+        },
+        "ESPETO PICANHA ou CORAÇÃO": {
+            "preco": 18.00,
+            "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
+        },
+    },
     "🥪 Lanches": {
         "X BURGER": {
             "preco": 19.90,
