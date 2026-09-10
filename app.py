@@ -237,22 +237,58 @@ st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 16px; marg
 
 menu_categorias = {
     "🍢 Espetos": {
-        "ESPETO PÃO DE ALHO ou QUEIJO COALHO ou LINGUIÇA": {
-            "preco": 9.00,
-            "imagem": "https://i.pinimg.com/474x/ca/88/97/ca8897789a429b07bc7a9f238c348223.jpg",
-        },
-        "ESPETO ROMEU E JULIETA (Bacon/Goiabada/Queijo)": {
-            "preco": 15.00,
-            "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
-        },
-        "ESPETO PANCETA ou ALCATRA ou FRALDINHA ou KAFTA ou FRANGO": {
-            "preco": 12.00,
-            "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
-        },
-        "ESPETO PICANHA ou CORAÇÃO": {
-            "preco": 18.00,
-            "imagem": "https://media.istockphoto.com/id/1270859209/pt/foto/kebab-grilled-meat-on-a-cutting-board-with-flour-and-vinaigrette-salad.jpg?s=612x612&w=0&k=20&c=K50axpMgL8NejcoLFl_HV8RI5hIKOgjPJ7AKqSsFcAk=",
-        },
+        "ESPETO PÃO DE ALHO": {
+        "preco": 9.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO ROMEU E JULIETA (Bacon/Goiabada/Queijo)": {
+        "preco": 15.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO QUEIJO COALHO": {
+        "preco": 9.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO PANCETA": {
+        "preco": 12.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO ALCATRA": {
+        "preco": 12.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO PICANHA": {
+        "preco": 18.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO FRALDINHA": {
+        "preco": 12.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO LINGUIÇA": {
+        "preco": 9.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO LINGUIÇA GOURMET": {
+        "preco": 9.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO KAFTA": {
+        "preco": 12.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO KAFTA GOURMET": {
+        "preco": 12.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO CORAÇÃO": {
+        "preco": 18.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    "ESPETO FRANGO": {
+        "preco": 12.00,
+        "imagem": "https://plus.unsplash.com/premium_photo-1661310177352-f586bf23a403?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
     },
     "🥪 Lanches": {
         "X BURGER": {
