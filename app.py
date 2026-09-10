@@ -90,6 +90,19 @@ st.markdown("""
     div.stLinkButton > a[kind="primary"]:hover, div.stButton > button[kind="primary"]:hover {
         background-color: #1EBE5D !important;
     }
+
+    /* Aumenta a fonte e o contraste do texto exibido no resumo do pedido (st.info) */
+    div[data-testid="stNotification"] {
+        background-color: #e3f2fd !important;
+        border-left-color: #0d47a1 !important;
+    }
+
+    div[data-testid="stNotification"] p {
+        font-size: 20px !important;
+        font-weight: 600 !important;
+        color: #000000 !important;
+        line-height: 1.6 !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
