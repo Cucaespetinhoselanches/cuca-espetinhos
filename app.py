@@ -6,7 +6,7 @@ if "mostrar_modal" not in st.session_state:
     st.session_state["mostrar_modal"] = False
 
 # ==================== FUNÇÃO DO MODAL DE CONFIRMAÇÃO ====================
-@st.dialog("📋 Confirmar e Enviar Pedido")
+@st.dialog("Confirmar e Enviar Pedido")
 def modal_confirmacao(numero_wa, mensagem_texto):
     st.write("### Revise os detalhes do seu pedido:")
     st.info(mensagem_texto)
@@ -23,7 +23,7 @@ def modal_confirmacao(numero_wa, mensagem_texto):
 
     with col_enviar:
         st.link_button(
-            "📲 CONFIRMAR E ENVIAR",
+            "CONFIRMAR E ENVIAR",
             link_whatsapp,
             type="primary",
             use_container_width=True,
@@ -323,7 +323,7 @@ if carrinho:
         numero_whatsapp = "5512992093751"
 
         # Botão para o usuário acionar o modal
-        if st.button("🚀 AVANÇAR PARA CONFIRMAÇÃO", type="primary", use_container_width=True):
+        if st.button("AVANÇAR PARA CONFIRMAÇÃO", type="primary", use_container_width=True):
             st.session_state["mostrar_modal"] = True
 
         # Exibe o modal apenas quando ativado pelo session_state
