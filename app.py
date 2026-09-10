@@ -320,7 +320,7 @@ menu_categorias = {
             "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
         },
     },
-   "🍺 Cervejas": {
+    "🍺 Cervejas": {
         "Cerveja Original 300ml Garrafinha": {
             "preco": 6.00,
             "imagem": "https://th.bing.com/th/id/OIP.yv46CREzjTxIfnQpp9lU5wHaHa?w=184&h=187&c=7&r=0&o=7&pid=1.7&rm=3",
@@ -394,6 +394,7 @@ menu_categorias = {
             "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
         },
     },
+}
 
 taxas_bairros = {
     "Nova Jacareí": 3.00,
@@ -410,15 +411,17 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
     with aba:
         for item, info in itens.items():
             chave_item = f"{categoria}_{item}"
-            # Ajustado a proporção das colunas para [1, 3] para acomodar a imagem menor
             col1, col2 = st.columns([1, 3])
-            
+
             with col1:
                 st.image(info["imagem"], use_container_width=True)
             with col2:
                 st.markdown(f"**{item}**")
-                st.markdown(f"<span class='preco-badge'>R$ {info['preco']:.2f}</span>", unsafe_allow_html=True)
-                
+                st.markdown(
+                    f"<span class='preco-badge'>R$ {info['preco']:.2f}</span>",
+                    unsafe_allow_html=True,
+                )
+
                 qtd = st.number_input(
                     "Qtd:",
                     min_value=0,
@@ -428,13 +431,15 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                     on_change=registrar_alteracao_item,
                     args=(chave_item,),
                 )
-                
+
                 if qtd > 0:
                     st.session_state["carrinho"][chave_item] = {
                         "item": item,
                         "qtd": qtd,
-                        "subtotal": info["preco"] * qtd
+                        "subtotal": info["preco"] * qtd,
                     }
+                elif chave_item in st.session_state["carrinho"]:
+                    del st.session_state["carrinho"][chave_item]
 
             # Alerta e Botões Inline
             if (
@@ -476,7 +481,11 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     with col_titulo:
         st.subheader("📦 Entrega & Pagamento")
     with col_voltar_btn:
-        st.button("✏️ Alterar Itens", on_click=voltar_ao_cardapio, use_container_width=True)
+        st.button(
+            "✏️ Alterar Itens",
+            on_click=voltar_ao_cardapio,
+            use_container_width=True,
+        )
 
     st.markdown(f"### Subtotal: **R$ {subtotal_produtos:.2f}**")
 
@@ -485,7 +494,7 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
         "Opção de Entrega:",
         ["Entrega", "Retirar no Local"],
         horizontal=True,
-        key="input_tipo_entrega"
+        key="input_tipo_entrega",
     )
 
     endereco = ""
@@ -495,7 +504,9 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
 
     if tipo_entrega == "Entrega":
         bairro = st.selectbox(
-            "Selecione o Bairro:", list(taxas_bairros.keys()), key="input_bairro"
+            "Selecione o Bairro:",
+            list(taxas_bairros.keys()),
+            key="input_bairro",
         )
         taxa_entrega = taxas_bairros[bairro]
         rua_numero = st.text_input("Rua e Número:", key="input_rua")
@@ -514,7 +525,9 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     st.markdown(f"## **Total Final: R$ {total_final:.2f}**")
 
     pagamento = st.selectbox(
-        "Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"], key="input_pagamento"
+        "Forma de Pagamento",
+        ["Pix", "Cartão", "Dinheiro"],
+        key="input_pagamento",
     )
 
     itens_txt = "\n".join(
@@ -525,7 +538,9 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     )
 
     if tipo_entrega == "Entrega":
-        detalhes_tipo = f"*Tipo:* Entrega\n*Endereço:* {endereco}\n*Taxa:* R$ {taxa_entrega:.2f}"
+        detalhes_tipo = (
+            f"*Tipo:* Entrega\n*Endereço:* {endereco}\n*Taxa:* R$ {taxa_entrega:.2f}"
+        )
     else:
         detalhes_tipo = "*Tipo:* Retirada no Local"
 
@@ -544,7 +559,7 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
         "🚀 AVANÇAR PARA CONFIRMAÇÃO",
         type="primary",
         use_container_width=True,
-        key="btn_avancar_confirmacao"
+        key="btn_avancar_confirmacao",
     ):
         if tipo_entrega == "Entrega" and not rua_numero.strip():
             st.error("Por favor, preencha a Rua e o Número para continuar.")
