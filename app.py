@@ -8,7 +8,6 @@ if "mostrar_modal" not in st.session_state:
 # ==================== FUNÇÃO DO MODAL DE CONFIRMAÇÃO ====================
 @st.dialog("📋 Confirmar e Enviar Pedido")
 def modal_confirmacao(numero_wa, mensagem_texto):
-    # Título do modal com cor preta e negrito reforçado para alto contraste
     st.markdown(
         "<h3 style='color: #000000; font-weight: 800; margin-bottom: 15px;'>"
         "📋 Revise os detalhes do seu pedido:"
@@ -68,11 +67,11 @@ st.markdown("""
         border-radius: 10px !important;
     }
 
-    /* Estilização dos botões principais (Avançar e Confirmar/Enviar) */
+    /* Estilização dos botões principais */
     div.stLinkButton > a[kind="primary"], div.stButton > button[kind="primary"] {
         width: 100% !important;
         height: 3.5em !important;
-        background-color: #25D366 !important; /* Verde oficial WhatsApp */
+        background-color: #25D366 !important;
         border: none !important;
         border-radius: 12px !important;
         display: flex !important;
@@ -80,11 +79,11 @@ st.markdown("""
         justify-content: center !important;
     }
 
-    /* Ajuste de fonte, tamanho e cor escura do texto dentro dos botões principais */
+    /* Ajuste de fonte e contraste do texto dos botões */
     div.stLinkButton > a[kind="primary"] p, div.stButton > button[kind="primary"] p {
-        font-size: 26px !important; /* Tamanho maior */
-        font-weight: 900 !important; /* Negrito encorpado */
-        color: #0b3d18 !important; /* Cor verde-escuro para alto contraste */
+        font-size: 24px !important;
+        font-weight: 900 !important;
+        color: #0b3d18 !important;
     }
     
     div.stLinkButton > a[kind="primary"]:hover, div.stButton > button[kind="primary"]:hover {
@@ -106,7 +105,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Exibe o logo local salvo na pasta do projeto
+# Exibe o logo
 st.image("logo.png", width=200)
 
 st.title("🍢 Cuca Espetinhos e Lanches")
@@ -211,7 +210,7 @@ menu = {
     },
     "Cerveja Long Neck Heineken ou Budweiser ou CORONA": {
         "preco": 10.00,
-        "imagem": "https://images.unsplash.com/photo-1618885472179-5e474019f2a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D",
+        "imagem": "https://images.unsplash.com/photo-1618885472179-5e474019f2a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2FycmFmYSUyMGRlJTIwZ2FycmFmYXxlbnwwfHwwfHx8MA%3D%3D",
     },
     "Energético Monster 473ml": {
         "preco": 14.00,
@@ -279,6 +278,17 @@ if carrinho:
     st.divider()
     st.write(f"## **Subtotal dos itens: R$ {subtotal_produtos:.2f}**")
 
+    # MENSAGEM DE ORIENTAÇÃO PARA O CLIENTE CONTINUAR OU CONCLUIR
+    st.success("✅ **Item adicionado com sucesso!**\n\nDeseja escolher mais alguma bebida, espetinho ou acompanhamento antes de finalizar?")
+
+    col_mais, col_finalizar = st.columns(2)
+    with col_mais:
+        st.info("👇 **Para adicionar mais itens:** Role a página para cima ou veja as opções abaixo no cardápio.")
+    with col_finalizar:
+        st.info("👇 **Para finalizar seu pedido:** Preencha seus dados de entrega logo abaixo.")
+
+    st.write("---")
+
     nome = st.text_input("Seu Nome:")
     tipo_entrega = st.radio(
         "Opção de Entrega:",
@@ -341,11 +351,9 @@ if carrinho:
 
         numero_whatsapp = "5512992093751"
 
-        # Botão para o usuário acionar o modal
         if st.button("🚀 AVANÇAR PARA CONFIRMAÇÃO", type="primary", use_container_width=True):
             st.session_state["mostrar_modal"] = True
 
-        # Exibe o modal apenas quando ativado pelo session_state
         if st.session_state.get("mostrar_modal", False):
             modal_confirmacao(numero_whatsapp, mensagem)
 
