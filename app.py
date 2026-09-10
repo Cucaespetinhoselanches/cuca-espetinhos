@@ -70,7 +70,7 @@ def modal_confirmacao(numero_wa, mensagem_texto):
             use_container_width=True,
         )
 
-# --- ESTILIZAÇÃO CSS CUSTOMIZADA (DARK MODE + ABAS + QUANTIDADE MAIOR) ---
+# --- ESTILIZAÇÃO CSS CUSTOMIZADA (DARK MODE + ABAS + LOGO AUMENTADA) ---
 st.markdown(
     """
     <style>
@@ -89,6 +89,15 @@ st.markdown(
         margin-bottom: 5px !important;
     }
 
+    /* FOTO/LOGO DO BAR AUMENTADA E SEM CORTES */
+    .foto-bar img {
+        max-height: 280px !important;
+        object-fit: contain !important;
+        border-radius: 12px;
+        margin: 0 auto;
+        display: block;
+    }
+
     /* CARDS DOS PRODUTOS EM TOM ESCURO DESTACADO */
     div[data-testid="stColumn"] > div {
         background-color: #1e293b !important;
@@ -104,8 +113,8 @@ st.markdown(
         color: #f8fafc !important;
     }
 
-    /* FOTOS DOS PRODUTOS REDUZIDAS */
-    div[data-testid="stImage"] img {
+    /* FOTOS DOS PRODUTOS DO CARDÁPIO */
+    div[data-testid="stImage"]:not(.foto-bar) img {
         max-height: 85px !important;
         object-fit: cover !important;
         border-radius: 10px !important;
@@ -205,9 +214,10 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-col_center = st.columns([1, 2, 1])
-with col_center[1]:
-    st.image("logo.png", use_container_width=True)
+# Imagem do topo com classe personalizada para dimensionamento do bar
+st.markdown('<div class="foto-bar">', unsafe_allow_html=True)
+st.image("logo.png", use_container_width=True)
+st.markdown('</div>', unsafe_allow_html=True)
 
 st.title("🍢 Cuca Espetinhos e Lanches")
 st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 25px;'>Monte seu pedido de forma rápida e prática</p>", unsafe_allow_html=True)
