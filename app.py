@@ -49,7 +49,17 @@ def modal_confirmacao(numero_wa, mensagem_texto):
         "</h3>",
         unsafe_allow_html=True,
     )
-    st.info(mensagem_texto)
+    
+    # Exibe a mensagem no modal com fonte maior para facilitar a leitura
+    mensagem_html = mensagem_texto.replace("\n", "<br>")
+    st.markdown(
+        f"""
+        <div style='background-color: #1e293b; padding: 15px; border-radius: 10px; border: 1px solid #334155; font-size: 18px; line-height: 1.6; color: #f8fafc;'>
+            {mensagem_html}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
     link_whatsapp = (
         f"https://wa.me/{numero_wa}?text={urllib.parse.quote(mensagem_texto)}"
@@ -453,10 +463,19 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
         "Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"], key="input_pagamento"
     )
 
-    # Informações do PIX
+    # Informações do PIX com número aumentado em destaque
     chave_pix = "19919105848"
     if pagamento == "Pix":
-        st.success(f"📱 **Chave PIX (Telefone):** `{chave_pix}`\n\n_Por favor, envie o comprovante pelo WhatsApp após finalizar o pedido._")
+        st.markdown(
+            f"""
+            <div style='background-color: #064e3b; border-left: 5px solid #22c55e; padding: 15px; border-radius: 12px; margin-bottom: 15px;'>
+                <p style='color: #ecfdf5 !important; font-size: 18px !important; margin-bottom: 5px;'>📱 <b>Chave PIX (Telefone):</b></p>
+                <p style='color: #22c55e !important; font-size: 26px !important; font-weight: 900 !important; letter-spacing: 1px; margin: 0;'>{chave_pix}</p>
+                <p style='color: #94a3b8 !important; font-size: 14px !important; margin-top: 8px;'><i>Por favor, envie o comprovante pelo WhatsApp após finalizar o pedido.</i></p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
     itens_txt = "\n".join(
         [
