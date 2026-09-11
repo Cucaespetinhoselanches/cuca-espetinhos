@@ -515,7 +515,7 @@ menu_categorias = {
         },
         "Energético Monster 473ml": {
             "preco": 14.00,
-            "imagem": "https://images.unsplash.com/photo-1622543925917-763c34d1a86e?w=400",
+            "imagem": "https://andinacocacola.vtexassets.com/arquivos/ids/158541/112666_COCA---MONSTER_GREEN__LT_473ML.jpg?v=639238910718900000",
         },
         "Cerveja Amstel 350ml Lata": {
             "preco": 6.00,
