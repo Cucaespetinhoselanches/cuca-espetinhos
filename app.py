@@ -1,11 +1,17 @@
 import os
+import html
 import urllib.parse
+import time
 import streamlit as st
 import streamlit.components.v1 as components
 
 st.set_page_config(
     page_title="Cuca Espetinhos e Lanches", page_icon="🍢", layout="centered"
 )
+
+# ==================== GERENCIAMENTO SEGURO DE SEGREDOS ====================
+WHATSAPP_NUMBER = st.secrets.get("WHATSAPP_NUMBER", "5512992093751")
+CHAVE_PIX_VAL = st.secrets.get("CHAVE_PIX", "19919105848")
 
 # ==================== ESTADOS DA SESSÃO ====================
 if "mostrar_modal" not in st.session_state:
@@ -19,6 +25,9 @@ if "ultimo_item_alterado" not in st.session_state:
 
 if "carrinho" not in st.session_state:
     st.session_state["carrinho"] = {}
+
+if "ultimo_envio_timestamp" not in st.session_state:
+    st.session_state["ultimo_envio_timestamp"] = 0
 
 # Funções Callback e Navegação
 def registrar_alteracao_item(chave_item):
@@ -50,8 +59,8 @@ def modal_confirmacao(numero_wa, mensagem_texto):
         unsafe_allow_html=True,
     )
     
-    # Exibe a mensagem no modal com fonte maior para facilitar a leitura
-    mensagem_html = mensagem_texto.replace("\n", "<br>")
+    # Sanitização contra Cross-Site Scripting (XSS)
+    mensagem_html = html.escape(mensagem_texto).replace("\n", "<br>")
     st.markdown(
         f"""
         <div style='background-color: #1e293b; padding: 15px; border-radius: 10px; border: 1px solid #334155; font-size: 18px; line-height: 1.6; color: #f8fafc;'>
@@ -81,17 +90,15 @@ def modal_confirmacao(numero_wa, mensagem_texto):
             use_container_width=True,
         )
 
-# --- ESTILIZAÇÃO CSS CUSTOMIZADA (DARK MODE + TAMANHO REDUZIDO DAS IMAGENS) ---
+# --- ESTILIZAÇÃO CSS CUSTOMIZADA ---
 st.markdown(
     """
     <style>
-    /* FUNDO ESCURO (DARK MODE) */
     .stApp {
         background-color: #0f172a !important;
         color: #f8fafc !important;
     }
 
-    /* TÍTULOS PRINCIPAIS */
     h1 {
         font-size: 32px !important;
         font-weight: 800 !important;
@@ -100,7 +107,6 @@ st.markdown(
         margin-bottom: 5px !important;
     }
 
-    /* LIMITA O TAMANHO DA LOGO */
     .logo-container img {
         max-height: 150px !important;
         width: auto !important;
@@ -109,14 +115,12 @@ st.markdown(
         object-fit: contain !important;
     }
 
-    /* REDUZ O TAMANHO DAS IMAGENS DOS PRODUTOS NO CARDÁPIO */
     div[data-testid="stColumn"] img {
         max-height: 120px !important;
         object-fit: cover !important;
         border-radius: 10px !important;
     }
 
-    /* CARDS DOS PRODUTOS EM TOM ESCURO DESTACADO */
     div[data-testid="stColumn"] > div {
         background-color: #1e293b !important;
         border-radius: 16px;
@@ -126,12 +130,10 @@ st.markdown(
         margin-bottom: 10px;
     }
 
-    /* RÓTULOS E TEXTOS DE INPUTS */
     label, p, span, div {
         color: #f8fafc !important;
     }
 
-    /* DESTAQUE GRANDE PARA AS ABAS */
     button[data-baseweb="tab"] {
         font-size: 20px !important;
         font-weight: 800 !important;
@@ -143,7 +145,6 @@ st.markdown(
         margin-right: 8px !important;
     }
 
-    /* Aba Selecionada */
     button[data-baseweb="tab"][aria-selected="true"] {
         background-color: #ef4444 !important;
         color: #ffffff !important;
@@ -151,7 +152,6 @@ st.markdown(
         box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
     }
 
-    /* PREÇO GRANDE E DESTACADO */
     .preco-badge {
         background-color: #15803d !important;
         color: #ffffff !important;
@@ -164,7 +164,6 @@ st.markdown(
         margin-bottom: 4px;
     }
 
-    /* DESTAQUE PARA O CAMPO DE QUANTIDADE (NUMBER INPUT) */
     div[data-testid="stNumberInput"] input {
         font-size: 20px !important;
         font-weight: 800 !important;
@@ -181,7 +180,6 @@ st.markdown(
         border-radius: 8px !important;
     }
 
-    /* BOTÕES COM ALTO CONTRASTE */
     div.stButton > button {
         border-radius: 10px !important;
         font-weight: 700 !important;
@@ -203,7 +201,6 @@ st.markdown(
         font-size: 18px !important;
     }
 
-    /* NOTIFICAÇÃO INLINE */
     div[data-testid="stNotification"] {
         background-color: #064e3b !important;
         border-left: 5px solid #22c55e !important;
@@ -215,7 +212,6 @@ st.markdown(
         font-weight: 600 !important;
     }
 
-    /* CAMPOS DE TEXTO / SELEÇÃO */
     div[data-baseweb="input"] input, div[data-baseweb="select"] {
         background-color: #0f172a !important;
         color: #ffffff !important;
@@ -233,7 +229,9 @@ opcoes_logo = [
 
 logo_encontrada = None
 for nome_arquivo in opcoes_logo:
-    if os.path.exists(nome_arquivo):
+    # Validação rigorosa de caminho (prevenção contra Directory Traversal)
+    caminho_abs = os.path.abspath(nome_arquivo)
+    if caminho_abs.startswith(os.getcwd()) and os.path.exists(nome_arquivo):
         logo_encontrada = nome_arquivo
         break
 
@@ -248,57 +246,57 @@ st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 16px; marg
 menu_categorias = {
     "🍢 Espetos": {
         "ESPETO PÃO DE ALHO": {
-        "preco": 9.00,
-        "imagem": "https://casadecarnesdomaninho.com.br/wp-content/uploads/2022/06/espetinho-pao-de-alho.jpg",
-    },
-    "ESPETO ROMEU E JULIETA (Bacon/Goiabada/Queijo)": {
-        "preco": 15.00,
-        "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-    },
-    "ESPETO QUEIJO COALHO": {
-        "preco": 9.00,
-        "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyXQSm25u3do9kGas7sKk1Lf1oXX7mcrS5IC9w5UPKUfGRAdrjq2a8vFs&s=10",
-    },
-    "ESPETO PANCETA": {
-        "preco": 12.00,
-        "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-    },
-    "ESPETO ALCATRA": {
-        "preco": 12.00,
-        "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-    },
-    "ESPETO PICANHA": {
-        "preco": 18.00,
-        "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-    },
-    "ESPETO FRALDINHA": {
-        "preco": 12.00,
-        "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-    },
-    "ESPETO LINGUIÇA": {
-        "preco": 9.00,
-        "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-    },
-    "ESPETO LINGUIÇA GOURMET": {
-        "preco": 9.00,
-        "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-    },
-    "ESPETO KAFTA": {
-        "preco": 12.00,
-        "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-    },
-    "ESPETO KAFTA GOURMET": {
-        "preco": 14.00,
-        "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-    },
-    "ESPETO CORAÇÃO": {
-        "preco": 18.00,
-        "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-    },
-    "ESPETO FRANGO": {
-        "preco": 12.00,
-        "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-    },
+            "preco": 9.00,
+            "imagem": "https://casadecarnesdomaninho.com.br/wp-content/uploads/2022/06/espetinho-pao-de-alho.jpg",
+        },
+        "ESPETO ROMEU E JULIETA (Bacon/Goiabada/Queijo)": {
+            "preco": 15.00,
+            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
+        },
+        "ESPETO QUEIJO COALHO": {
+            "preco": 9.00,
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyXQSm25u3do9kGas7sKk1Lf1oXX7mcrS5IC9w5UPKUfGRAdrjq2a8vFs&s=10",
+        },
+        "ESPETO PANCETA": {
+            "preco": 12.00,
+            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
+        },
+        "ESPETO ALCATRA": {
+            "preco": 12.00,
+            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
+        },
+        "ESPETO PICANHA": {
+            "preco": 18.00,
+            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
+        },
+        "ESPETO FRALDINHA": {
+            "preco": 12.00,
+            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
+        },
+        "ESPETO LINGUIÇA": {
+            "preco": 9.00,
+            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
+        },
+        "ESPETO LINGUIÇA GOURMET": {
+            "preco": 9.00,
+            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
+        },
+        "ESPETO KAFTA": {
+            "preco": 12.00,
+            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
+        },
+        "ESPETO KAFTA GOURMET": {
+            "preco": 14.00,
+            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
+        },
+        "ESPETO CORAÇÃO": {
+            "preco": 18.00,
+            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
+        },
+        "ESPETO FRANGO": {
+            "preco": 12.00,
+            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
+        },
     },
     "🥪 Lanches": {
         "X BURGER": {
@@ -344,127 +342,127 @@ menu_categorias = {
     },
     "🍟 Porções": {
         "PORÇÃO BATATA FRITA": {
-        "preco": 29.90,
-        "imagem": "https://2.bp.blogspot.com/-zNkU0qa51Uk/U5elL6RgI6I/AAAAAAAAACo/OngayLy9ogk/s1600/batata.jpg",
-    },
-    "PORÇÃO MANDIOCA FRITA": {
-        "preco": 29.90,
-        "imagem": "https://media.istockphoto.com/id/903103922/pt/foto/brazilian-food-mandioca-frita-deep-fried-cassava-root.webp?a=1&b=1&s=612x612&w=0&k=20&c=KwVZFUrGJlRkXM6_nyBNPt_6sbpHJ1x0pR49fA2wIgY=",
-    },
-    "PORÇÃO ANÉIS DE CEBOLA": {
-        "preco": 28.90,
-        "imagem": "https://images.unsplash.com/photo-1766589152292-3c052f0d87aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvciVDMyVBNyVDMyVBM28lMjBhbmVpcyUyMGRlJTIwY2Vib2xhfGVufDB8fDB8fHww",
-    },
-    "PORÇÃO COMBO DE PORÇÕES": {
-        "preco": 49.90,
-        "imagem": "https://images.unsplash.com/photo-1702827495434-629df15aa136?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHBvciVDMyVBNyVDMyVBM28lMjBjb21ib3xlbnwwfHwwfHx8MA%3D%3D",
-    },
+            "preco": 29.90,
+            "imagem": "https://2.bp.blogspot.com/-zNkU0qa51Uk/U5elL6RgI6I/AAAAAAAAACo/OngayLy9ogk/s1600/batata.jpg",
+        },
+        "PORÇÃO MANDIOCA FRITA": {
+            "preco": 29.90,
+            "imagem": "https://media.istockphoto.com/id/903103922/pt/foto/brazilian-food-mandioca-frita-deep-fried-cassava-root.webp?a=1&b=1&s=612x612&w=0&k=20&c=KwVZFUrGJlRkXM6_nyBNPt_6sbpHJ1x0pR49fA2wIgY=",
+        },
+        "PORÇÃO ANÉIS DE CEBOLA": {
+            "preco": 28.90,
+            "imagem": "https://images.unsplash.com/photo-1766589152292-3c052f0d87aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvciVDMyVBNyVDMyVBM28lMjBhbmVpcyUyMGRlJTIwY2Vib2xhfGVufDB8fDB8fHww",
+        },
+        "PORÇÃO COMBO DE PORÇÕES": {
+            "preco": 49.90,
+            "imagem": "https://images.unsplash.com/photo-1702827495434-629df15aa136?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHBvciVDMyVBNyVDMyVBM28lMjBjb21ib3xlbnwwfHwwfHx8MA%3D%3D",
+        },
     },
     "🥤 Refrigerantes": {
         "Refrigerante COCA NORMAL Lata 350ml": {
-        "preco": 6.00,
-        "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
-    },
-    "Refrigerante COCA ZERO Lata 350ml": {
-        "preco": 6.00,
-        "imagem": "https://acdn-us.mitiendanube.com/stores/001/165/503/products/coca-zero21-16e7cba0588363da7616192142363168-1024-1024.webp",
-    },
-    "Refrigerante FANTA LARANJA Lata 350ml": {
-        "preco": 6.00,
-        "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCj-iJ_ziGZMurwiupsfzkhhmuRr4vDxjEM4V3QapNpg&s=10",
-    },
-    "Refrigerante SPRITE Lata 350ml": {
-        "preco": 6.00,
-        "imagem": "https://www.drogariaminasbrasil.com.br/media/webp/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/228324e3d/refrigerante-sprite-lata-350ml_jpg.webp",
-    },
-    "Refrigerante FANTA UVA Lata 350ml": {
-        "preco": 6.00,
-        "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy8MfxKAF9fZHoP5jOkB_GVC3llWVFJgX8bqaQQsBNTw&s=10",
-    },
-    "Refrigerante GUARANA ANTARCTICA Lata 350ml": {
-        "preco": 6.00,
-        "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo_of1b4lkVoGXo7VNDcQ2zcyItH2BvZ-A2XFU362rbA&s=10",
-    },
-    "Refrigerante TONICA SCHWEPPES Lata 350ml": {
-        "preco": 6.50,
-        "imagem": "https://www.imigrantesbebidas.com.br/bebida/images/products/full/2209-agua-tonica-schweppes-lata-350ml.jpg",
-    },
-    "Refrigerante FANTA LARANJA Garrafinha 200ml": {
-        "preco": 3.50,
-        "imagem": "https://mercantilatacado.vtexassets.com/arquivos/ids/172941/654a33c475d9096810e2cbfc.jpg?v=638349585366670000",
-    },
-      "Refrigerante COCA COLA Garrafinha 200ml": {
-        "preco": 3.50,
-        "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/181329/Refrigerante-COCA-COLA-Garrafa-Pet-200ml.jpg?v=637602425279600000",
-    },
-    "Refrigerante COCA ZERO Garrafinha 200ml": {
-        "preco": 3.50,
-        "imagem": "https://prezunic.vtexassets.com/arquivos/ids/210276-800-auto?v=638568370331100000&width=800&height=auto&aspect=true",
-    },
-      "Refrigerante GUARANITA Garrafinha 200ml": {
-        "preco": 3.50,
-        "imagem": "https://phygital-files.mercafacil.com/fernandes-bucket/uploads/produto/cibal_guaranita_200ml_4762cf0e-e46e-4cb8-b0cf-5e3c11785572.jpg",
-    },
-    "Refrigerante SPRITE Garrafinha 200ml": {
-        "preco": 3.50,
-        "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/170425/Refrigerante-Limao-Sprite-Garrafa-200ml.jpg?v=637442546240970000",
-    },
-    "Refrigerante COCA COLA 2L": {
-        "preco": 17.00,
-        "imagem": "https://gbarbosa.vtexassets.com/arquivos/ids/214289/655268ba8d0743e14888f712.jpg?v=638354963814100000",
-    },
-    "Refrigerante PEPSI 2L": {
-        "preco": 17.00,
-        "imagem": "https://hiperideal.vtexassets.com/arquivos/ids/228374/7892840800000-RefrigerantePEPSIGarrafa2L-1.jpg?v=638733302785230000",
-    },
-    "Refrigerante COCA ZERO 2.5L": {
-        "preco": 17.00,
-        "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/230310/45911-1779911965249.png.png?v=639155088729770000",
-    },
-    "Refrigerante COCA ZERO 1L": {
-        "preco": 10.00,
-        "imagem": "https://mercantilatacado.vtexassets.com/arquivos/ids/168646/653fe3aa752720c144887a35.jpg?v=638342826762370000",
-    },
-    "Refrigerante H20 500ml": {
-        "preco": 8.00,
-        "imagem": "https://savegnagoio.vtexassets.com/arquivos/ids/447261-800-800?v=638525058304970000&width=800&height=800&aspect=true",
-    },
-    "Refrigerante TONICA SCHWEPPES 600ml": {
-        "preco": 8.00,
-        "imagem": "https://almacenestampico.com/wp-content/uploads/2023/03/Almacenes-Tampico-Uruguay-agua-tonica-schwepps-600Mesa-de-trabajo-1.jpg",
-    },
-    "Refrigerante FANTA UVA 600ml": {
-        "preco": 8.00,
-        "imagem": "https://io.convertiez.com.br/m/farmaciasaopaulo/shop/products/images/16728/medium/fanta-uva-600ml_25847.jpg",
-    },
-    "Refrigerante SPRITE 600ml": {
-        "preco": 8.00,
-        "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxBTxJckfXC_FK2APRFPRLnVY8tC68jlixc3fnLgPZAg&s",
-    },
-    "Refrigerante GUARANITA 600ml": {
-        "preco": 8.00,
-        "imagem": "https://tauste.com.br/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/1/5/1584431777359902.jpg",
-    },
-    "Refrigerante COCA COLA 600ml": {
-        "preco": 8.00,
-        "imagem": "https://bretas.vtexassets.com/arquivos/ids/182991-800-auto?v=638375498920300000&width=800&height=auto&aspect=true",
-    },
-    "Refrigerante COCA COLA ZERO 600ml": {
-        "preco": 8.00,
-        "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/232442/Refrigerante-COCA-COLA-Zero-Acucar-Pet-600ml.jpg?v=639179091417330000",
-    },
-    "Refrigerante FANTA 600ml": {
-        "preco": 8.00,
-        "imagem": "https://phygital-files.mercafacil.com/miliozzi/uploads/produto/refrigerante_fanta_laranja_600ml_pet_a8b5c222-e21b-480c-8288-90e22dbb20d7.jpg",
-    },
-    "AGUA MINERAL SEM GAS 500ml": {
-        "preco": 3.00,
-        "imagem": "https://io.convertiez.com.br/m/farmaponte/shop/products/images/22004/medium/agua-mineral-crystal-sem-gas-garrafa-1-unidade-com-500ml_17652.webp",
-    },
-    "AGUA MINERAL COM GAS 500ml": {
-        "preco": 4.00,
-        "imagem": "https://apoioentrega.vteximg.com.br/arquivos/ids/1911515/139272_0.png?v=639213665179000000",
-    },
+            "preco": 6.00,
+            "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
+        },
+        "Refrigerante COCA ZERO Lata 350ml": {
+            "preco": 6.00,
+            "imagem": "https://acdn-us.mitiendanube.com/stores/001/165/503/products/coca-zero21-16e7cba0588363da7616192142363168-1024-1024.webp",
+        },
+        "Refrigerante FANTA LARANJA Lata 350ml": {
+            "preco": 6.00,
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCj-iJ_ziGZMurwiupsfzkhhmuRr4vDxjEM4V3QapNpg&s=10",
+        },
+        "Refrigerante SPRITE Lata 350ml": {
+            "preco": 6.00,
+            "imagem": "https://www.drogariaminasbrasil.com.br/media/webp/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/228324e3d/refrigerante-sprite-lata-350ml_jpg.webp",
+        },
+        "Refrigerante FANTA UVA Lata 350ml": {
+            "preco": 6.00,
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy8MfxKAF9fZHoP5jOkB_GVC3llWVFJgX8bqaQQsBNTw&s=10",
+        },
+        "Refrigerante GUARANA ANTARCTICA Lata 350ml": {
+            "preco": 6.00,
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo_of1b4lkVoGXo7VNDcQ2zcyItH2BvZ-A2XFU362rbA&s=10",
+        },
+        "Refrigerante TONICA SCHWEPPES Lata 350ml": {
+            "preco": 6.50,
+            "imagem": "https://www.imigrantesbebidas.com.br/bebida/images/products/full/2209-agua-tonica-schweppes-lata-350ml.jpg",
+        },
+        "Refrigerante FANTA LARANJA Garrafinha 200ml": {
+            "preco": 3.50,
+            "imagem": "https://mercantilatacado.vtexassets.com/arquivos/ids/172941/654a33c475d9096810e2cbfc.jpg?v=638349585366670000",
+        },
+        "Refrigerante COCA COLA Garrafinha 200ml": {
+            "preco": 3.50,
+            "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/181329/Refrigerante-COCA-COLA-Garrafa-Pet-200ml.jpg?v=637602425279600000",
+        },
+        "Refrigerante COCA ZERO Garrafinha 200ml": {
+            "preco": 3.50,
+            "imagem": "https://prezunic.vtexassets.com/arquivos/ids/210276-800-auto?v=638568370331100000&width=800&height=auto&aspect=true",
+        },
+        "Refrigerante GUARANITA Garrafinha 200ml": {
+            "preco": 3.50,
+            "imagem": "https://phygital-files.mercafacil.com/fernandes-bucket/uploads/produto/cibal_guaranita_200ml_4762cf0e-e46e-4cb8-b0cf-5e3c11785572.jpg",
+        },
+        "Refrigerante SPRITE Garrafinha 200ml": {
+            "preco": 3.50,
+            "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/170425/Refrigerante-Limao-Sprite-Garrafa-200ml.jpg?v=637442546240970000",
+        },
+        "Refrigerante COCA COLA 2L": {
+            "preco": 17.00,
+            "imagem": "https://gbarbosa.vtexassets.com/arquivos/ids/214289/655268ba8d0743e14888f712.jpg?v=638354963814100000",
+        },
+        "Refrigerante PEPSI 2L": {
+            "preco": 17.00,
+            "imagem": "https://hiperideal.vtexassets.com/arquivos/ids/228374/7892840800000-RefrigerantePEPSIGarrafa2L-1.jpg?v=638733302785230000",
+        },
+        "Refrigerante COCA ZERO 2.5L": {
+            "preco": 17.00,
+            "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/230310/45911-1779911965249.png.png?v=639155088729770000",
+        },
+        "Refrigerante COCA ZERO 1L": {
+            "preco": 10.00,
+            "imagem": "https://mercantilatacado.vtexassets.com/arquivos/ids/168646/653fe3aa752720c144887a35.jpg?v=638342826762370000",
+        },
+        "Refrigerante H20 500ml": {
+            "preco": 8.00,
+            "imagem": "https://savegnagoio.vtexassets.com/arquivos/ids/447261-800-800?v=638525058304970000&width=800&height=800&aspect=true",
+        },
+        "Refrigerante TONICA SCHWEPPES 600ml": {
+            "preco": 8.00,
+            "imagem": "https://almacenestampico.com/wp-content/uploads/2023/03/Almacenes-Tampico-Uruguay-agua-tonica-schwepps-600Mesa-de-trabajo-1.jpg",
+        },
+        "Refrigerante FANTA UVA 600ml": {
+            "preco": 8.00,
+            "imagem": "https://io.convertiez.com.br/m/farmaciasaopaulo/shop/products/images/16728/medium/fanta-uva-600ml_25847.jpg",
+        },
+        "Refrigerante SPRITE 600ml": {
+            "preco": 8.00,
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxBTxJckfXC_FK2APRFPRLnVY8tC68jlixc3fnLgPZAg&s",
+        },
+        "Refrigerante GUARANITA 600ml": {
+            "preco": 8.00,
+            "imagem": "https://tauste.com.br/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/1/5/1584431777359902.jpg",
+        },
+        "Refrigerante COCA COLA 600ml": {
+            "preco": 8.00,
+            "imagem": "https://bretas.vtexassets.com/arquivos/ids/182991-800-auto?v=638375498920300000&width=800&height=auto&aspect=true",
+        },
+        "Refrigerante COCA COLA ZERO 600ml": {
+            "preco": 8.00,
+            "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/232442/Refrigerante-COCA-COLA-Zero-Acucar-Pet-600ml.jpg?v=639179091417330000",
+        },
+        "Refrigerante FANTA 600ml": {
+            "preco": 8.00,
+            "imagem": "https://phygital-files.mercafacil.com/miliozzi/uploads/produto/refrigerante_fanta_laranja_600ml_pet_a8b5c222-e21b-480c-8288-90e22dbb20d7.jpg",
+        },
+        "AGUA MINERAL SEM GAS 500ml": {
+            "preco": 3.00,
+            "imagem": "https://io.convertiez.com.br/m/farmaponte/shop/products/images/22004/medium/agua-mineral-crystal-sem-gas-garrafa-1-unidade-com-500ml_17652.webp",
+        },
+        "AGUA MINERAL COM GAS 500ml": {
+            "preco": 4.00,
+            "imagem": "https://apoioentrega.vteximg.com.br/arquivos/ids/1911515/139272_0.png?v=639213665179000000",
+        },
     },
     "🍺 Cervejas": {
         "Cerveja Original 300ml Garrafinha": {
@@ -565,9 +563,11 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                 st.markdown(f"**{item}**")
                 st.markdown(f"<span class='preco-badge'>R$ {info['preco']:.2f}</span>", unsafe_allow_html=True)
                 
+                # Validação de limite máximo de unidades por item
                 qtd = st.number_input(
                     "Qtd:",
                     min_value=0,
+                    max_value=20,
                     step=1,
                     key=chave_item,
                     label_visibility="collapsed",
@@ -582,7 +582,6 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                         "subtotal": info["preco"] * qtd
                     }
 
-            # Alerta e Botões Inline
             if (
                 st.session_state.get("ultimo_item_alterado") == chave_item
                 and qtd > 0
@@ -609,7 +608,6 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                         on_click=avancar_para_entrega,
                     )
 
-# Obter itens do carrinho permanente
 itens_carrinho = list(st.session_state["carrinho"].values())
 subtotal_produtos = sum(i["subtotal"] for i in itens_carrinho)
 
@@ -626,7 +624,10 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
 
     st.markdown(f"### Subtotal: **R$ {subtotal_produtos:.2f}**")
 
-    nome = st.text_input("Seu Nome:", key="input_nome")
+    # Sanitização e limitação de caracteres do nome
+    nome_bruto = st.text_input("Seu Nome:", max_chars=50, key="input_nome")
+    nome = html.escape(nome_bruto.strip())
+
     tipo_entrega = st.radio(
         "Opção de Entrega:",
         ["Entrega", "Retirar no Local"],
@@ -640,11 +641,15 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     rua_numero = ""
 
     if tipo_entrega == "Entrega":
-        bairro = st.selectbox(
+        bairro_selecionado = st.selectbox(
             "Selecione o Bairro:", list(taxas_bairros.keys()), key="input_bairro"
         )
-        taxa_entrega = taxas_bairros[bairro]
-        rua_numero = st.text_input("Rua e Número:", key="input_rua")
+        bairro = html.escape(bairro_selecionado)
+        taxa_entrega = taxas_bairros.get(bairro_selecionado, 0.00)
+
+        # Sanitização e limitação de caracteres do endereço
+        rua_bruta = st.text_input("Rua e Número:", max_chars=100, key="input_rua")
+        rua_numero = html.escape(rua_bruta.strip())
 
         if rua_numero:
             endereco = f"{rua_numero} - {bairro}"
@@ -659,18 +664,17 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
 
     st.markdown(f"## **Total Final: R$ {total_final:.2f}**")
 
-    pagamento = st.selectbox(
+    pagamento_selecionado = st.selectbox(
         "Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"], key="input_pagamento"
     )
+    pagamento = html.escape(pagamento_selecionado)
 
-    # Informações do PIX com número aumentado em destaque
-    chave_pix = "19919105848"
     if pagamento == "Pix":
         st.markdown(
             f"""
             <div style='background-color: #064e3b; border-left: 5px solid #22c55e; padding: 15px; border-radius: 12px; margin-bottom: 15px;'>
                 <p style='color: #ecfdf5 !important; font-size: 18px !important; margin-bottom: 5px;'>📱 <b>Chave PIX (Telefone):</b></p>
-                <p style='color: #22c55e !important; font-size: 26px !important; font-weight: 900 !important; letter-spacing: 1px; margin: 0;'>{chave_pix}</p>
+                <p style='color: #22c55e !important; font-size: 26px !important; font-weight: 900 !important; letter-spacing: 1px; margin: 0;'>{CHAVE_PIX_VAL}</p>
                 <p style='color: #94a3b8 !important; font-size: 14px !important; margin-top: 8px;'><i>Por favor, envie o comprovante pelo WhatsApp após finalizar o pedido.</i></p>
             </div>
             """,
@@ -679,7 +683,7 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
 
     itens_txt = "\n".join(
         [
-            f"{i['qtd']}x {i['item']} (R$ {i['subtotal']:.2f})"
+            f"{i['qtd']}x {html.escape(i['item'])} (R$ {i['subtotal']:.2f})"
             for i in itens_carrinho
         ]
     )
@@ -689,7 +693,7 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     else:
         detalhes_tipo = "*Tipo:* Retirada no Local"
 
-    texto_pagamento = f"Pix (Chave: {chave_pix})" if pagamento == "Pix" else pagamento
+    texto_pagamento = f"Pix (Chave: {CHAVE_PIX_VAL})" if pagamento == "Pix" else pagamento
 
     mensagem = (
         f"Olá! Gostaria de fazer um pedido na *Cuca Espetinhos e Lanches*:\n\n"
@@ -700,23 +704,26 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
         f"*Total a Pagar:* R$ {total_final:.2f}"
     )
 
-    numero_whatsapp = "5512992093751"
-
     if st.button(
         "🚀 AVANÇAR PARA CONFIRMAÇÃO",
         type="primary",
         use_container_width=True,
         key="btn_avancar_confirmacao"
     ):
-        if tipo_entrega == "Entrega" and not rua_numero.strip():
+        agora = time.time()
+        # Trava simples de rate limit por sessão (mínimo 3s entre cliques)
+        if agora - st.session_state["ultimo_envio_timestamp"] < 3:
+            st.warning("Aguarde um instante antes de clicar novamente.")
+        elif tipo_entrega == "Entrega" and not rua_numero:
             st.error("Por favor, preencha a Rua e o Número para continuar.")
-        elif not nome.strip():
+        elif not nome:
             st.error("Por favor, informe seu nome para continuar.")
         else:
+            st.session_state["ultimo_envio_timestamp"] = agora
             st.session_state["mostrar_modal"] = True
 
     if st.session_state.get("mostrar_modal", False):
-        modal_confirmacao(numero_whatsapp, mensagem)
+        modal_confirmacao(WHATSAPP_NUMBER, mensagem)
 
     components.html(
         """
