@@ -487,7 +487,7 @@ menu_categorias = {
         },
         "Cerveja Original 269ml Lata": {
             "preco": 6.00,
-            "imagem": "https://tse4.mm.bing.net/th/id/OIP.Cqa-Rx_ea-YoraLE7dVVpQHaFj?r=0&pid=ImgDet&w=204&h=153&c=7&o=7&rm=3",
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsK7x1diT-koyfCAdWSUBoHZTgPloiJYMjbRSfxGJzaw&s=10",
         },
         "Cerveja Amstel 269ml Lata": {
             "preco": 5.00,
