@@ -345,7 +345,7 @@ menu_categorias = {
     "🍟 Porções": {
         "PORÇÃO BATATA FRITA": {
         "preco": 29.90,
-        "imagem": "https://plus.unsplash.com/premium_photo-1672774750509-bc9ff226f3e8?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG9yJUMzJUE3JUMzJUE3byUyMGJhdGF0YSUyMGZyaXRhfGVufDB8fDB8fHww",
+        "imagem": "https://2.bp.blogspot.com/-zNkU0qa51Uk/U5elL6RgI6I/AAAAAAAAACo/OngayLy9ogk/s1600/batata.jpg",
     },
     "PORÇÃO MANDIOCA FRITA": {
         "preco": 29.90,
