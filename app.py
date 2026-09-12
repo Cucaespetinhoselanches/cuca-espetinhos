@@ -58,7 +58,7 @@ def voltar_ao_cardapio():
 @st.dialog("📋 Confirmar e Enviar Pedido")
 def modal_confirmacao(numero_wa, mensagem_texto):
     st.markdown(
-        "<h3 style='color: #0f172a; font-weight: 800; font-size: 22px; margin-bottom: 15px;'>"
+        "<h3 style='color: #0f172a; font-weight: 700; font-size: 18px; margin-bottom: 12px;'>"
         "📋 Revise os detalhes do seu pedido:"
         "</h3>",
         unsafe_allow_html=True,
@@ -67,7 +67,7 @@ def modal_confirmacao(numero_wa, mensagem_texto):
     mensagem_html = html.escape(mensagem_texto).replace("\n", "<br>")
     st.markdown(
         f"""
-        <div style='background-color: #ffffff; padding: 18px; border-radius: 10px; border: 2px solid #94a3b8; font-size: 17px; line-height: 1.6; color: #0f172a;'>
+        <div style='background-color: #ffffff; padding: 14px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 14px; line-height: 1.5; color: #1e293b;'>
             {mensagem_html}
         </div>
         """,
@@ -98,12 +98,12 @@ def modal_confirmacao(numero_wa, mensagem_texto):
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-    /* Fundo Global e Fonte Geral */
+    /* Fundo Global e Fonte */
     html, body, [class*="css"], .stApp {
         background-color: #f8fafc !important;
-        font-family: 'Inter', -apple-system, sans-serif !important;
+        font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
         color: #0f172a !important;
     }
 
@@ -111,26 +111,26 @@ st.markdown(
 
     /* Banner Principal */
     .hero-banner {
-        background: linear-gradient(135deg, #400d08 0%, #80180d 50%, #4a0905 100%);
+        background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
         border-radius: 12px;
-        padding: 25px 20px;
+        padding: 20px 18px;
         color: #ffffff;
-        margin-bottom: 15px;
+        margin-bottom: 12px;
     }
 
     .hero-subtitle {
-        font-size: 14px;
-        font-weight: 800;
-        letter-spacing: 0.1em;
-        color: #ff8073;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #fca5a5;
         text-transform: uppercase;
-        margin-bottom: 4px;
+        margin-bottom: 2px;
     }
 
     .hero-title {
-        font-size: 40px;
-        font-weight: 900;
-        line-height: 1.1;
+        font-size: 26px;
+        font-weight: 800;
+        line-height: 1.2;
         color: #ffffff;
         margin: 0;
     }
@@ -138,150 +138,149 @@ st.markdown(
     .info-bar {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 8px;
         justify-content: space-between;
         background: #ffffff;
-        padding: 14px 18px;
-        border-radius: 10px;
-        border: 2px solid #cbd5e1;
-        font-size: 15px;
-        color: #1e293b;
-        font-weight: 700;
-        margin-bottom: 25px;
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: 1px solid #e2e8f0;
+        font-size: 13px;
+        color: #334155;
+        font-weight: 500;
+        margin-bottom: 20px;
     }
 
-    /* Abas do Cardápio com Texto Grande */
+    /* Estilo das Abas */
     button[data-baseweb="tab"] {
-        font-size: 18px !important;
-        font-weight: 800 !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
         background-color: transparent !important;
-        color: #475569 !important;
+        color: #64748b !important;
         border: none !important;
-        border-bottom: 4px solid transparent !important;
-        padding: 12px 18px !important;
+        border-bottom: 3px solid transparent !important;
+        padding: 8px 14px !important;
     }
 
     button[data-baseweb="tab"][aria-selected="true"] {
-        color: #b91c1c !important;
-        border-bottom: 4px solid #b91c1c !important;
+        color: #dc2626 !important;
+        border-bottom: 3px solid #dc2626 !important;
     }
 
     .section-header {
-        font-size: 18px;
-        font-weight: 900;
-        letter-spacing: 0.05em;
-        color: #0f172a;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        color: #1e293b;
         text-transform: uppercase;
-        margin-top: 15px;
-        margin-bottom: 15px;
-        border-bottom: 2px solid #cbd5e1;
-        padding-bottom: 6px;
+        margin-top: 10px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 4px;
     }
 
-    /* CONTROLE RIGOROSO DE TAMANHO DAS IMAGENS */
+    /* FORMATAÇÃO DAS IMAGENS */
     div[data-testid="stColumn"] img {
-        height: 80px !important;
-        width: 80px !important;
-        max-height: 80px !important;
-        max-width: 80px !important;
+        height: 72px !important;
+        width: 72px !important;
+        max-height: 72px !important;
+        max-width: 72px !important;
         object-fit: cover !important;
-        border-radius: 10px !important;
+        border-radius: 8px !important;
         display: block !important;
         margin: 0 auto !important;
     }
 
     div[data-testid="stColumn"] > div {
         background-color: #ffffff !important;
-        border-radius: 12px;
-        padding: 16px;
-        border: 1px solid #cbd5e1 !important;
-        margin-bottom: 14px;
+        border-radius: 10px;
+        padding: 12px;
+        border: 1px solid #e2e8f0 !important;
+        margin-bottom: 10px;
     }
 
-    /* ESTILIZAÇÃO DO TEXTO DOS ITENS */
+    /* ESTILO DOS TEXTOS E PREÇOS DOS ITENS */
     .item-title {
-        font-size: 20px !important;
-        font-weight: 800 !important;
+        font-size: 16px !important;
+        font-weight: 700 !important;
         color: #0f172a !important;
-        margin-bottom: 6px;
+        margin-bottom: 2px;
     }
 
     .item-desc {
-        color: #334155 !important;
-        font-size: 15px !important;
-        line-height: 1.4 !important;
-        margin-bottom: 8px !important;
+        color: #475569 !important;
+        font-size: 13px !important;
+        line-height: 1.35 !important;
+        margin-bottom: 6px !important;
     }
 
     .badge-mais-pedido {
         background-color: #fef2f2;
-        color: #991b1b;
+        color: #dc2626;
         border: 1px solid #fecaca;
-        font-size: 12px;
-        font-weight: 800;
-        padding: 2px 8px;
-        border-radius: 6px;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 1px 6px;
+        border-radius: 4px;
         display: inline-block;
-        margin-left: 8px;
+        margin-left: 6px;
         vertical-align: middle;
     }
 
     .preco-badge {
-        background-color: transparent !important;
-        color: #047857 !important;
-        font-weight: 900 !important;
-        font-size: 20px !important;
+        color: #059669 !important;
+        font-weight: 700 !important;
+        font-size: 15px !important;
         display: inline-block;
     }
 
-    /* CONTROLES DE ENTRADA (SELEÇÃO DE QUANTIDADE E INPUTS) */
+    /* INPUTS DE QUANTIDADE */
     div[data-testid="stNumberInput"] input {
         background-color: #ffffff !important;
         color: #0f172a !important;
-        border: 2px solid #64748b !important;
-        font-weight: 800 !important;
-        font-size: 18px !important;
-        height: 44px !important;
+        border: 1px solid #cbd5e1 !important;
+        font-weight: 600 !important;
+        font-size: 14px !important;
+        height: 38px !important;
     }
 
-    /* BOTÕES CUSTOMIZADOS E VISÍVEIS */
+    /* BOTÕES */
     div.stButton > button, 
     div.stButton > button *,
     div.stLinkButton > a,
     div.stLinkButton > a * {
         background-color: #ffffff !important;
-        color: #0f172a !important;
-        border: 2px solid #475569 !important;
-        border-radius: 8px !important;
-        font-weight: 800 !important;
-        font-size: 16px !important;
+        color: #1e293b !important;
+        border: 1px solid #cbd5e1 !important;
+        border-radius: 6px !important;
+        font-weight: 600 !important;
+        font-size: 14px !important;
     }
 
     div.stButton > button:hover {
         background-color: #f1f5f9 !important;
     }
 
-    /* Botões Primários */
+    /* Botão Primário */
     div.stButton > button[kind="primary"], 
     div.stButton > button[kind="primary"] *,
     div.stLinkButton > a[kind="primary"],
     div.stLinkButton > a[kind="primary"] * {
-        background-color: #b91c1c !important;
+        background-color: #dc2626 !important;
         color: #ffffff !important;
         border: none !important;
-        border-radius: 8px !important;
-        font-weight: 900 !important;
-        font-size: 17px !important;
+        border-radius: 6px !important;
+        font-weight: 700 !important;
+        font-size: 14px !important;
     }
 
     div.stButton > button[kind="primary"]:hover {
-        background-color: #991b1b !important;
+        background-color: #b91c1c !important;
     }
 
     label {
-        font-size: 16px !important;
-        font-weight: 700 !important;
-        color: #0f172a !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: #1e293b !important;
     }
     </style>
 """,
@@ -291,16 +290,16 @@ st.markdown(
 # ==================== CABEÇALHO SUPERIOR ====================
 st.markdown(
     """
-    <div style='display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 2px solid #cbd5e1; margin-bottom: 15px;'>
-        <div style='display: flex; align-items: center; gap: 12px;'>
-            <div style='background: #b91c1c; padding: 8px 12px; border-radius: 8px; color: white; font-weight: bold; font-size: 22px;'>🍢</div>
+    <div style='display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #e2e8f0; margin-bottom: 12px;'>
+        <div style='display: flex; align-items: center; gap: 10px;'>
+            <div style='background: #dc2626; padding: 6px 10px; border-radius: 6px; color: white; font-weight: bold; font-size: 18px;'>🍢</div>
             <div>
-                <h2 style='margin: 0; font-size: 24px; font-weight: 900; color: #0f172a;'>CUCA</h2>
-                <p style='margin: 0; font-size: 13px; font-weight: 800; color: #64748b; letter-spacing: 0.05em;'>ESPETINHOS & LANCHES</p>
+                <h2 style='margin: 0; font-size: 18px; font-weight: 800; color: #0f172a;'>CUCA</h2>
+                <p style='margin: 0; font-size: 11px; font-weight: 700; color: #64748b; letter-spacing: 0.04em;'>ESPETINHOS & LANCHES</p>
             </div>
         </div>
         <div>
-            <span style='background: #ecfdf5; color: #047857; font-size: 14px; font-weight: 800; padding: 6px 14px; border-radius: 12px; border: 1px solid #a7f3d0;'>• Aberto agora</span>
+            <span style='background: #ecfdf5; color: #059669; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 10px; border: 1px solid #a7f3d0;'>• Aberto agora</span>
         </div>
     </div>
     """,
@@ -412,7 +411,7 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
         st.markdown(f"<div class='section-header'>{categoria.upper()} NA BRASA</div>", unsafe_allow_html=True)
         for item, info in itens.items():
             chave_item = f"{categoria}_{item}"
-            col1, col2 = st.columns([1, 3])
+            col1, col2 = st.columns([1, 4])
             
             with col1:
                 st.image(info["imagem"], use_container_width=False)
@@ -507,10 +506,10 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     if pagamento == "Pix":
         st.markdown(
             f"""
-            <div style='background-color: #ecfdf5; border-left: 6px solid #10b981; padding: 16px; border-radius: 8px; margin-bottom: 15px;'>
-                <p style='color: #065f46 !important; font-size: 17px !important; margin-bottom: 2px;'>📱 <b>Chave PIX (Telefone):</b></p>
-                <p style='color: #047857 !important; font-size: 26px !important; font-weight: 900 !important; margin: 0;'>{CHAVE_PIX_VAL}</p>
-                <p style='color: #334155 !important; font-size: 14px !important; margin-top: 4px;'><i>Por favor, envie o comprovante pelo WhatsApp após finalizar o pedido.</i></p>
+            <div style='background-color: #ecfdf5; border-left: 4px solid #10b981; padding: 12px; border-radius: 6px; margin-bottom: 12px;'>
+                <p style='color: #065f46 !important; font-size: 14px !important; margin-bottom: 2px;'>📱 <b>Chave PIX (Telefone):</b></p>
+                <p style='color: #047857 !important; font-size: 20px !important; font-weight: 700 !important; margin: 0;'>{CHAVE_PIX_VAL}</p>
+                <p style='color: #475569 !important; font-size: 12px !important; margin-top: 2px;'><i>Por favor, envie o comprovante pelo WhatsApp após finalizar o pedido.</i></p>
             </div>
             """,
             unsafe_allow_html=True,
