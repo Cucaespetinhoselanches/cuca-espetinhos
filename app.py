@@ -58,7 +58,7 @@ def voltar_ao_cardapio():
 @st.dialog("📋 Confirmar e Enviar Pedido")
 def modal_confirmacao(numero_wa, mensagem_texto):
     st.markdown(
-        "<h3 style='color: #111827; font-weight: 800; font-size: 20px; margin-bottom: 15px;'>"
+        "<h3 style='color: #0f172a; font-weight: 800; font-size: 22px; margin-bottom: 15px;'>"
         "📋 Revise os detalhes do seu pedido:"
         "</h3>",
         unsafe_allow_html=True,
@@ -67,7 +67,7 @@ def modal_confirmacao(numero_wa, mensagem_texto):
     mensagem_html = html.escape(mensagem_texto).replace("\n", "<br>")
     st.markdown(
         f"""
-        <div style='background-color: #ffffff; padding: 16px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 16px; line-height: 1.6; color: #0f172a;'>
+        <div style='background-color: #ffffff; padding: 18px; border-radius: 10px; border: 2px solid #94a3b8; font-size: 17px; line-height: 1.6; color: #0f172a;'>
             {mensagem_html}
         </div>
         """,
@@ -100,7 +100,7 @@ st.markdown(
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-    /* Fundo Global e Fonte */
+    /* Fundo Global e Fonte Geral */
     html, body, [class*="css"], .stApp {
         background-color: #f8fafc !important;
         font-family: 'Inter', -apple-system, sans-serif !important;
@@ -112,15 +112,14 @@ st.markdown(
     /* Banner Principal */
     .hero-banner {
         background: linear-gradient(135deg, #400d08 0%, #80180d 50%, #4a0905 100%);
-        border-radius: 10px;
+        border-radius: 12px;
         padding: 25px 20px;
         color: #ffffff;
         margin-bottom: 15px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     .hero-subtitle {
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 800;
         letter-spacing: 0.1em;
         color: #ff8073;
@@ -129,11 +128,10 @@ st.markdown(
     }
 
     .hero-title {
-        font-size: 38px;
+        font-size: 40px;
         font-weight: 900;
         line-height: 1.1;
         color: #ffffff;
-        letter-spacing: -0.03em;
         margin: 0;
     }
 
@@ -143,38 +141,36 @@ st.markdown(
         gap: 10px;
         justify-content: space-between;
         background: #ffffff;
-        padding: 12px 16px;
-        border-radius: 8px;
-        border: 1px solid #cbd5e1;
-        font-size: 14px;
-        color: #334155;
+        padding: 14px 18px;
+        border-radius: 10px;
+        border: 2px solid #cbd5e1;
+        font-size: 15px;
+        color: #1e293b;
         font-weight: 700;
         margin-bottom: 25px;
     }
 
-    /* Abas do Cardápio */
+    /* Abas do Cardápio com Texto Grande */
     button[data-baseweb="tab"] {
-        font-family: 'Inter', sans-serif !important;
-        font-size: 17px !important;
+        font-size: 18px !important;
         font-weight: 800 !important;
         background-color: transparent !important;
         color: #475569 !important;
         border: none !important;
-        border-bottom: 3px solid transparent !important;
-        border-radius: 0 !important;
-        padding: 10px 16px !important;
+        border-bottom: 4px solid transparent !important;
+        padding: 12px 18px !important;
     }
 
     button[data-baseweb="tab"][aria-selected="true"] {
         color: #b91c1c !important;
-        border-bottom: 3px solid #b91c1c !important;
+        border-bottom: 4px solid #b91c1c !important;
     }
 
     .section-header {
-        font-size: 15px;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        color: #1e293b;
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 0.05em;
+        color: #0f172a;
         text-transform: uppercase;
         margin-top: 15px;
         margin-bottom: 15px;
@@ -182,39 +178,39 @@ st.markdown(
         padding-bottom: 6px;
     }
 
-    /* IMAGENS COMPACTAS E CARD DOS ITENS */
+    /* CONTROLE RIGOROSO DE TAMANHO DAS IMAGENS */
     div[data-testid="stColumn"] img {
-        max-height: 75px !important;
-        max-width: 85px !important;
-        width: 100% !important;
+        height: 80px !important;
+        width: 80px !important;
+        max-height: 80px !important;
+        max-width: 80px !important;
         object-fit: cover !important;
-        border-radius: 8px !important;
-        margin: auto !important;
+        border-radius: 10px !important;
         display: block !important;
+        margin: 0 auto !important;
     }
 
     div[data-testid="stColumn"] > div {
         background-color: #ffffff !important;
-        border-radius: 10px;
-        padding: 14px;
+        border-radius: 12px;
+        padding: 16px;
         border: 1px solid #cbd5e1 !important;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.04);
-        margin-bottom: 12px;
+        margin-bottom: 14px;
     }
 
-    /* AUMENTO DAS FONTES DOS ITENS */
+    /* ESTILIZAÇÃO DO TEXTO DOS ITENS */
     .item-title {
-        font-size: 18px !important;
+        font-size: 20px !important;
         font-weight: 800 !important;
         color: #0f172a !important;
-        margin-bottom: 4px;
+        margin-bottom: 6px;
     }
 
     .item-desc {
-        color: #475569 !important;
-        font-size: 14px !important;
+        color: #334155 !important;
+        font-size: 15px !important;
         line-height: 1.4 !important;
-        margin-bottom: 6px !important;
+        margin-bottom: 8px !important;
     }
 
     .badge-mais-pedido {
@@ -227,43 +223,42 @@ st.markdown(
         border-radius: 6px;
         display: inline-block;
         margin-left: 8px;
+        vertical-align: middle;
     }
 
     .preco-badge {
         background-color: transparent !important;
         color: #047857 !important;
         font-weight: 900 !important;
-        font-size: 19px !important;
+        font-size: 20px !important;
         display: inline-block;
-        margin-top: 2px;
     }
 
-    /* FIX DOS BOTÕES E DEMAIS CONTROLES DE INPUT */
+    /* CONTROLES DE ENTRADA (SELEÇÃO DE QUANTIDADE E INPUTS) */
     div[data-testid="stNumberInput"] input {
         background-color: #ffffff !important;
         color: #0f172a !important;
-        border: 1px solid #64748b !important;
+        border: 2px solid #64748b !important;
         font-weight: 800 !important;
-        font-size: 16px !important;
-        height: 42px !important;
+        font-size: 18px !important;
+        height: 44px !important;
     }
 
-    /* BOTÕES COM CONTRASTE */
+    /* BOTÕES CUSTOMIZADOS E VISÍVEIS */
     div.stButton > button, 
     div.stButton > button *,
     div.stLinkButton > a,
     div.stLinkButton > a * {
         background-color: #ffffff !important;
         color: #0f172a !important;
-        border: 1px solid #475569 !important;
+        border: 2px solid #475569 !important;
         border-radius: 8px !important;
         font-weight: 800 !important;
-        font-size: 15px !important;
+        font-size: 16px !important;
     }
 
     div.stButton > button:hover {
         background-color: #f1f5f9 !important;
-        border-color: #0f172a !important;
     }
 
     /* Botões Primários */
@@ -276,11 +271,17 @@ st.markdown(
         border: none !important;
         border-radius: 8px !important;
         font-weight: 900 !important;
-        font-size: 16px !important;
+        font-size: 17px !important;
     }
 
     div.stButton > button[kind="primary"]:hover {
         background-color: #991b1b !important;
+    }
+
+    label {
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        color: #0f172a !important;
     }
     </style>
 """,
@@ -292,14 +293,14 @@ st.markdown(
     """
     <div style='display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 2px solid #cbd5e1; margin-bottom: 15px;'>
         <div style='display: flex; align-items: center; gap: 12px;'>
-            <div style='background: #b91c1c; padding: 8px 12px; border-radius: 8px; color: white; font-weight: bold; font-size: 20px;'>🍢</div>
+            <div style='background: #b91c1c; padding: 8px 12px; border-radius: 8px; color: white; font-weight: bold; font-size: 22px;'>🍢</div>
             <div>
-                <h2 style='margin: 0; font-size: 22px; font-weight: 900; color: #0f172a;'>CUCA</h2>
-                <p style='margin: 0; font-size: 12px; font-weight: 800; color: #64748b; letter-spacing: 0.05em;'>ESPETINHOS & LANCHES</p>
+                <h2 style='margin: 0; font-size: 24px; font-weight: 900; color: #0f172a;'>CUCA</h2>
+                <p style='margin: 0; font-size: 13px; font-weight: 800; color: #64748b; letter-spacing: 0.05em;'>ESPETINHOS & LANCHES</p>
             </div>
         </div>
         <div>
-            <span style='background: #ecfdf5; color: #047857; font-size: 13px; font-weight: 800; padding: 6px 12px; border-radius: 12px; border: 1px solid #a7f3d0;'>• Aberto agora</span>
+            <span style='background: #ecfdf5; color: #047857; font-size: 14px; font-weight: 800; padding: 6px 14px; border-radius: 12px; border: 1px solid #a7f3d0;'>• Aberto agora</span>
         </div>
     </div>
     """,
@@ -411,10 +412,10 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
         st.markdown(f"<div class='section-header'>{categoria.upper()} NA BRASA</div>", unsafe_allow_html=True)
         for item, info in itens.items():
             chave_item = f"{categoria}_{item}"
-            col1, col2 = st.columns([1, 4])
+            col1, col2 = st.columns([1, 3])
             
             with col1:
-                st.image(info["imagem"], use_container_width=True)
+                st.image(info["imagem"], use_container_width=False)
             with col2:
                 badge = "<span class='badge-mais-pedido'>Mais pedido</span>" if info.get("mais_pedido") else ""
                 st.markdown(f"<div class='item-title'>{item}{badge}</div>", unsafe_allow_html=True)
@@ -506,10 +507,10 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     if pagamento == "Pix":
         st.markdown(
             f"""
-            <div style='background-color: #ecfdf5; border-left: 5px solid #10b981; padding: 14px; border-radius: 8px; margin-bottom: 15px;'>
-                <p style='color: #065f46 !important; font-size: 16px !important; margin-bottom: 2px;'>📱 <b>Chave PIX (Telefone):</b></p>
-                <p style='color: #047857 !important; font-size: 24px !important; font-weight: 900 !important; margin: 0;'>{CHAVE_PIX_VAL}</p>
-                <p style='color: #475569 !important; font-size: 13px !important; margin-top: 4px;'><i>Por favor, envie o comprovante pelo WhatsApp após finalizar o pedido.</i></p>
+            <div style='background-color: #ecfdf5; border-left: 6px solid #10b981; padding: 16px; border-radius: 8px; margin-bottom: 15px;'>
+                <p style='color: #065f46 !important; font-size: 17px !important; margin-bottom: 2px;'>📱 <b>Chave PIX (Telefone):</b></p>
+                <p style='color: #047857 !important; font-size: 26px !important; font-weight: 900 !important; margin: 0;'>{CHAVE_PIX_VAL}</p>
+                <p style='color: #334155 !important; font-size: 14px !important; margin-top: 4px;'><i>Por favor, envie o comprovante pelo WhatsApp após finalizar o pedido.</i></p>
             </div>
             """,
             unsafe_allow_html=True,
@@ -558,7 +559,7 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     if st.session_state.get("mostrar_modal", False):
         modal_confirmacao(WHATSAPP_NUMBER, mensagem)
 
-    # ROLAGEM AUTOMÁTICA OTIMIZADA
+    # ROLAGEM AUTOMÁTICA
     components.html(
         """
         <script>
