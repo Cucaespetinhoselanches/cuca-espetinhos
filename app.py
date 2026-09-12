@@ -150,7 +150,7 @@ st.markdown(
         margin-bottom: 20px;
     }
 
-    /* Abas de Categoria */
+    /* Abas de Categoria com Fonte Grande */
     button[data-baseweb="tab"] {
         font-size: 18px !important;
         font-weight: 800 !important;
@@ -178,24 +178,28 @@ st.markdown(
         padding-bottom: 6px;
     }
 
-    /* FORÇANDO MINIATURAS BEM PEQUENAS (36px) */
-    img, .element-container img, [data-testid="stImage"] img, .thumb-mini {
-        width: 36px !important;
-        height: 36px !important;
-        max-width: 36px !important;
-        max-height: 36px !important;
-        min-width: 36px !important;
-        min-height: 36px !important;
+    /* MINIATURA MICRO (24px x 24px) */
+    .thumb-mini {
+        width: 24px !important;
+        height: 24px !important;
+        max-width: 24px !important;
+        max-height: 24px !important;
+        min-width: 24px !important;
+        min-height: 24px !important;
         object-fit: cover !important;
-        border-radius: 6px !important;
+        border-radius: 4px !important;
+        vertical-align: middle !important;
+        display: inline-block !important;
+        margin-right: 8px !important;
     }
 
-    div[data-testid="stColumn"] > div {
-        background-color: #ffffff !important;
+    /* CARD DO ITEM */
+    .menu-item-box {
+        background-color: #ffffff;
         border-radius: 10px;
-        padding: 12px;
-        border: 2px solid #cbd5e1 !important;
-        margin-bottom: 12px;
+        padding: 14px;
+        border: 2px solid #cbd5e1;
+        margin-bottom: 8px;
     }
 
     /* TEXTOS GRANDES DOS PRODUTOS */
@@ -203,7 +207,10 @@ st.markdown(
         font-size: 22px !important;
         font-weight: 800 !important;
         color: #0f172a !important;
-        margin-bottom: 4px;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
     }
 
     .item-desc {
@@ -232,6 +239,7 @@ st.markdown(
         font-weight: 900 !important;
         font-size: 22px !important;
         display: inline-block;
+        margin-bottom: 6px;
     }
 
     /* INPUTS DE QUANTIDADE */
@@ -244,7 +252,7 @@ st.markdown(
         height: 46px !important;
     }
 
-    /* BOTÕES */
+    /* BOTÕES MAIORES E MAIS NÍTIDOS */
     div.stButton > button, 
     div.stButton > button *,
     div.stLinkButton > a,
@@ -411,29 +419,33 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
         st.markdown(f"<div class='section-header'>{categoria.upper()} NA BRASA</div>", unsafe_allow_html=True)
         for item, info in itens.items():
             chave_item = f"{categoria}_{item}"
-            col1, col2 = st.columns([0.6, 5.4])
+            badge = "<span class='badge-mais-pedido'>Mais pedido</span>" if info.get("mais_pedido") else ""
             
-            with col1:
-                st.markdown(
-                    f"<img class='thumb-mini' src='{info['imagem']}' style='width:36px !important; height:36px !important; max-width:36px !important; max-height:36px !important; min-width:36px !important; min-height:36px !important; object-fit:cover; border-radius:6px; display:block; margin-top:4px;'>",
-                    unsafe_allow_html=True
-                )
-            with col2:
-                badge = "<span class='badge-mais-pedido'>Mais pedido</span>" if info.get("mais_pedido") else ""
-                st.markdown(f"<div class='item-title'>{item}{badge}</div>", unsafe_allow_html=True)
-                st.markdown(f"<p class='item-desc'>{info.get('descricao', '')}</p>", unsafe_allow_html=True)
-                st.markdown(f"<span class='preco-badge'>R$ {info['preco']:.2f}</span>", unsafe_allow_html=True)
-                
-                qtd = st.number_input(
-                    "Qtd:",
-                    min_value=0,
-                    max_value=20,
-                    step=1,
-                    key=chave_item,
-                    label_visibility="collapsed",
-                    on_change=registrar_alteracao_item,
-                    args=(chave_item, item, info["preco"]),
-                )
+            st.markdown(
+                f"""
+                <div class='menu-item-box'>
+                    <div class='item-title'>
+                        <img class='thumb-mini' src='{info['imagem']}' alt='{item}'>
+                        <span>{item}</span>
+                        {badge}
+                    </div>
+                    <div class='item-desc'>{info.get('descricao', '')}</div>
+                    <div class='preco-badge'>R$ {info['preco']:.2f}</div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
+            
+            qtd = st.number_input(
+                "Qtd:",
+                min_value=0,
+                max_value=20,
+                step=1,
+                key=chave_item,
+                label_visibility="collapsed",
+                on_change=registrar_alteracao_item,
+                args=(chave_item, item, info["preco"]),
+            )
 
             if (
                 st.session_state.get("ultimo_item_alterado") == chave_item
