@@ -150,7 +150,7 @@ st.markdown(
         margin-bottom: 20px;
     }
 
-    /* Estilo das Abas com Fonte Grande */
+    /* Abas de Categoria */
     button[data-baseweb="tab"] {
         font-size: 18px !important;
         font-weight: 800 !important;
@@ -178,18 +178,16 @@ st.markdown(
         padding-bottom: 6px;
     }
 
-    /* FOTOS BEM MENORES (60px x 60px) */
-    div[data-testid="stColumn"] img {
-        height: 60px !important;
-        width: 60px !important;
-        max-height: 60px !important;
-        max-width: 60px !important;
-        min-height: 60px !important;
-        min-width: 60px !important;
+    /* BLOQUEIO ABSOLUTO DO TAMANHO DE IMAGENS */
+    img, .element-container img, [data-testid="stImage"] img {
+        width: 50px !important;
+        height: 50px !important;
+        max-width: 50px !important;
+        max-height: 50px !important;
+        min-width: 50px !important;
+        min-height: 50px !important;
         object-fit: cover !important;
-        border-radius: 8px !important;
-        display: block !important;
-        margin: 0 auto !important;
+        border-radius: 6px !important;
     }
 
     div[data-testid="stColumn"] > div {
@@ -200,7 +198,7 @@ st.markdown(
         margin-bottom: 12px;
     }
 
-    /* TEXTOS DAS COMIDAS BEM MAIORES */
+    /* TEXTOS GRANDES DOS PRODUTOS */
     .item-title {
         font-size: 22px !important;
         font-weight: 800 !important;
@@ -236,7 +234,7 @@ st.markdown(
         display: inline-block;
     }
 
-    /* INPUTS DE QUANTIDADE MAIORES */
+    /* INPUTS DE QUANTIDADE */
     div[data-testid="stNumberInput"] input {
         background-color: #ffffff !important;
         color: #0f172a !important;
@@ -246,7 +244,7 @@ st.markdown(
         height: 46px !important;
     }
 
-    /* BOTÕES MAIORES E MAIS NÍTIDOS */
+    /* BOTÕES */
     div.stButton > button, 
     div.stButton > button *,
     div.stLinkButton > a,
@@ -263,7 +261,6 @@ st.markdown(
         background-color: #f1f5f9 !important;
     }
 
-    /* Botão Primário */
     div.stButton > button[kind="primary"], 
     div.stButton > button[kind="primary"] *,
     div.stLinkButton > a[kind="primary"],
@@ -414,10 +411,13 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
         st.markdown(f"<div class='section-header'>{categoria.upper()} NA BRASA</div>", unsafe_allow_html=True)
         for item, info in itens.items():
             chave_item = f"{categoria}_{item}"
-            col1, col2 = st.columns([1, 4])
+            col1, col2 = st.columns([1, 5])
             
             with col1:
-                st.image(info["imagem"], use_container_width=False)
+                st.markdown(
+                    f"<img src='{info['imagem']}' style='width:50px !important; height:50px !important; max-width:50px !important; object-fit:cover; border-radius:6px; display:block; margin:0 auto;'>",
+                    unsafe_allow_html=True
+                )
             with col2:
                 badge = "<span class='badge-mais-pedido'>Mais pedido</span>" if info.get("mais_pedido") else ""
                 st.markdown(f"<div class='item-title'>{item}{badge}</div>", unsafe_allow_html=True)
