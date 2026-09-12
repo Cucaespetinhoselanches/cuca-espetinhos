@@ -299,15 +299,15 @@ menu_categorias = {
         },
     },
     "🥪 Lanches": {
-        "X BURGER": {
+        "X BURGER (Hamburguer, queijo cheedar Polenghi e molho da casa)": {
             "preco": 19.90,
             "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
         },
-        "X SALADA": {
+        "X SALADA (Hamburguer, queijo cheedar Polenghi, alface americana, tomate e molho da casa)": {
             "preco": 29.90,
             "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
         },
-        "X BACON": {
+        "X BACON (Hamburguer, bacon, queijo cheedar Polenghi, alface americana, tomate e molho da casa)": {
             "preco": 35.90,
             "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
         },
@@ -315,27 +315,35 @@ menu_categorias = {
             "preco": 30.90,
             "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
         },
-        "X-CATUPIRY EMPANADO": {
+        "X-CATUPIRY EMPANADO (Empanado de Catupiry com frango, queijo cheedar Polenghi, alface americana, tomate e molho da casa)": {
             "preco": 32.90,
             "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
         },
-        "FRANGÃO": {
+        "FRANGÃO (Hamburguer, frango desfiado, queijo cheedar Polenghi, alface americana, tomate e molho da casa)": {
             "preco": 32.90,
             "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
         },
-        "HOT CALABRESA": {
+        "HOT SIMPLES (Salsinha, batata palha, catchup, mostarda, maionese)": {
             "preco": 16.50,
             "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
         },
-        "HOT BACON": {
+        "HOT PURÊ (Salsinha, purê, batata palha, catchup, mostarda, maionese)": {
             "preco": 16.50,
             "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
         },
-        "HOT SALADA": {
+        "HOT CALABRESA (Salsinha, calabresa, purê, batata palha, catchup, mostarda, maionese)": {
+            "preco": 16.50,
+            "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
+        },
+        "HOT BACON (Salsinha, bacon, purê, batata palha, catchup, mostarda, maionese)": {
+            "preco": 16.50,
+            "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
+        },
+        "HOT SALADA (Salsinha, salada, purê, batata palha, catchup, mostarda, maionese)": {
             "preco": 12.50,
             "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
         },
-        "HOT PURE": {
+        "HOT FRANGO (Salsinha, frango, purê, batata palha, catchup, mostarda, maionese) ": {
             "preco": 14.50,
             "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
         },
