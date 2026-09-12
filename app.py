@@ -328,7 +328,7 @@ menu_categorias = {
             "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
         },
     },
-    "🥪 Lanches": "Monte seu combo": {
+    "🥪 Lanches": ,"Monte seu combo": {
     "nome": "Monte seu combo",
     "descricao": "Batata frita + refrigerante em lata",
     "preco": 14.90
