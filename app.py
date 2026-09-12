@@ -191,9 +191,11 @@ st.markdown(
     }
 
     div.stButton > button[kind="primary"], div.stLinkButton > a[kind="primary"] {
-        background-color: #22c55e !important;
+        background-color: #D96B27 !important;
+        color: #ffffff !important;
         border: none !important;
-        border-radius: 12px !important;
+        border-radius: 8px !important;
+        font-weight: bold !important;
     }
 
     div.stButton > button[kind="primary"] p, div.stLinkButton > a[kind="primary"] p {
@@ -618,7 +620,7 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                 col_mais, col_encerrar = st.columns(2)
                 with col_mais:
                     st.button(
-                        "➕ Adicionar Mais",
+                        "➕ Adicionar ITENS",
                         key=f"btn_mais_{chave_item}",
                         use_container_width=True,
                         on_click=continuar_comprando,
