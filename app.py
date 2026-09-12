@@ -29,13 +29,18 @@ if "carrinho" not in st.session_state:
 if "ultimo_envio_timestamp" not in st.session_state:
     st.session_state["ultimo_envio_timestamp"] = 0
 
-# Funções Callback e Navegação
-def registrar_alteracao_item(chave_item):
-    if st.session_state.get(chave_item, 0) > 0:
+# ==================== FUNÇÕES CALLBACK E NAVEGAÇÃO ====================
+def registrar_alteracao_item(chave_item, item_nome, preco):
+    qtd = st.session_state.get(chave_item, 0)
+    if qtd > 0:
+        st.session_state["carrinho"][chave_item] = {
+            "item": item_nome,
+            "qtd": qtd,
+            "subtotal": preco * qtd
+        }
         st.session_state["ultimo_item_alterado"] = chave_item
     else:
-        if chave_item in st.session_state["carrinho"]:
-            del st.session_state["carrinho"][chave_item]
+        st.session_state["carrinho"].pop(chave_item, None)
         if st.session_state.get("ultimo_item_alterado") == chave_item:
             st.session_state["ultimo_item_alterado"] = None
 
@@ -59,7 +64,7 @@ def modal_confirmacao(numero_wa, mensagem_texto):
         unsafe_allow_html=True,
     )
     
-    # Sanitização contra Cross-Site Scripting (XSS)
+    # Sanitização contra Cross-Site Scripting (XSS) para exibição visual
     mensagem_html = html.escape(mensagem_texto).replace("\n", "<br>")
     st.markdown(
         f"""
@@ -70,6 +75,7 @@ def modal_confirmacao(numero_wa, mensagem_texto):
         unsafe_allow_html=True
     )
 
+    # Codificação correta para URL do WhatsApp sem caracteres escaped
     link_whatsapp = (
         f"https://wa.me/{numero_wa}?text={urllib.parse.quote(mensagem_texto)}"
     )
@@ -90,21 +96,35 @@ def modal_confirmacao(numero_wa, mensagem_texto):
             use_container_width=True,
         )
 
-# --- ESTILIZAÇÃO CSS CUSTOMIZADA ---
+# ==================== ESTILIZAÇÃO CSS CUSTOMIZADA (COM FONTE INTER) ====================
 st.markdown(
     """
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    html, body, [class*="css"], .stApp, label, p, span, div, h1, h2, h3, button, input {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    }
+
     .stApp {
         background-color: #0f172a !important;
         color: #f8fafc !important;
     }
 
     h1 {
+        font-family: 'Inter', sans-serif !important;
         font-size: 32px !important;
         font-weight: 800 !important;
         color: #ffffff !important;
         text-align: center;
         margin-bottom: 5px !important;
+        letter-spacing: -0.02em !important;
+    }
+
+    h2, h3, .stSubheader {
+        font-family: 'Inter', sans-serif !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.05em !important;
     }
 
     .logo-container img {
@@ -135,8 +155,9 @@ st.markdown(
     }
 
     button[data-baseweb="tab"] {
-        font-size: 20px !important;
-        font-weight: 800 !important;
+        font-family: 'Inter', sans-serif !important;
+        font-size: 18px !important;
+        font-weight: 700 !important;
         border-radius: 12px !important;
         padding: 12px 24px !important;
         background-color: #1e293b !important;
@@ -153,9 +174,10 @@ st.markdown(
     }
 
     .preco-badge {
+        font-family: 'Inter', sans-serif !important;
         background-color: #15803d !important;
         color: #ffffff !important;
-        font-weight: 900;
+        font-weight: 800;
         font-size: 20px !important;
         padding: 4px 10px;
         border-radius: 8px;
@@ -165,6 +187,7 @@ st.markdown(
     }
 
     div[data-testid="stNumberInput"] input {
+        font-family: 'Inter', sans-serif !important;
         font-size: 20px !important;
         font-weight: 800 !important;
         color: #ffffff !important;
@@ -181,6 +204,7 @@ st.markdown(
     }
 
     div.stButton > button {
+        font-family: 'Inter', sans-serif !important;
         border-radius: 10px !important;
         font-weight: 700 !important;
         font-size: 16px !important;
@@ -196,6 +220,7 @@ st.markdown(
     }
 
     div.stButton > button[kind="primary"] p, div.stLinkButton > a[kind="primary"] p {
+        font-family: 'Inter', sans-serif !important;
         color: #ffffff !important;
         font-weight: 800 !important;
         font-size: 18px !important;
@@ -207,12 +232,14 @@ st.markdown(
         border-radius: 12px !important;
     }
     div[data-testid="stNotification"] p {
+        font-family: 'Inter', sans-serif !important;
         color: #ecfdf5 !important;
         font-size: 16px !important;
         font-weight: 600 !important;
     }
 
     div[data-baseweb="input"] input, div[data-baseweb="select"] {
+        font-family: 'Inter', sans-serif !important;
         background-color: #0f172a !important;
         color: #ffffff !important;
     }
@@ -229,7 +256,6 @@ opcoes_logo = [
 
 logo_encontrada = None
 for nome_arquivo in opcoes_logo:
-    # Validação rigorosa de caminho (prevenção contra Directory Traversal)
     caminho_abs = os.path.abspath(nome_arquivo)
     if caminho_abs.startswith(os.getcwd()) and os.path.exists(nome_arquivo):
         logo_encontrada = nome_arquivo
@@ -243,6 +269,7 @@ if logo_encontrada:
 st.title("🍢 Cuca Espetinhos e Lanches")
 st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 25px;'>Monte seu pedido de forma rápida e prática</p>", unsafe_allow_html=True)
 
+# ==================== CARDÁPIO / MENU ====================
 menu_categorias = {
     "🍢 Espetos": {
         "ESPETO PÃO DE ALHO": {
@@ -563,7 +590,6 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                 st.markdown(f"**{item}**")
                 st.markdown(f"<span class='preco-badge'>R$ {info['preco']:.2f}</span>", unsafe_allow_html=True)
                 
-                # Validação de limite máximo de unidades por item
                 qtd = st.number_input(
                     "Qtd:",
                     min_value=0,
@@ -572,15 +598,8 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                     key=chave_item,
                     label_visibility="collapsed",
                     on_change=registrar_alteracao_item,
-                    args=(chave_item,),
+                    args=(chave_item, item, info["preco"]),
                 )
-                
-                if qtd > 0:
-                    st.session_state["carrinho"][chave_item] = {
-                        "item": item,
-                        "qtd": qtd,
-                        "subtotal": info["preco"] * qtd
-                    }
 
             if (
                 st.session_state.get("ultimo_item_alterado") == chave_item
@@ -624,7 +643,6 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
 
     st.markdown(f"### Subtotal: **R$ {subtotal_produtos:.2f}**")
 
-    # Sanitização e limitação de caracteres do nome
     nome_bruto = st.text_input("Seu Nome:", max_chars=50, key="input_nome")
     nome = html.escape(nome_bruto.strip())
 
@@ -647,7 +665,6 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
         bairro = html.escape(bairro_selecionado)
         taxa_entrega = taxas_bairros.get(bairro_selecionado, 0.00)
 
-        # Sanitização e limitação de caracteres do endereço
         rua_bruta = st.text_input("Rua e Número:", max_chars=100, key="input_rua")
         rua_numero = html.escape(rua_bruta.strip())
 
@@ -683,7 +700,7 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
 
     itens_txt = "\n".join(
         [
-            f"{i['qtd']}x {html.escape(i['item'])} (R$ {i['subtotal']:.2f})"
+            f"{i['qtd']}x {i['item']} (R$ {i['subtotal']:.2f})"
             for i in itens_carrinho
         ]
     )
@@ -711,7 +728,6 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
         key="btn_avancar_confirmacao"
     ):
         agora = time.time()
-        # Trava simples de rate limit por sessão (mínimo 3s entre cliques)
         if agora - st.session_state["ultimo_envio_timestamp"] < 3:
             st.warning("Aguarde um instante antes de clicar novamente.")
         elif tipo_entrega == "Entrega" and not rua_numero:
