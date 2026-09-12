@@ -339,27 +339,27 @@ menu_categorias = {
         },
         "Turbine seu lanche (Acrescente BACON POR:)": {
             "preco": 5.00,
-            "imagem": "https://imagens.jotaja.com/produtos/496ecdc0-4019-489f-8744-01c8417784c0.jpg",
+            "imagem": "https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f680.gif",
         },
         "Turbine seu lanche (Acrescente CHEDDAR POR:)": {
             "preco": 5.00,
-            "imagem": "https://imagens.jotaja.com/produtos/496ecdc0-4019-489f-8744-01c8417784c0.jpg",
+            "imagem": "https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f680.gif",
         },
         "Turbine seu lanche (Acrescente SALSICHA POR:)": {
             "preco": 5.00,
-            "imagem": "https://imagens.jotaja.com/produtos/496ecdc0-4019-489f-8744-01c8417784c0.jpg",
+            "imagem": "https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f680.gif",
         },
         "Turbine seu lanche (Acrescente CATUPIRY POR:)": {
             "preco": 12.00,
-            "imagem": "https://imagens.jotaja.com/produtos/496ecdc0-4019-489f-8744-01c8417784c0.jpg",
+            "imagem": "https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f680.gif",
         },
         "Turbine seu lanche (Acrescente FRANGO DESFIADO POR:)": {
             "preco": 7.00,
-            "imagem": "https://imagens.jotaja.com/produtos/496ecdc0-4019-489f-8744-01c8417784c0.jpg",
+            "imagem": "https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f680.gif",
         },
         "Turbine seu lanche (Acrescente PURE POR:)": {
             "preco": 5.00,
-            "imagem": "https://imagens.jotaja.com/produtos/496ecdc0-4019-489f-8744-01c8417784c0.jpg",
+            "imagem": "https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f680.gif",
         },
         "X-BURGER (Hamburguer, queijo cheedar Polenghi e molho da casa)": {
             "preco": 19.90,
