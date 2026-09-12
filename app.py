@@ -53,11 +53,28 @@ def voltar_ao_cardapio():
 @st.dialog("📋 Confirmar e Enviar Pedido")
 def modal_confirmacao(numero_wa, mensagem_texto):
     st.markdown(
-        "<h3 style='color: #ffffff; font-weight: 800; margin-bottom: 15px;'>"
-        "📋 Revise os detalhes do seu pedido:"
-        "</h3>",
-        unsafe_allow_html=True,
-    )
+    """
+    <style>
+        /* ... outros estilos que já estão no seu código ... */
+
+        /* Adicione o código do Item 1 aqui: */
+        div.stButton > button[data-testid="stBaseButton-primary"],
+        div.stButton > button[kind="primary"] {
+            background-color: #25D366 !important;
+            color: #ffffff !important;
+            border: none !important;
+            font-weight: bold !important;
+        }
+
+        div.stButton > button[data-testid="stBaseButton-primary"]:hover,
+        div.stButton > button[kind="primary"]:hover {
+            background-color: #1eb857 !important;
+            color: #ffffff !important;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
     
     # Sanitização contra Cross-Site Scripting (XSS)
     mensagem_html = html.escape(mensagem_texto).replace("\n", "<br>")
