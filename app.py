@@ -1,7 +1,7 @@
-import os
 import html
-import urllib.parse
+import os
 import time
+import urllib.parse
 import streamlit as st
 import streamlit.components.v1 as components
 
@@ -29,6 +29,7 @@ if "carrinho" not in st.session_state:
 if "ultimo_envio_timestamp" not in st.session_state:
     st.session_state["ultimo_envio_timestamp"] = 0
 
+
 # Funções Callback e Navegação
 def registrar_alteracao_item(chave_item):
     if st.session_state.get(chave_item, 0) > 0:
@@ -39,43 +40,44 @@ def registrar_alteracao_item(chave_item):
         if st.session_state.get("ultimo_item_alterado") == chave_item:
             st.session_state["ultimo_item_alterado"] = None
 
+
 def avancar_para_entrega():
     st.session_state["etapa_pedido"] = "dados_entrega"
+
 
 def continuar_comprando():
     st.session_state["ultimo_item_alterado"] = None
     st.session_state["etapa_pedido"] = "cardapio"
 
+
 def voltar_ao_cardapio():
     st.session_state["etapa_pedido"] = "cardapio"
+
 
 # ==================== MODAL DE CONFIRMAÇÃO ====================
 @st.dialog("📋 Confirmar e Enviar Pedido")
 def modal_confirmacao(numero_wa, mensagem_texto):
     st.markdown(
-    """
+        """
     <style>
-        /* ... outros estilos que já estão no seu código ... */
-
-        /* Adicione o código do Item 1 aqui: */
-        div.stButton > button[data-testid="stBaseButton-primary"],
-        div.stButton > button[kind="primary"] {
+        /* Estilização verde do botão de envio no WhatsApp */
+        div.stLinkButton > a[kind="primary"],
+        div.stLinkButton > a {
             background-color: #25D366 !important;
             color: #ffffff !important;
             border: none !important;
             font-weight: bold !important;
         }
 
-        div.stButton > button[data-testid="stBaseButton-primary"]:hover,
-        div.stButton > button[kind="primary"]:hover {
+        div.stLinkButton > a:hover {
             background-color: #1eb857 !important;
             color: #ffffff !important;
         }
     </style>
     """,
-    unsafe_allow_html=True
-)
-    
+        unsafe_allow_html=True,
+    )
+
     # Sanitização contra Cross-Site Scripting (XSS)
     mensagem_html = html.escape(mensagem_texto).replace("\n", "<br>")
     st.markdown(
@@ -84,7 +86,7 @@ def modal_confirmacao(numero_wa, mensagem_texto):
             {mensagem_html}
         </div>
         """,
-        unsafe_allow_html=True
+        unsafe_allow_html=True,
     )
 
     link_whatsapp = (
@@ -106,6 +108,7 @@ def modal_confirmacao(numero_wa, mensagem_texto):
             type="primary",
             use_container_width=True,
         )
+
 
 # --- ESTILIZAÇÃO CSS CUSTOMIZADA ---
 st.markdown(
@@ -154,13 +157,11 @@ st.markdown(
     button[data-baseweb="tab"] {
         font-size: 20px !important;
         font-weight: 800 !important;
-        border-radius: 12px !important;
         padding: 12px 24px !important;
         background-color: #1e293b !important;
-        color: #ffffff !important;           /* Texto branco */
+        color: #ffffff !important;
         border: none !important;
-        border-radius: 8px !important;
-        font-weight: bold !important;
+        border-radius: 12px !important;
     }
 
     button[data-baseweb="tab"][aria-selected="true"] {
@@ -243,8 +244,14 @@ st.markdown(
 
 # ==================== CARREGAMENTO SEGURO DA LOGO ====================
 opcoes_logo = [
-    "logo.png", "logo.jpg", "logo.jpeg", "logo.webp",
-    "Logo.png", "Logo.jpg", "LOGO.PNG", "LOGO.JPG"
+    "logo.png",
+    "logo.jpg",
+    "logo.jpeg",
+    "logo.webp",
+    "Logo.png",
+    "Logo.jpg",
+    "LOGO.PNG",
+    "LOGO.JPG",
 ]
 
 logo_encontrada = None
@@ -258,10 +265,13 @@ for nome_arquivo in opcoes_logo:
 if logo_encontrada:
     st.markdown('<div class="logo-container">', unsafe_allow_html=True)
     st.image(logo_encontrada, use_container_width=False, width=180)
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
 st.title("🍢 Cuca Espetinhos e Lanches")
-st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 25px;'>Monte seu pedido de forma rápida e prática</p>", unsafe_allow_html=True)
+st.markdown(
+    "<p style='text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 25px;'>Monte seu pedido de forma rápida e prática</p>",
+    unsafe_allow_html=True,
+)
 
 menu_categorias = {
     "🍢 Espetos": {
@@ -367,7 +377,7 @@ menu_categorias = {
             "preco": 12.50,
             "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
         },
-        "HOT FRANGO (Salsinha, frango, purê, batata palha, catchup, mostarda, maionese) ": {
+        "HOT FRANGO (Salsinha, frango, purê, batata palha, catchup, mostarda, maionese)": {
             "preco": 14.50,
             "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
         },
@@ -600,13 +610,16 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
         for item, info in itens.items():
             chave_item = f"{categoria}_{item}"
             col1, col2 = st.columns([1, 3])
-            
+
             with col1:
                 st.image(info["imagem"], use_container_width=True)
             with col2:
                 st.markdown(f"**{item}**")
-                st.markdown(f"<span class='preco-badge'>R$ {info['preco']:.2f}</span>", unsafe_allow_html=True)
-                
+                st.markdown(
+                    f"<span class='preco-badge'>R$ {info['preco']:.2f}</span>",
+                    unsafe_allow_html=True,
+                )
+
                 # Validação de limite máximo de unidades por item
                 qtd = st.number_input(
                     "Qtd:",
@@ -618,12 +631,12 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                     on_change=registrar_alteracao_item,
                     args=(chave_item,),
                 )
-                
+
                 if qtd > 0:
                     st.session_state["carrinho"][chave_item] = {
                         "item": item,
                         "qtd": qtd,
-                        "subtotal": info["preco"] * qtd
+                        "subtotal": info["preco"] * qtd,
                     }
 
             if (
@@ -664,7 +677,18 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     with col_titulo:
         st.subheader("📦 Entrega & Pagamento")
     with col_voltar_btn:
-        st.button("✏️ Alterar Itens", on_click=voltar_ao_cardapio, use_container_width=True)
+        st.button(
+            "✏️ Alterar Itens",
+            on_click=voltar_ao_cardapio,
+            use_container_width=True,
+        )
+
+    # Resumo rápido dos itens selecionados
+    with st.expander("🛒 Ver itens do carrinho", expanded=False):
+        for item_cart in itens_carrinho:
+            st.write(
+                f"• {item_cart['qtd']}x **{item_cart['item']}** — R$ {item_cart['subtotal']:.2f}"
+            )
 
     st.markdown(f"### Subtotal: **R$ {subtotal_produtos:.2f}**")
 
@@ -676,7 +700,7 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
         "Opção de Entrega:",
         ["Entrega", "Retirar no Local"],
         horizontal=True,
-        key="input_tipo_entrega"
+        key="input_tipo_entrega",
     )
 
     endereco = ""
@@ -686,13 +710,17 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
 
     if tipo_entrega == "Entrega":
         bairro_selecionado = st.selectbox(
-            "Selecione o Bairro:", list(taxas_bairros.keys()), key="input_bairro"
+            "Selecione o Bairro:",
+            list(taxas_bairros.keys()),
+            key="input_bairro",
         )
         bairro = html.escape(bairro_selecionado)
         taxa_entrega = taxas_bairros.get(bairro_selecionado, 0.00)
 
         # Sanitização e limitação de caracteres do endereço
-        rua_bruta = st.text_input("Rua e Número:", max_chars=100, key="input_rua")
+        rua_bruta = st.text_input(
+            "Rua e Número:", max_chars=100, key="input_rua"
+        )
         rua_numero = html.escape(rua_bruta.strip())
 
         if rua_numero:
@@ -700,7 +728,9 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
 
         total_final += taxa_entrega
         if taxa_entrega > 0:
-            st.info(f"🛵 Taxa de entrega para **{bairro}**: R$ {taxa_entrega:.2f}")
+            st.info(
+                f"🛵 Taxa de entrega para **{bairro}**: R$ {taxa_entrega:.2f}"
+            )
         else:
             st.warning("⚠️ Taxa de entrega a combinar via WhatsApp.")
     else:
@@ -709,7 +739,9 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     st.markdown(f"## **Total Final: R$ {total_final:.2f}**")
 
     pagamento_selecionado = st.selectbox(
-        "Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"], key="input_pagamento"
+        "Forma de Pagamento",
+        ["Pix", "Cartão", "Dinheiro"],
+        key="input_pagamento",
     )
     pagamento = html.escape(pagamento_selecionado)
 
@@ -737,7 +769,9 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     else:
         detalhes_tipo = "*Tipo:* Retirada no Local"
 
-    texto_pagamento = f"Pix (Chave: {CHAVE_PIX_VAL})" if pagamento == "Pix" else pagamento
+    texto_pagamento = (
+        f"Pix (Chave: {CHAVE_PIX_VAL})" if pagamento == "Pix" else pagamento
+    )
 
     mensagem = (
         f"Olá! Gostaria de fazer um pedido na *Cuca Espetinhos e Lanches*:\n\n"
@@ -752,7 +786,7 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
         "🚀 AVANÇAR PARA CONFIRMAÇÃO",
         type="primary",
         use_container_width=True,
-        key="btn_avancar_confirmacao"
+        key="btn_avancar_confirmacao",
     ):
         agora = time.time()
         # Trava simples de rate limit por sessão (mínimo 3s entre cliques)
