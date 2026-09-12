@@ -333,6 +333,10 @@ menu_categorias = {
             "preco": 14.90,
             "imagem": "https://imagens.jotaja.com/produtos/496ecdc0-4019-489f-8744-01c8417784c0.jpg",
         },
+        "Turbine seu lanche (Acrescente: Acrescente 1 hamburguer POR:)": {
+            "preco": 7.00,
+            "imagem": "https://imagens.jotaja.com/produtos/496ecdc0-4019-489f-8744-01c8417784c0.jpg",
+        },
         "X-BURGER (Hamburguer, queijo cheedar Polenghi e molho da casa)": {
             "preco": 19.90,
             "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
