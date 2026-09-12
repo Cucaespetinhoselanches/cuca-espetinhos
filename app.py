@@ -553,7 +553,19 @@ taxas_bairros = {
     "Igarapés": 5.00,
     "Esperança": 4.00,
     "Centro": 8.00,
-    "Outro Bairro (A combinar)": 0.00,
+    "São Luiz": 5.00,
+    "Portal": 5.00,
+    "Jd. São Paulo": 5.00,
+    "Terras de São João": 5.00,
+    "Jd. Emilia": 7.00,
+    "1 de maio": 5.00,
+    "Jd. Alvorada": 5.00,
+    "Imperial": 5.00,
+    "Pedramar": 7.00,
+    "Ijal": 5.00,
+    "São João": 6.00,
+    "Panorama": 7.00,
+    "Jd. Didinha": 7.00,
 }
 
 # ==================== EXIBIÇÃO DO CARDÁPIO ====================
