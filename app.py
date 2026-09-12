@@ -139,7 +139,7 @@ st.markdown(
         font-weight: 800 !important;
         border-radius: 12px !important;
         padding: 12px 24px !important;
-        background-color: #D96B27 !important; /* Laranja Bronze */
+        background-color: #1e293b !important;
         color: #ffffff !important;           /* Texto branco */
         border: none !important;
         border-radius: 8px !important;
