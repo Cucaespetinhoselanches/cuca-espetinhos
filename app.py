@@ -58,7 +58,7 @@ def voltar_ao_cardapio():
 @st.dialog("📋 Confirmar e Enviar Pedido")
 def modal_confirmacao(numero_wa, mensagem_texto):
     st.markdown(
-        "<h3 style='color: #0f172a; font-weight: 700; font-size: 18px; margin-bottom: 12px;'>"
+        "<h3 style='color: #0f172a; font-weight: 800; font-size: 22px; margin-bottom: 15px;'>"
         "📋 Revise os detalhes do seu pedido:"
         "</h3>",
         unsafe_allow_html=True,
@@ -67,7 +67,7 @@ def modal_confirmacao(numero_wa, mensagem_texto):
     mensagem_html = html.escape(mensagem_texto).replace("\n", "<br>")
     st.markdown(
         f"""
-        <div style='background-color: #ffffff; padding: 14px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 14px; line-height: 1.5; color: #1e293b;'>
+        <div style='background-color: #ffffff; padding: 16px; border-radius: 8px; border: 2px solid #cbd5e1; font-size: 18px; line-height: 1.5; color: #0f172a; font-weight: 500;'>
             {mensagem_html}
         </div>
         """,
@@ -98,7 +98,7 @@ def modal_confirmacao(numero_wa, mensagem_texto):
 st.markdown(
     """
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
     /* Fundo Global e Fonte */
     html, body, [class*="css"], .stApp {
@@ -113,24 +113,24 @@ st.markdown(
     .hero-banner {
         background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
         border-radius: 12px;
-        padding: 20px 18px;
+        padding: 22px 20px;
         color: #ffffff;
         margin-bottom: 12px;
     }
 
     .hero-subtitle {
-        font-size: 12px;
-        font-weight: 700;
+        font-size: 14px;
+        font-weight: 800;
         letter-spacing: 0.08em;
         color: #fca5a5;
         text-transform: uppercase;
-        margin-bottom: 2px;
+        margin-bottom: 4px;
     }
 
     .hero-title {
-        font-size: 26px;
-        font-weight: 800;
-        line-height: 1.2;
+        font-size: 32px;
+        font-weight: 900;
+        line-height: 1.1;
         color: #ffffff;
         margin: 0;
     }
@@ -138,52 +138,54 @@ st.markdown(
     .info-bar {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 10px;
         justify-content: space-between;
         background: #ffffff;
-        padding: 10px 14px;
+        padding: 12px 16px;
         border-radius: 8px;
-        border: 1px solid #e2e8f0;
-        font-size: 13px;
-        color: #334155;
-        font-weight: 500;
+        border: 2px solid #cbd5e1;
+        font-size: 15px;
+        color: #0f172a;
+        font-weight: 700;
         margin-bottom: 20px;
     }
 
-    /* Estilo das Abas */
+    /* Estilo das Abas com Fonte Grande */
     button[data-baseweb="tab"] {
-        font-size: 15px !important;
-        font-weight: 600 !important;
+        font-size: 18px !important;
+        font-weight: 800 !important;
         background-color: transparent !important;
-        color: #64748b !important;
+        color: #475569 !important;
         border: none !important;
-        border-bottom: 3px solid transparent !important;
-        padding: 8px 14px !important;
+        border-bottom: 4px solid transparent !important;
+        padding: 10px 16px !important;
     }
 
     button[data-baseweb="tab"][aria-selected="true"] {
         color: #dc2626 !important;
-        border-bottom: 3px solid #dc2626 !important;
+        border-bottom: 4px solid #dc2626 !important;
     }
 
     .section-header {
-        font-size: 15px;
-        font-weight: 700;
+        font-size: 20px;
+        font-weight: 900;
         letter-spacing: 0.04em;
-        color: #1e293b;
+        color: #0f172a;
         text-transform: uppercase;
-        margin-top: 10px;
-        margin-bottom: 12px;
-        border-bottom: 1px solid #e2e8f0;
-        padding-bottom: 4px;
+        margin-top: 12px;
+        margin-bottom: 14px;
+        border-bottom: 2px solid #cbd5e1;
+        padding-bottom: 6px;
     }
 
-    /* FORMATAÇÃO DAS IMAGENS */
+    /* FOTOS BEM MENORES (60px x 60px) */
     div[data-testid="stColumn"] img {
-        height: 72px !important;
-        width: 72px !important;
-        max-height: 72px !important;
-        max-width: 72px !important;
+        height: 60px !important;
+        width: 60px !important;
+        max-height: 60px !important;
+        max-width: 60px !important;
+        min-height: 60px !important;
+        min-width: 60px !important;
         object-fit: cover !important;
         border-radius: 8px !important;
         display: block !important;
@@ -193,67 +195,68 @@ st.markdown(
     div[data-testid="stColumn"] > div {
         background-color: #ffffff !important;
         border-radius: 10px;
-        padding: 12px;
-        border: 1px solid #e2e8f0 !important;
-        margin-bottom: 10px;
+        padding: 14px;
+        border: 2px solid #cbd5e1 !important;
+        margin-bottom: 12px;
     }
 
-    /* ESTILO DOS TEXTOS E PREÇOS DOS ITENS */
+    /* TEXTOS DAS COMIDAS BEM MAIORES */
     .item-title {
-        font-size: 16px !important;
-        font-weight: 700 !important;
+        font-size: 22px !important;
+        font-weight: 800 !important;
         color: #0f172a !important;
-        margin-bottom: 2px;
+        margin-bottom: 4px;
     }
 
     .item-desc {
-        color: #475569 !important;
-        font-size: 13px !important;
-        line-height: 1.35 !important;
-        margin-bottom: 6px !important;
+        color: #334155 !important;
+        font-size: 16px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 8px !important;
+        font-weight: 500 !important;
     }
 
     .badge-mais-pedido {
         background-color: #fef2f2;
         color: #dc2626;
         border: 1px solid #fecaca;
-        font-size: 11px;
-        font-weight: 600;
-        padding: 1px 6px;
-        border-radius: 4px;
+        font-size: 13px;
+        font-weight: 800;
+        padding: 2px 8px;
+        border-radius: 6px;
         display: inline-block;
-        margin-left: 6px;
+        margin-left: 8px;
         vertical-align: middle;
     }
 
     .preco-badge {
-        color: #059669 !important;
-        font-weight: 700 !important;
-        font-size: 15px !important;
+        color: #047857 !important;
+        font-weight: 900 !important;
+        font-size: 22px !important;
         display: inline-block;
     }
 
-    /* INPUTS DE QUANTIDADE */
+    /* INPUTS DE QUANTIDADE MAIORES */
     div[data-testid="stNumberInput"] input {
         background-color: #ffffff !important;
         color: #0f172a !important;
-        border: 1px solid #cbd5e1 !important;
-        font-weight: 600 !important;
-        font-size: 14px !important;
-        height: 38px !important;
+        border: 2px solid #64748b !important;
+        font-weight: 800 !important;
+        font-size: 20px !important;
+        height: 46px !important;
     }
 
-    /* BOTÕES */
+    /* BOTÕES MAIORES E MAIS NÍTIDOS */
     div.stButton > button, 
     div.stButton > button *,
     div.stLinkButton > a,
     div.stLinkButton > a * {
         background-color: #ffffff !important;
-        color: #1e293b !important;
-        border: 1px solid #cbd5e1 !important;
-        border-radius: 6px !important;
-        font-weight: 600 !important;
-        font-size: 14px !important;
+        color: #0f172a !important;
+        border: 2px solid #475569 !important;
+        border-radius: 8px !important;
+        font-weight: 800 !important;
+        font-size: 17px !important;
     }
 
     div.stButton > button:hover {
@@ -268,9 +271,9 @@ st.markdown(
         background-color: #dc2626 !important;
         color: #ffffff !important;
         border: none !important;
-        border-radius: 6px !important;
-        font-weight: 700 !important;
-        font-size: 14px !important;
+        border-radius: 8px !important;
+        font-weight: 900 !important;
+        font-size: 18px !important;
     }
 
     div.stButton > button[kind="primary"]:hover {
@@ -278,9 +281,9 @@ st.markdown(
     }
 
     label {
-        font-size: 14px !important;
-        font-weight: 600 !important;
-        color: #1e293b !important;
+        font-size: 17px !important;
+        font-weight: 800 !important;
+        color: #0f172a !important;
     }
     </style>
 """,
@@ -290,16 +293,16 @@ st.markdown(
 # ==================== CABEÇALHO SUPERIOR ====================
 st.markdown(
     """
-    <div style='display: flex; align-items: center; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #e2e8f0; margin-bottom: 12px;'>
+    <div style='display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 2px solid #cbd5e1; margin-bottom: 14px;'>
         <div style='display: flex; align-items: center; gap: 10px;'>
-            <div style='background: #dc2626; padding: 6px 10px; border-radius: 6px; color: white; font-weight: bold; font-size: 18px;'>🍢</div>
+            <div style='background: #dc2626; padding: 6px 12px; border-radius: 8px; color: white; font-weight: bold; font-size: 22px;'>🍢</div>
             <div>
-                <h2 style='margin: 0; font-size: 18px; font-weight: 800; color: #0f172a;'>CUCA</h2>
-                <p style='margin: 0; font-size: 11px; font-weight: 700; color: #64748b; letter-spacing: 0.04em;'>ESPETINHOS & LANCHES</p>
+                <h2 style='margin: 0; font-size: 22px; font-weight: 900; color: #0f172a;'>CUCA</h2>
+                <p style='margin: 0; font-size: 12px; font-weight: 800; color: #64748b; letter-spacing: 0.04em;'>ESPETINHOS & LANCHES</p>
             </div>
         </div>
         <div>
-            <span style='background: #ecfdf5; color: #059669; font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 10px; border: 1px solid #a7f3d0;'>• Aberto agora</span>
+            <span style='background: #ecfdf5; color: #047857; font-size: 14px; font-weight: 800; padding: 6px 12px; border-radius: 12px; border: 1px solid #a7f3d0;'>• Aberto agora</span>
         </div>
     </div>
     """,
@@ -506,10 +509,10 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     if pagamento == "Pix":
         st.markdown(
             f"""
-            <div style='background-color: #ecfdf5; border-left: 4px solid #10b981; padding: 12px; border-radius: 6px; margin-bottom: 12px;'>
-                <p style='color: #065f46 !important; font-size: 14px !important; margin-bottom: 2px;'>📱 <b>Chave PIX (Telefone):</b></p>
-                <p style='color: #047857 !important; font-size: 20px !important; font-weight: 700 !important; margin: 0;'>{CHAVE_PIX_VAL}</p>
-                <p style='color: #475569 !important; font-size: 12px !important; margin-top: 2px;'><i>Por favor, envie o comprovante pelo WhatsApp após finalizar o pedido.</i></p>
+            <div style='background-color: #ecfdf5; border-left: 6px solid #10b981; padding: 16px; border-radius: 8px; margin-bottom: 15px;'>
+                <p style='color: #065f46 !important; font-size: 17px !important; margin-bottom: 2px;'>📱 <b>Chave PIX (Telefone):</b></p>
+                <p style='color: #047857 !important; font-size: 26px !important; font-weight: 900 !important; margin: 0;'>{CHAVE_PIX_VAL}</p>
+                <p style='color: #334155 !important; font-size: 14px !important; margin-top: 4px;'><i>Por favor, envie o comprovante pelo WhatsApp após finalizar o pedido.</i></p>
             </div>
             """,
             unsafe_allow_html=True,
