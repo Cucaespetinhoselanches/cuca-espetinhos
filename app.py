@@ -329,7 +329,7 @@ menu_categorias = {
         },
     },
     "🥪 Lanches": {
-        "Monte seu combo (Acrescente: Batata frita + refrigerante em lata ao seu lanche)": {
+        "Monte seu combo (Acrescente: Batata frita + refrigerante em lata ao seu lanche POR:)": {
             "preco": 14.90,
             "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxPJK0WmwULBlh7fS603Zphz1Ll-C2dreFLIRQyNl7Jg&s=10",
         },
