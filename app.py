@@ -54,43 +54,80 @@ def continuar_comprando():
 def voltar_ao_cardapio():
     st.session_state["etapa_pedido"] = "cardapio"
 
-# ==================== ESTILIZAÇÃO CSS CUSTOMIZADA (TEMA IDÊNTICO À IMAGEM) ====================
+# ==================== MODAL DE CONFIRMAÇÃO ====================
+@st.dialog("📋 Confirmar e Enviar Pedido")
+def modal_confirmacao(numero_wa, mensagem_texto):
+    st.markdown(
+        "<h3 style='color: #111827; font-weight: 800; margin-bottom: 15px;'>"
+        "📋 Revise os detalhes do seu pedido:"
+        "</h3>",
+        unsafe_allow_html=True,
+    )
+    
+    mensagem_html = html.escape(mensagem_texto).replace("\n", "<br>")
+    st.markdown(
+        f"""
+        <div style='background-color: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0; font-size: 16px; line-height: 1.6; color: #1e293b;'>
+            {mensagem_html}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+    link_whatsapp = (
+        f"https://wa.me/{numero_wa}?text={urllib.parse.quote(mensagem_texto)}"
+    )
+
+    st.write("---")
+    col_voltar, col_enviar = st.columns([1, 2])
+
+    with col_voltar:
+        if st.button("❌ Alterar Pedido", use_container_width=True):
+            st.session_state["mostrar_modal"] = False
+            st.rerun()
+
+    with col_enviar:
+        st.link_button(
+            "📲 CONFIRMAR E ENVIAR",
+            link_whatsapp,
+            type="primary",
+            use_container_width=True,
+        )
+
+# ==================== ESTILIZAÇÃO CSS CUSTOMIZADA ====================
 st.markdown(
     """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-    /* Fundo da aplicação e tipografia global */
     html, body, [class*="css"], .stApp {
         background-color: #f3f3f3 !important;
         font-family: 'Inter', -apple-system, sans-serif !important;
         color: #1a1a1a !important;
     }
 
-    /* Esconder o cabeçalho padrão do Streamlit */
     header {visibility: hidden;}
 
-    /* Banner Superior Estilo Imagem */
     .hero-banner {
         background: linear-gradient(135deg, #400d08 0%, #80180d 50%, #4a0905 100%);
         border-radius: 8px;
-        padding: 35px 30px;
+        padding: 30px 25px;
         color: #ffffff;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     .hero-subtitle {
-        font-size: 13px;
+        font-size: 12px;
         font-weight: 800;
         letter-spacing: 0.1em;
         color: #ff8073;
         text-transform: uppercase;
-        margin-bottom: 6px;
+        margin-bottom: 4px;
     }
 
     .hero-title {
-        font-size: 42px;
+        font-size: 36px;
         font-weight: 900;
         line-height: 1.05;
         color: #ffffff;
@@ -98,31 +135,29 @@ st.markdown(
         margin: 0;
     }
 
-    /* Barra de informações (Entrega, Taxa, etc) */
     .info-bar {
         display: flex;
         justify-content: space-between;
         background: #ffffff;
-        padding: 12px 18px;
+        padding: 10px 15px;
         border-radius: 6px;
         border: 1px solid #e5e5e5;
-        font-size: 14px;
+        font-size: 13px;
         color: #4a4a4a;
-        font-weight: 500;
+        font-weight: 600;
         margin-bottom: 20px;
     }
 
-    /* Abas do Cardápio */
     button[data-baseweb="tab"] {
         font-family: 'Inter', sans-serif !important;
-        font-size: 16px !important;
+        font-size: 15px !important;
         font-weight: 700 !important;
         background-color: transparent !important;
         color: #666666 !important;
         border: none !important;
         border-bottom: 3px solid transparent !important;
         border-radius: 0 !important;
-        padding: 10px 18px !important;
+        padding: 8px 14px !important;
     }
 
     button[data-baseweb="tab"][aria-selected="true"] {
@@ -130,65 +165,72 @@ st.markdown(
         border-bottom: 3px solid #b91c1c !important;
     }
 
-    /* Títulos e Textos */
     .section-header {
         font-size: 13px;
         font-weight: 800;
         letter-spacing: 0.08em;
         color: #4a5568;
         text-transform: uppercase;
-        margin-top: 20px;
+        margin-top: 15px;
         margin-bottom: 12px;
         border-bottom: 1px solid #e2e8f0;
-        padding-bottom: 6px;
+        padding-bottom: 4px;
     }
 
-    /* Cards de Produtos */
+    /* CONTROLE DO TAMANHO DAS IMAGENS */
+    div[data-testid="stColumn"] img {
+        max-height: 95px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+        border-radius: 8px !important;
+    }
+
     div[data-testid="stColumn"] > div {
         background-color: #ffffff !important;
         border-radius: 8px;
-        padding: 14px;
+        padding: 10px;
         border: 1px solid #e5e7eb !important;
         box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        margin-bottom: 8px;
     }
 
     .item-title {
-        font-size: 18px;
+        font-size: 16px;
         font-weight: 800;
         color: #111827;
-        margin-bottom: 4px;
+        margin-bottom: 2px;
     }
 
     .badge-mais-pedido {
         background-color: #fef2f2;
         color: #991b1b;
         border: 1px solid #fecaca;
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 700;
-        padding: 2px 8px;
+        padding: 1px 6px;
         border-radius: 4px;
         display: inline-block;
-        margin-left: 8px;
+        margin-left: 6px;
     }
 
     .preco-badge {
         background-color: transparent !important;
         color: #059669 !important;
         font-weight: 800;
-        font-size: 18px !important;
+        font-size: 17px !important;
         display: inline-block;
-        margin-top: 4px;
+        margin-top: 2px;
     }
 
-    /* Entradas e Botões */
     div[data-testid="stNumberInput"] input {
         background-color: #f9fafb !important;
         color: #111827 !important;
         border: 1px solid #d1d5db !important;
         font-weight: 700 !important;
+        height: 38px !important;
     }
 
-    div.stButton > button[kind="primary"] {
+    div.stButton > button[kind="primary"], div.stLinkButton > a[kind="primary"] {
         background-color: #b91c1c !important;
         color: #ffffff !important;
         border: none !important;
@@ -207,18 +249,18 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# ==================== CABEÇALHO SUPERIOR (ESTILO HERÓI) ====================
+# ==================== CABEÇALHO SUPERIOR ====================
 st.markdown(
     """
     <div style='display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e5e7eb; margin-bottom: 15px;'>
-        <div style='display: flex; align-items: center; gap: 12px;'>
-            <div style='background: #b91c1c; padding: 8px; border-radius: 6px;'>🍢</div>
+        <div style='display: flex; align-items: center; gap: 10px;'>
+            <div style='background: #b91c1c; padding: 6px 10px; border-radius: 6px; color: white; font-weight: bold;'>🍢</div>
             <div>
-                <h2 style='margin: 0; font-size: 20px; font-weight: 900; color: #111827;'>CUCA</h2>
+                <h2 style='margin: 0; font-size: 18px; font-weight: 900; color: #111827;'>CUCA</h2>
                 <p style='margin: 0; font-size: 11px; font-weight: 700; color: #6b7280; letter-spacing: 0.05em;'>ESPETINHOS & LANCHES</p>
             </div>
         </div>
-        <div style='display: flex; gap: 10px; align-items: center;'>
+        <div>
             <span style='background: #ecfdf5; color: #047857; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 12px;'>• Aberto agora</span>
         </div>
     </div>
@@ -226,7 +268,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-# Banner Principal
 st.markdown(
     """
     <div class="hero-banner">
@@ -325,7 +366,6 @@ taxas_bairros = {
     "Outro Bairro (A combinar)": 0.00,
 }
 
-# ==================== EXIBIÇÃO DO CARDÁPIO ====================
 abas = st.tabs(list(menu_categorias.keys()))
 
 for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
@@ -340,7 +380,7 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
             with col2:
                 badge = "<span class='badge-mais-pedido'>Mais pedido</span>" if info.get("mais_pedido") else ""
                 st.markdown(f"<div class='item-title'>{item}{badge}</div>", unsafe_allow_html=True)
-                st.markdown(f"<p style='color: #6b7280; font-size: 13px; margin-bottom: 6px;'>{info.get('descricao', '')}</p>", unsafe_allow_html=True)
+                st.markdown(f"<p style='color: #6b7280; font-size: 12px; margin-bottom: 4px;'>{info.get('descricao', '')}</p>", unsafe_allow_html=True)
                 st.markdown(f"<span class='preco-badge'>R$ {info['preco']:.2f}</span>", unsafe_allow_html=True)
                 
                 qtd = st.number_input(
@@ -369,44 +409,126 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
 itens_carrinho = list(st.session_state["carrinho"].values())
 subtotal_produtos = sum(i["subtotal"] for i in itens_carrinho)
 
-# ==================== ETAPA DE ENTREGA ====================
+# ==================== DADOS DE ENTREGA E PAGAMENTO ====================
 if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
+    st.markdown("<div id='secao-entrega'></div>", unsafe_allow_html=True)
+
     st.write("---")
-    st.subheader("📦 Dados de Entrega e Pagamento")
-    
+    col_titulo, col_voltar_btn = st.columns([3, 1])
+    with col_titulo:
+        st.subheader("📦 Entrega & Pagamento")
+    with col_voltar_btn:
+        st.button("✏️ Alterar Itens", on_click=voltar_ao_cardapio, use_container_width=True)
+
+    st.markdown(f"### Subtotal: **R$ {subtotal_produtos:.2f}**")
+
     nome_bruto = st.text_input("Seu Nome:", max_chars=50, key="input_nome")
     nome = html.escape(nome_bruto.strip())
 
-    tipo_entrega = st.radio("Opção de Entrega:", ["Entrega", "Retirar no Local"], horizontal=True, key="input_tipo_entrega")
+    tipo_entrega = st.radio(
+        "Opção de Entrega:",
+        ["Entrega", "Retirar no Local"],
+        horizontal=True,
+        key="input_tipo_entrega"
+    )
 
     endereco = ""
     taxa_entrega = 0.00
     total_final = subtotal_produtos
+    rua_numero = ""
 
     if tipo_entrega == "Entrega":
-        bairro_selecionado = st.selectbox("Selecione o Bairro:", list(taxas_bairros.keys()), key="input_bairro")
+        bairro_selecionado = st.selectbox(
+            "Selecione o Bairro:", list(taxas_bairros.keys()), key="input_bairro"
+        )
+        bairro = html.escape(bairro_selecionado)
         taxa_entrega = taxas_bairros.get(bairro_selecionado, 0.00)
+
         rua_bruta = st.text_input("Rua e Número:", max_chars=100, key="input_rua")
         rua_numero = html.escape(rua_bruta.strip())
+
         if rua_numero:
-            endereco = f"{rua_numero} - {bairro_selecionado}"
+            endereco = f"{rua_numero} - {bairro}"
+
         total_final += taxa_entrega
+        if taxa_entrega > 0:
+            st.info(f"🛵 Taxa de entrega para **{bairro}**: R$ {taxa_entrega:.2f}")
+        else:
+            st.warning("⚠️ Taxa de entrega a combinar via WhatsApp.")
+    else:
+        st.info("🏪 **Retirada no Balcão:** Sem taxa adicional.")
 
-    st.markdown(f"### Total Final: **R$ {total_final:.2f}**")
+    st.markdown(f"## **Total Final: R$ {total_final:.2f}**")
 
-    pagamento = st.selectbox("Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"], key="input_pagamento")
+    pagamento_selecionado = st.selectbox(
+        "Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"], key="input_pagamento"
+    )
+    pagamento = html.escape(pagamento_selecionado)
 
-    itens_txt = "\n".join([f"{i['qtd']}x {i['item']} (R$ {i['subtotal']:.2f})" for i in itens_carrinho])
+    if pagamento == "Pix":
+        st.markdown(
+            f"""
+            <div style='background-color: #ecfdf5; border-left: 5px solid #10b981; padding: 12px; border-radius: 8px; margin-bottom: 15px;'>
+                <p style='color: #065f46 !important; font-size: 15px !important; margin-bottom: 2px;'>📱 <b>Chave PIX (Telefone):</b></p>
+                <p style='color: #047857 !important; font-size: 22px !important; font-weight: 900 !important; margin: 0;'>{CHAVE_PIX_VAL}</p>
+                <p style='color: #6b7280 !important; font-size: 12px !important; margin-top: 4px;'><i>Por favor, envie o comprovante pelo WhatsApp após finalizar o pedido.</i></p>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
+    itens_txt = "\n".join(
+        [
+            f"{i['qtd']}x {i['item']} (R$ {i['subtotal']:.2f})"
+            for i in itens_carrinho
+        ]
+    )
+
+    if tipo_entrega == "Entrega":
+        detalhes_tipo = f"*Tipo:* Entrega\n*Endereço:* {endereco}\n*Taxa:* R$ {taxa_entrega:.2f}"
+    else:
+        detalhes_tipo = "*Tipo:* Retirada no Local"
+
+    texto_pagamento = f"Pix (Chave: {CHAVE_PIX_VAL})" if pagamento == "Pix" else pagamento
+
     mensagem = (
         f"Olá! Gostaria de fazer um pedido na *Cuca Espetinhos & Lanches*:\n\n"
         f"*Cliente:* {nome}\n"
-        f"*Tipo:* {tipo_entrega}\n"
-        f"*Endereço:* {endereco if tipo_entrega == 'Entrega' else 'Balcão'}\n"
-        f"*Pagamento:* {pagamento}\n\n"
+        f"{detalhes_tipo}\n"
+        f"*Pagamento:* {texto_pagamento}\n\n"
         f"*Itens:*\n{itens_txt}\n\n"
-        f"*Total:* R$ {total_final:.2f}"
+        f"*Total a Pagar:* R$ {total_final:.2f}"
     )
 
-    if st.button("🚀 ENVIAR PEDIDO PELO WHATSAPP", type="primary", use_container_width=True):
-        link_whatsapp = f"https://wa.me/{WHATSAPP_NUMBER}?text={urllib.parse.quote(mensagem)}"
-        st.markdown(f"[Clique aqui para enviar no WhatsApp]({link_whatsapp})")
+    if st.button(
+        "🚀 AVANÇAR PARA CONFIRMAÇÃO",
+        type="primary",
+        use_container_width=True,
+        key="btn_avancar_confirmacao"
+    ):
+        agora = time.time()
+        if agora - st.session_state["ultimo_envio_timestamp"] < 3:
+            st.warning("Aguarde um instante antes de clicar novamente.")
+        elif tipo_entrega == "Entrega" and not rua_numero:
+            st.error("Por favor, preencha a Rua e o Número para continuar.")
+        elif not nome:
+            st.error("Por favor, informe seu nome para continuar.")
+        else:
+            st.session_state["ultimo_envio_timestamp"] = agora
+            st.session_state["mostrar_modal"] = True
+
+    if st.session_state.get("mostrar_modal", False):
+        modal_confirmacao(WHATSAPP_NUMBER, mensagem)
+
+    # ROLAGEM AUTOMÁTICA VIA JAVASCRIPT
+    components.html(
+        """
+        <script>
+            var elemento = window.parent.document.getElementById('secao-entrega');
+            if (elemento) {
+                elemento.scrollIntoView({behavior: 'smooth'});
+            }
+        </script>
+        """,
+        height=0,
+    )
