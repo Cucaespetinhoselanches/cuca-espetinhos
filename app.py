@@ -329,10 +329,9 @@ menu_categorias = {
         },
     },
     "🥪 Lanches": {
-        "Monte seu combo": {
-            "nome": "Monte seu combo",
-            "descricao": "Batata frita + refrigerante em lata",
-            "preco": 14.90
+        "Monte seu combo (Batata frita + refrigerante em lata)": {
+            "preco": 14.90,
+            "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
         },
         "X-BURGER (Hamburguer, queijo cheedar Polenghi e molho da casa)": {
             "preco": 19.90,
