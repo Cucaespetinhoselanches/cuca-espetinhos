@@ -382,6 +382,13 @@ menu_categorias = {
             "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
         },
     },
+    # Insira dentro da categoria desejada ou crie uma chave "Combos" no seu dicionário principal:
+"Monte seu combo": {
+    "nome": "Monte seu combo",
+    "descricao": "Batata frita + refrigerante em lata",
+    "preco": 14.90,
+    "imagem": "https://images.unsplash.com/photo-1576107232684-1279f3908594?w=500"
+}
     "🍟 Porções": {
         "PORÇÃO BATATA FRITA": {
             "preco": 29.90,
