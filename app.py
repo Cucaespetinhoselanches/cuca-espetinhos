@@ -139,10 +139,11 @@ st.markdown(
         font-weight: 800 !important;
         border-radius: 12px !important;
         padding: 12px 24px !important;
-        background-color: #1e293b !important;
-        color: #94a3b8 !important;
-        border: 1px solid #334155 !important;
-        margin-right: 8px !important;
+        background-color: #D96B27 !important; /* Laranja Bronze */
+        color: #ffffff !important;           /* Texto branco */
+        border: none !important;
+        border-radius: 8px !important;
+        font-weight: bold !important;
     }
 
     button[data-baseweb="tab"][aria-selected="true"] {
