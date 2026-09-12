@@ -331,7 +331,7 @@ menu_categorias = {
     "🥪 Lanches": {
         "Monte seu combo (Acrescente: Batata frita + refrigerante em lata ao seu lanche POR:)": {
             "preco": 14.90,
-            "imagem": "https://i.pinimg.com/736x/da/c5/44/dac544ab40b8ae8a675f3a6a8e96d22c.jpg",
+            "imagem": "https://imagens.jotaja.com/produtos/496ecdc0-4019-489f-8744-01c8417784c0.jpg",
         },
         "X-BURGER (Hamburguer, queijo cheedar Polenghi e molho da casa)": {
             "preco": 19.90,
