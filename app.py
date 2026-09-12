@@ -3,6 +3,42 @@ import html
 import urllib.parse
 import time
 import streamlit as st
+
+# Bloco de estilo da aplicação
+st.markdown("""
+    <style>
+    /* Estilos existentes do seu código... */
+    label, p, span, div {
+        color: #f8fafc !important;
+    }
+
+    button[data-baseweb="tab"] {
+        font-size: 20px !important;
+        font-weight: 800 !important;
+        border-radius: 12px !important;
+        padding: 12px 24px !important;
+        background-color: #1e293b !important;
+        color: #94a3b8 !important;
+    }
+
+    /* NOVO: Estilo Laranja Bronze para o botão */
+    div.stButton > button {
+        background-color: #D96B27 !important;
+        color: #ffffff !important;
+        border: none !important;
+        border-radius: 8px !important;
+        font-weight: bold !important;
+    }
+
+    div.stButton > button:hover {
+        background-color: #B8541D !important;
+        color: #ffffff !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# Onde o botão é exibido no seu app
+st.button("➕ Adicionar itens")
 import streamlit.components.v1 as components
 
 st.set_page_config(
