@@ -6,7 +6,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 st.set_page_config(
-    page_title="Cuca Espetinhos e Lanches", page_icon="🍢", layout="centered"
+    page_title="Cuca Espetinhos & Lanches", page_icon="🍢", layout="centered"
 )
 
 # ==================== GERENCIAMENTO SEGURO DE SEGREDOS ====================
@@ -54,515 +54,265 @@ def continuar_comprando():
 def voltar_ao_cardapio():
     st.session_state["etapa_pedido"] = "cardapio"
 
-# ==================== MODAL DE CONFIRMAÇÃO ====================
-@st.dialog("📋 Confirmar e Enviar Pedido")
-def modal_confirmacao(numero_wa, mensagem_texto):
-    st.markdown(
-        "<h3 style='color: #ffffff; font-weight: 800; margin-bottom: 15px;'>"
-        "📋 Revise os detalhes do seu pedido:"
-        "</h3>",
-        unsafe_allow_html=True,
-    )
-    
-    # Sanitização contra Cross-Site Scripting (XSS) para exibição visual
-    mensagem_html = html.escape(mensagem_texto).replace("\n", "<br>")
-    st.markdown(
-        f"""
-        <div style='background-color: #1e293b; padding: 15px; border-radius: 10px; border: 1px solid #334155; font-size: 18px; line-height: 1.6; color: #f8fafc;'>
-            {mensagem_html}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    # Codificação correta para URL do WhatsApp sem caracteres escaped
-    link_whatsapp = (
-        f"https://wa.me/{numero_wa}?text={urllib.parse.quote(mensagem_texto)}"
-    )
-
-    st.write("---")
-    col_voltar, col_enviar = st.columns([1, 2])
-
-    with col_voltar:
-        if st.button("❌ Alterar Pedido", use_container_width=True):
-            st.session_state["mostrar_modal"] = False
-            st.rerun()
-
-    with col_enviar:
-        st.link_button(
-            "📲 CONFIRMAR E ENVIAR",
-            link_whatsapp,
-            type="primary",
-            use_container_width=True,
-        )
-
-# ==================== ESTILIZAÇÃO CSS CUSTOMIZADA (COM FONTE INTER) ====================
+# ==================== ESTILIZAÇÃO CSS CUSTOMIZADA (TEMA IDÊNTICO À IMAGEM) ====================
 st.markdown(
     """
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-    html, body, [class*="css"], .stApp, label, p, span, div, h1, h2, h3, button, input {
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    /* Fundo da aplicação e tipografia global */
+    html, body, [class*="css"], .stApp {
+        background-color: #f3f3f3 !important;
+        font-family: 'Inter', -apple-system, sans-serif !important;
+        color: #1a1a1a !important;
     }
 
-    .stApp {
-        background-color: #0f172a !important;
-        color: #f8fafc !important;
+    /* Esconder o cabeçalho padrão do Streamlit */
+    header {visibility: hidden;}
+
+    /* Banner Superior Estilo Imagem */
+    .hero-banner {
+        background: linear-gradient(135deg, #400d08 0%, #80180d 50%, #4a0905 100%);
+        border-radius: 8px;
+        padding: 35px 30px;
+        color: #ffffff;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
-    h1 {
-        font-family: 'Inter', sans-serif !important;
-        font-size: 32px !important;
-        font-weight: 800 !important;
-        color: #ffffff !important;
-        text-align: center;
-        margin-bottom: 5px !important;
-        letter-spacing: -0.02em !important;
+    .hero-subtitle {
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        color: #ff8073;
+        text-transform: uppercase;
+        margin-bottom: 6px;
     }
 
-    h2, h3, .stSubheader {
-        font-family: 'Inter', sans-serif !important;
-        font-weight: 800 !important;
-        letter-spacing: 0.05em !important;
+    .hero-title {
+        font-size: 42px;
+        font-weight: 900;
+        line-height: 1.05;
+        color: #ffffff;
+        letter-spacing: -0.03em;
+        margin: 0;
     }
 
-    .logo-container img {
-        max-height: 150px !important;
-        width: auto !important;
-        margin: 0 auto;
-        display: block;
-        object-fit: contain !important;
+    /* Barra de informações (Entrega, Taxa, etc) */
+    .info-bar {
+        display: flex;
+        justify-content: space-between;
+        background: #ffffff;
+        padding: 12px 18px;
+        border-radius: 6px;
+        border: 1px solid #e5e5e5;
+        font-size: 14px;
+        color: #4a4a4a;
+        font-weight: 500;
+        margin-bottom: 20px;
     }
 
-    div[data-testid="stColumn"] img {
-        max-height: 120px !important;
-        object-fit: cover !important;
-        border-radius: 10px !important;
-    }
-
-    div[data-testid="stColumn"] > div {
-        background-color: #1e293b !important;
-        border-radius: 16px;
-        padding: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        border: 1px solid #334155 !important;
-        margin-bottom: 10px;
-    }
-
-    label, p, span, div {
-        color: #f8fafc !important;
-    }
-
+    /* Abas do Cardápio */
     button[data-baseweb="tab"] {
         font-family: 'Inter', sans-serif !important;
-        font-size: 18px !important;
+        font-size: 16px !important;
         font-weight: 700 !important;
-        border-radius: 12px !important;
-        padding: 12px 24px !important;
-        background-color: #1e293b !important;
-        color: #94a3b8 !important;
-        border: 1px solid #334155 !important;
-        margin-right: 8px !important;
+        background-color: transparent !important;
+        color: #666666 !important;
+        border: none !important;
+        border-bottom: 3px solid transparent !important;
+        border-radius: 0 !important;
+        padding: 10px 18px !important;
     }
 
     button[data-baseweb="tab"][aria-selected="true"] {
-        background-color: #ef4444 !important;
-        color: #ffffff !important;
-        border: none !important;
-        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        color: #b91c1c !important;
+        border-bottom: 3px solid #b91c1c !important;
     }
 
-    .preco-badge {
-        font-family: 'Inter', sans-serif !important;
-        background-color: #15803d !important;
-        color: #ffffff !important;
+    /* Títulos e Textos */
+    .section-header {
+        font-size: 13px;
         font-weight: 800;
-        font-size: 20px !important;
-        padding: 4px 10px;
+        letter-spacing: 0.08em;
+        color: #4a5568;
+        text-transform: uppercase;
+        margin-top: 20px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 6px;
+    }
+
+    /* Cards de Produtos */
+    div[data-testid="stColumn"] > div {
+        background-color: #ffffff !important;
         border-radius: 8px;
-        display: inline-block;
-        margin-top: 4px;
+        padding: 14px;
+        border: 1px solid #e5e7eb !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .item-title {
+        font-size: 18px;
+        font-weight: 800;
+        color: #111827;
         margin-bottom: 4px;
     }
 
-    div[data-testid="stNumberInput"] input {
-        font-family: 'Inter', sans-serif !important;
-        font-size: 20px !important;
-        font-weight: 800 !important;
-        color: #ffffff !important;
-        text-align: center !important;
-        height: 42px !important;
+    .badge-mais-pedido {
+        background-color: #fef2f2;
+        color: #991b1b;
+        border: 1px solid #fecaca;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 4px;
+        display: inline-block;
+        margin-left: 8px;
     }
 
-    div[data-testid="stNumberInput"] button {
-        height: 42px !important;
-        width: 42px !important;
-        background-color: #334155 !important;
+    .preco-badge {
+        background-color: transparent !important;
+        color: #059669 !important;
+        font-weight: 800;
+        font-size: 18px !important;
+        display: inline-block;
+        margin-top: 4px;
+    }
+
+    /* Entradas e Botões */
+    div[data-testid="stNumberInput"] input {
+        background-color: #f9fafb !important;
+        color: #111827 !important;
+        border: 1px solid #d1d5db !important;
+        font-weight: 700 !important;
+    }
+
+    div.stButton > button[kind="primary"] {
+        background-color: #b91c1c !important;
         color: #ffffff !important;
-        border-radius: 8px !important;
+        border: none !important;
+        border-radius: 6px !important;
+        font-weight: 700 !important;
     }
 
     div.stButton > button {
-        font-family: 'Inter', sans-serif !important;
-        border-radius: 10px !important;
-        font-weight: 700 !important;
-        font-size: 16px !important;
-        background-color: #334155 !important;
-        color: #ffffff !important;
-        border: 1px solid #475569 !important;
-    }
-
-    div.stButton > button[kind="primary"], div.stLinkButton > a[kind="primary"] {
-        background-color: #22c55e !important;
-        border: none !important;
-        border-radius: 12px !important;
-    }
-
-    div.stButton > button[kind="primary"] p, div.stLinkButton > a[kind="primary"] p {
-        font-family: 'Inter', sans-serif !important;
-        color: #ffffff !important;
-        font-weight: 800 !important;
-        font-size: 18px !important;
-    }
-
-    div[data-testid="stNotification"] {
-        background-color: #064e3b !important;
-        border-left: 5px solid #22c55e !important;
-        border-radius: 12px !important;
-    }
-    div[data-testid="stNotification"] p {
-        font-family: 'Inter', sans-serif !important;
-        color: #ecfdf5 !important;
-        font-size: 16px !important;
-        font-weight: 600 !important;
-    }
-
-    div[data-baseweb="input"] input, div[data-baseweb="select"] {
-        font-family: 'Inter', sans-serif !important;
-        background-color: #0f172a !important;
-        color: #ffffff !important;
+        background-color: #ffffff !important;
+        color: #374151 !important;
+        border: 1px solid #d1d5db !important;
+        border-radius: 6px !important;
     }
     </style>
 """,
     unsafe_allow_html=True,
 )
 
-# ==================== CARREGAMENTO SEGURO DA LOGO ====================
-opcoes_logo = [
-    "logo.png", "logo.jpg", "logo.jpeg", "logo.webp",
-    "Logo.png", "Logo.jpg", "LOGO.PNG", "LOGO.JPG"
-]
+# ==================== CABEÇALHO SUPERIOR (ESTILO HERÓI) ====================
+st.markdown(
+    """
+    <div style='display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e5e7eb; margin-bottom: 15px;'>
+        <div style='display: flex; align-items: center; gap: 12px;'>
+            <div style='background: #b91c1c; padding: 8px; border-radius: 6px;'>🍢</div>
+            <div>
+                <h2 style='margin: 0; font-size: 20px; font-weight: 900; color: #111827;'>CUCA</h2>
+                <p style='margin: 0; font-size: 11px; font-weight: 700; color: #6b7280; letter-spacing: 0.05em;'>ESPETINHOS & LANCHES</p>
+            </div>
+        </div>
+        <div style='display: flex; gap: 10px; align-items: center;'>
+            <span style='background: #ecfdf5; color: #047857; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 12px;'>• Aberto agora</span>
+        </div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
-logo_encontrada = None
-for nome_arquivo in opcoes_logo:
-    caminho_abs = os.path.abspath(nome_arquivo)
-    if caminho_abs.startswith(os.getcwd()) and os.path.exists(nome_arquivo):
-        logo_encontrada = nome_arquivo
-        break
-
-if logo_encontrada:
-    st.markdown('<div class="logo-container">', unsafe_allow_html=True)
-    st.image(logo_encontrada, use_container_width=False, width=180)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-st.title("🍢 Cuca Espetinhos e Lanches")
-st.markdown("<p style='text-align: center; color: #94a3b8; font-size: 16px; margin-bottom: 25px;'>Monte seu pedido de forma rápida e prática</p>", unsafe_allow_html=True)
+# Banner Principal
+st.markdown(
+    """
+    <div class="hero-banner">
+        <div class="hero-subtitle">NA BRASA, FEITO NA HORA</div>
+        <div class="hero-title">Espetinho<br>da Cuca</div>
+    </div>
+    <div class="info-bar">
+        <span>Entrega 30–45 min</span>
+        <span>Taxa R$ 3,00 a R$ 8,00</span>
+        <span>Pedido mínimo R$ 20,00</span>
+        <span>Retirada no balcão</span>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
 # ==================== CARDÁPIO / MENU ====================
 menu_categorias = {
-    "🍢 Espetos": {
-        "ESPETO PÃO DE ALHO": {
+    "Espetos": {
+        "Espeto Pão de Alho": {
             "preco": 9.00,
+            "descricao": "Pão artesanal no alho e manteiga, tostado na brasa até dourar.",
+            "mais_pedido": True,
             "imagem": "https://casadecarnesdomaninho.com.br/wp-content/uploads/2022/06/espetinho-pao-de-alho.jpg",
         },
-        "ESPETO ROMEU E JULIETA (Bacon/Goiabada/Queijo)": {
-            "preco": 15.00,
-            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-        },
-        "ESPETO QUEIJO COALHO": {
+        "Espeto Queijo Coalho": {
             "preco": 9.00,
+            "descricao": "Queijo coalho tostado por fora e derretido por dentro.",
+            "mais_pedido": False,
             "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpyXQSm25u3do9kGas7sKk1Lf1oXX7mcrS5IC9w5UPKUfGRAdrjq2a8vFs&s=10",
         },
-        "ESPETO PANCETA": {
+        "Espeto Alcatra": {
             "preco": 12.00,
+            "descricao": "Corte de alcatra macia e suculenta assada na brasa.",
+            "mais_pedido": True,
             "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
         },
-        "ESPETO ALCATRA": {
-            "preco": 12.00,
-            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-        },
-        "ESPETO PICANHA": {
+        "Espeto Picanha": {
             "preco": 18.00,
+            "descricao": "Picanha nobre com camada leve de gordura.",
+            "mais_pedido": True,
             "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
         },
-        "ESPETO FRALDINHA": {
+        "Espeto Frango": {
             "preco": 12.00,
-            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-        },
-        "ESPETO LINGUIÇA": {
-            "preco": 9.00,
-            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-        },
-        "ESPETO LINGUIÇA GOURMET": {
-            "preco": 9.00,
-            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-        },
-        "ESPETO KAFTA": {
-            "preco": 12.00,
-            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-        },
-        "ESPETO KAFTA GOURMET": {
-            "preco": 14.00,
-            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-        },
-        "ESPETO CORAÇÃO": {
-            "preco": 18.00,
-            "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
-        },
-        "ESPETO FRANGO": {
-            "preco": 12.00,
+            "descricao": "Peito de frango temperado no ponto certo.",
+            "mais_pedido": False,
             "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
         },
     },
-    "🥪 Lanches": {
-        "X BURGER": {
+    "Lanches": {
+        "X Burger": {
             "preco": 19.90,
-            "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
+            "descricao": "Hambúrguer artesanal, queijo derretido e maionese da casa.",
+            "mais_pedido": False,
+            "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800",
         },
-        "X SALADA": {
+        "X Salada": {
             "preco": 29.90,
-            "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
-        },
-        "X BACON": {
-            "preco": 35.90,
-            "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
-        },
-        "X-EGG": {
-            "preco": 30.90,
-            "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
-        },
-        "X-CATUPIRY EMPANADO": {
-            "preco": 32.90,
-            "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
-        },
-        "FRANGÃO": {
-            "preco": 32.90,
-            "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
-        },
-        "HOT CALABRESA": {
-            "preco": 16.50,
-            "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
-        },
-        "HOT BACON": {
-            "preco": 16.50,
-            "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
-        },
-        "HOT SALADA": {
-            "preco": 12.50,
-            "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
-        },
-        "HOT PURE": {
-            "preco": 14.50,
-            "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
+            "descricao": "Hambúrguer artesanal, queijo, alface, tomate e maionese.",
+            "mais_pedido": True,
+            "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800",
         },
     },
-    "🍟 Porções": {
-        "PORÇÃO BATATA FRITA": {
+    "Porções": {
+        "Porção Batata Frita": {
             "preco": 29.90,
+            "descricao": "Batata frita crocante por fora e macia por dentro.",
+            "mais_pedido": True,
             "imagem": "https://2.bp.blogspot.com/-zNkU0qa51Uk/U5elL6RgI6I/AAAAAAAAACo/OngayLy9ogk/s1600/batata.jpg",
         },
-        "PORÇÃO MANDIOCA FRITA": {
-            "preco": 29.90,
-            "imagem": "https://media.istockphoto.com/id/903103922/pt/foto/brazilian-food-mandioca-frita-deep-fried-cassava-root.webp?a=1&b=1&s=612x612&w=0&k=20&c=KwVZFUrGJlRkXM6_nyBNPt_6sbpHJ1x0pR49fA2wIgY=",
-        },
-        "PORÇÃO ANÉIS DE CEBOLA": {
-            "preco": 28.90,
-            "imagem": "https://images.unsplash.com/photo-1766589152292-3c052f0d87aa?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBvciVDMyVBNyVDMyVBM28lMjBhbmVpcyUyMGRlJTIwY2Vib2xhfGVufDB8fDB8fHww",
-        },
-        "PORÇÃO COMBO DE PORÇÕES": {
-            "preco": 49.90,
-            "imagem": "https://images.unsplash.com/photo-1702827495434-629df15aa136?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHBvciVDMyVBNyVDMyVBM28lMjBjb21ib3xlbnwwfHwwfHx8MA%3D%3D",
-        },
     },
-    "🥤 Refrigerantes": {
-        "Refrigerante COCA NORMAL Lata 350ml": {
+    "Refrigerantes": {
+        "Coca-Cola Lata 350ml": {
             "preco": 6.00,
+            "descricao": "Lata 350ml gelada.",
+            "mais_pedido": True,
             "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
         },
-        "Refrigerante COCA ZERO Lata 350ml": {
-            "preco": 6.00,
-            "imagem": "https://acdn-us.mitiendanube.com/stores/001/165/503/products/coca-zero21-16e7cba0588363da7616192142363168-1024-1024.webp",
-        },
-        "Refrigerante FANTA LARANJA Lata 350ml": {
-            "preco": 6.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCj-iJ_ziGZMurwiupsfzkhhmuRr4vDxjEM4V3QapNpg&s=10",
-        },
-        "Refrigerante SPRITE Lata 350ml": {
-            "preco": 6.00,
-            "imagem": "https://www.drogariaminasbrasil.com.br/media/webp/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/228324e3d/refrigerante-sprite-lata-350ml_jpg.webp",
-        },
-        "Refrigerante FANTA UVA Lata 350ml": {
-            "preco": 6.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy8MfxKAF9fZHoP5jOkB_GVC3llWVFJgX8bqaQQsBNTw&s=10",
-        },
-        "Refrigerante GUARANA ANTARCTICA Lata 350ml": {
-            "preco": 6.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo_of1b4lkVoGXo7VNDcQ2zcyItH2BvZ-A2XFU362rbA&s=10",
-        },
-        "Refrigerante TONICA SCHWEPPES Lata 350ml": {
-            "preco": 6.50,
-            "imagem": "https://www.imigrantesbebidas.com.br/bebida/images/products/full/2209-agua-tonica-schweppes-lata-350ml.jpg",
-        },
-        "Refrigerante FANTA LARANJA Garrafinha 200ml": {
-            "preco": 3.50,
-            "imagem": "https://mercantilatacado.vtexassets.com/arquivos/ids/172941/654a33c475d9096810e2cbfc.jpg?v=638349585366670000",
-        },
-        "Refrigerante COCA COLA Garrafinha 200ml": {
-            "preco": 3.50,
-            "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/181329/Refrigerante-COCA-COLA-Garrafa-Pet-200ml.jpg?v=637602425279600000",
-        },
-        "Refrigerante COCA ZERO Garrafinha 200ml": {
-            "preco": 3.50,
-            "imagem": "https://prezunic.vtexassets.com/arquivos/ids/210276-800-auto?v=638568370331100000&width=800&height=auto&aspect=true",
-        },
-        "Refrigerante GUARANITA Garrafinha 200ml": {
-            "preco": 3.50,
-            "imagem": "https://phygital-files.mercafacil.com/fernandes-bucket/uploads/produto/cibal_guaranita_200ml_4762cf0e-e46e-4cb8-b0cf-5e3c11785572.jpg",
-        },
-        "Refrigerante SPRITE Garrafinha 200ml": {
-            "preco": 3.50,
-            "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/170425/Refrigerante-Limao-Sprite-Garrafa-200ml.jpg?v=637442546240970000",
-        },
-        "Refrigerante COCA COLA 2L": {
-            "preco": 17.00,
-            "imagem": "https://gbarbosa.vtexassets.com/arquivos/ids/214289/655268ba8d0743e14888f712.jpg?v=638354963814100000",
-        },
-        "Refrigerante PEPSI 2L": {
-            "preco": 17.00,
-            "imagem": "https://hiperideal.vtexassets.com/arquivos/ids/228374/7892840800000-RefrigerantePEPSIGarrafa2L-1.jpg?v=638733302785230000",
-        },
-        "Refrigerante COCA ZERO 2.5L": {
-            "preco": 17.00,
-            "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/230310/45911-1779911965249.png.png?v=639155088729770000",
-        },
-        "Refrigerante COCA ZERO 1L": {
-            "preco": 10.00,
-            "imagem": "https://mercantilatacado.vtexassets.com/arquivos/ids/168646/653fe3aa752720c144887a35.jpg?v=638342826762370000",
-        },
-        "Refrigerante H20 500ml": {
-            "preco": 8.00,
-            "imagem": "https://savegnagoio.vtexassets.com/arquivos/ids/447261-800-800?v=638525058304970000&width=800&height=800&aspect=true",
-        },
-        "Refrigerante TONICA SCHWEPPES 600ml": {
-            "preco": 8.00,
-            "imagem": "https://almacenestampico.com/wp-content/uploads/2023/03/Almacenes-Tampico-Uruguay-agua-tonica-schwepps-600Mesa-de-trabajo-1.jpg",
-        },
-        "Refrigerante FANTA UVA 600ml": {
-            "preco": 8.00,
-            "imagem": "https://io.convertiez.com.br/m/farmaciasaopaulo/shop/products/images/16728/medium/fanta-uva-600ml_25847.jpg",
-        },
-        "Refrigerante SPRITE 600ml": {
-            "preco": 8.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxBTxJckfXC_FK2APRFPRLnVY8tC68jlixc3fnLgPZAg&s",
-        },
-        "Refrigerante GUARANITA 600ml": {
-            "preco": 8.00,
-            "imagem": "https://tauste.com.br/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/1/5/1584431777359902.jpg",
-        },
-        "Refrigerante COCA COLA 600ml": {
-            "preco": 8.00,
-            "imagem": "https://bretas.vtexassets.com/arquivos/ids/182991-800-auto?v=638375498920300000&width=800&height=auto&aspect=true",
-        },
-        "Refrigerante COCA COLA ZERO 600ml": {
-            "preco": 8.00,
-            "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/232442/Refrigerante-COCA-COLA-Zero-Acucar-Pet-600ml.jpg?v=639179091417330000",
-        },
-        "Refrigerante FANTA 600ml": {
-            "preco": 8.00,
-            "imagem": "https://phygital-files.mercafacil.com/miliozzi/uploads/produto/refrigerante_fanta_laranja_600ml_pet_a8b5c222-e21b-480c-8288-90e22dbb20d7.jpg",
-        },
-        "AGUA MINERAL SEM GAS 500ml": {
-            "preco": 3.00,
-            "imagem": "https://io.convertiez.com.br/m/farmaponte/shop/products/images/22004/medium/agua-mineral-crystal-sem-gas-garrafa-1-unidade-com-500ml_17652.webp",
-        },
-        "AGUA MINERAL COM GAS 500ml": {
-            "preco": 4.00,
-            "imagem": "https://apoioentrega.vteximg.com.br/arquivos/ids/1911515/139272_0.png?v=639213665179000000",
-        },
     },
-    "🍺 Cervejas": {
-        "Cerveja Original 300ml Garrafinha": {
+    "Cervejas": {
+        "Cerveja Original 300ml": {
             "preco": 6.00,
+            "descricao": "Garrafinha 300ml trincando.",
+            "mais_pedido": True,
             "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRllDI7RJyBsZMII0SR2UZhiYstauUqjyhKbGznH27HEw&s=10",
-        },
-        "Cerveja Budweiser 300ml Garrafinha": {
-            "preco": 6.00,
-            "imagem": "https://phygital-files.mercafacil.com/comercial-catanio-supermercado/uploads/produto/cerveja_budweiser_garrafinha_300ml_61022027-0c5d-4d8b-9f9f-620188027143.jpg",
-        },
-        "Cerveja Antarctica 300ml Garrafinha": {
-            "preco": 5.00,
-            "imagem": "https://nunesbebidas.com.br/wp-content/uploads/2021/05/Nunes-Bebidas-CERVEJA-ANTARTICA-BOA-GARRAFA-300ML.jpg",
-        },
-        "Cerveja Brahma 300ml Garrafinha": {
-            "preco": 5.00,
-            "imagem": "https://assets.ibecom.com.br/ib.item.image.large/l-27778dbad9724b6fb9695e6315f029e1.jpeg",
-        },
-        "Cerveja Império 300ml Garrafinha": {
-            "preco": 5.00,
-            "imagem": "https://assets.ibecom.com.br/ib.item.image.large/l-ab81028dfcae4433a707b191cbe67d8c.jpeg",
-        },
-        "Cerveja Skol 269ml Lata": {
-            "preco": 5.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSWuMoEZy8_ZGbuqI12QrAUkAjTrwh2VPt6KqEXh8CR6pzKGxtSKXBlQfz&s=10",
-        },
-        "Cerveja Budweiser 269ml Lata": {
-            "preco": 6.00,
-            "imagem": "https://mambodelivery.vtexassets.com/arquivos/ids/212124-800-450?v=638537266038970000&width=800&height=450&aspect=true",
-        },
-        "Cerveja Original 269ml Lata": {
-            "preco": 6.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsK7x1diT-koyfCAdWSUBoHZTgPloiJYMjbRSfxGJzaw&s=10",
-        },
-        "Cerveja Amstel 269ml Lata": {
-            "preco": 5.00,
-            "imagem": "https://m.media-amazon.com/images/I/61gLfj5ExrL._AC_UF1000,1000_QL80_.jpg",
-        },
-        "Cerveja Império 269ml Lata": {
-            "preco": 5.00,
-            "imagem": "https://bretas.vtexassets.com/arquivos/ids/202744-800-auto?v=638376354703200000&width=800&height=auto&aspect=true",
-        },
-        "Cerveja Brahma Duplo Malte 269ml Lata": {
-            "preco": 6.00,
-            "imagem": "https://a-static.mlcdn.com.br/420x420/cerveja-brahma-duplo-malte-lager-15-unidades-lata-269ml/jrr/0f7b0dc65aa911ecb4ca4201ac18503a/3faba7ce5a536589f67a76512b5cbf98.jpg",
-        },
-        "Cerveja Long Neck Heineken": {
-            "preco": 10.00,
-            "imagem": "https://images.unsplash.com/photo-1618885472179-5e474019f2a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D",
-        },
-        "Cerveja Long Neck Budweiser": {
-            "preco": 10.00,
-            "imagem": "https://images.unsplash.com/photo-1587669284207-e8ee0fc74144?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D",
-        },
-        "Cerveja Long Neck Corona": {
-            "preco": 10.00,
-            "imagem": "https://images.unsplash.com/photo-1600213903598-25be92abde40?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D",
-        },
-        "Energético Monster 473ml": {
-            "preco": 14.00,
-            "imagem": "https://andinacocacola.vtexassets.com/arquivos/ids/158541/112666_COCA---MONSTER_GREEN__LT_473ML.jpg?v=639238910718900000",
-        },
-        "Cerveja Amstel 350ml Lata": {
-            "preco": 6.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqQ_3JZ9bzr9LODFFj1Lps0OroT6jJ_PrC24CiZ0nEHg&s=10",
-        },
-        "Cerveja Império 350ml Lata": {
-            "preco": 6.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXKTXeRvTYQBjWEX-eei2xutbAx97LRhZnpOrEEQ_5Dg&s=10",
-        },
-        "Cerveja Brahma Duplo Malte 350ml Lata": {
-            "preco": 7.00,
-            "imagem": "https://hortifrutibr.vtexassets.com/arquivos/ids/173202/Cerveja-Brahma-Duplo-Malte-Lata-Sleek-350Ml.png?v=639239767332900000",
         },
     },
 }
@@ -580,6 +330,7 @@ abas = st.tabs(list(menu_categorias.keys()))
 
 for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
     with aba:
+        st.markdown(f"<div class='section-header'>{categoria.upper()} NA BRASA</div>", unsafe_allow_html=True)
         for item, info in itens.items():
             chave_item = f"{categoria}_{item}"
             col1, col2 = st.columns([1, 3])
@@ -587,7 +338,9 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
             with col1:
                 st.image(info["imagem"], use_container_width=True)
             with col2:
-                st.markdown(f"**{item}**")
+                badge = "<span class='badge-mais-pedido'>Mais pedido</span>" if info.get("mais_pedido") else ""
+                st.markdown(f"<div class='item-title'>{item}{badge}</div>", unsafe_allow_html=True)
+                st.markdown(f"<p style='color: #6b7280; font-size: 13px; margin-bottom: 6px;'>{info.get('descricao', '')}</p>", unsafe_allow_html=True)
                 st.markdown(f"<span class='preco-badge'>R$ {info['preco']:.2f}</span>", unsafe_allow_html=True)
                 
                 qtd = st.number_input(
@@ -607,148 +360,53 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                 and st.session_state["etapa_pedido"] == "cardapio"
             ):
                 st.info(f"✅ **{qtd}x {item}** adicionado!")
-                st.markdown("**O que deseja fazer agora?**")
-
                 col_mais, col_encerrar = st.columns(2)
                 with col_mais:
-                    st.button(
-                        "➕ Adicionar Mais",
-                        key=f"btn_mais_{chave_item}",
-                        use_container_width=True,
-                        on_click=continuar_comprando,
-                    )
-
+                    st.button("➕ Adicionar Mais", key=f"btn_mais_{chave_item}", use_container_width=True, on_click=continuar_comprando)
                 with col_encerrar:
-                    st.button(
-                        "✅ Finalizar Pedido",
-                        key=f"btn_encerrar_{chave_item}",
-                        type="primary",
-                        use_container_width=True,
-                        on_click=avancar_para_entrega,
-                    )
+                    st.button("✅ Finalizar Pedido", key=f"btn_encerrar_{chave_item}", type="primary", use_container_width=True, on_click=avancar_para_entrega)
 
 itens_carrinho = list(st.session_state["carrinho"].values())
 subtotal_produtos = sum(i["subtotal"] for i in itens_carrinho)
 
-# ==================== DADOS DE ENTREGA E PAGAMENTO ====================
+# ==================== ETAPA DE ENTREGA ====================
 if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
-    st.markdown("<div id='secao-entrega'></div>", unsafe_allow_html=True)
-
     st.write("---")
-    col_titulo, col_voltar_btn = st.columns([3, 1])
-    with col_titulo:
-        st.subheader("📦 Entrega & Pagamento")
-    with col_voltar_btn:
-        st.button("✏️ Alterar Itens", on_click=voltar_ao_cardapio, use_container_width=True)
-
-    st.markdown(f"### Subtotal: **R$ {subtotal_produtos:.2f}**")
-
+    st.subheader("📦 Dados de Entrega e Pagamento")
+    
     nome_bruto = st.text_input("Seu Nome:", max_chars=50, key="input_nome")
     nome = html.escape(nome_bruto.strip())
 
-    tipo_entrega = st.radio(
-        "Opção de Entrega:",
-        ["Entrega", "Retirar no Local"],
-        horizontal=True,
-        key="input_tipo_entrega"
-    )
+    tipo_entrega = st.radio("Opção de Entrega:", ["Entrega", "Retirar no Local"], horizontal=True, key="input_tipo_entrega")
 
     endereco = ""
     taxa_entrega = 0.00
     total_final = subtotal_produtos
-    rua_numero = ""
 
     if tipo_entrega == "Entrega":
-        bairro_selecionado = st.selectbox(
-            "Selecione o Bairro:", list(taxas_bairros.keys()), key="input_bairro"
-        )
-        bairro = html.escape(bairro_selecionado)
+        bairro_selecionado = st.selectbox("Selecione o Bairro:", list(taxas_bairros.keys()), key="input_bairro")
         taxa_entrega = taxas_bairros.get(bairro_selecionado, 0.00)
-
         rua_bruta = st.text_input("Rua e Número:", max_chars=100, key="input_rua")
         rua_numero = html.escape(rua_bruta.strip())
-
         if rua_numero:
-            endereco = f"{rua_numero} - {bairro}"
-
+            endereco = f"{rua_numero} - {bairro_selecionado}"
         total_final += taxa_entrega
-        if taxa_entrega > 0:
-            st.info(f"🛵 Taxa de entrega para **{bairro}**: R$ {taxa_entrega:.2f}")
-        else:
-            st.warning("⚠️ Taxa de entrega a combinar via WhatsApp.")
-    else:
-        st.info("🏪 **Retirada no Balcão:** Sem taxa adicional.")
 
-    st.markdown(f"## **Total Final: R$ {total_final:.2f}**")
+    st.markdown(f"### Total Final: **R$ {total_final:.2f}**")
 
-    pagamento_selecionado = st.selectbox(
-        "Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"], key="input_pagamento"
-    )
-    pagamento = html.escape(pagamento_selecionado)
+    pagamento = st.selectbox("Forma de Pagamento", ["Pix", "Cartão", "Dinheiro"], key="input_pagamento")
 
-    if pagamento == "Pix":
-        st.markdown(
-            f"""
-            <div style='background-color: #064e3b; border-left: 5px solid #22c55e; padding: 15px; border-radius: 12px; margin-bottom: 15px;'>
-                <p style='color: #ecfdf5 !important; font-size: 18px !important; margin-bottom: 5px;'>📱 <b>Chave PIX (Telefone):</b></p>
-                <p style='color: #22c55e !important; font-size: 26px !important; font-weight: 900 !important; letter-spacing: 1px; margin: 0;'>{CHAVE_PIX_VAL}</p>
-                <p style='color: #94a3b8 !important; font-size: 14px !important; margin-top: 8px;'><i>Por favor, envie o comprovante pelo WhatsApp após finalizar o pedido.</i></p>
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
-
-    itens_txt = "\n".join(
-        [
-            f"{i['qtd']}x {i['item']} (R$ {i['subtotal']:.2f})"
-            for i in itens_carrinho
-        ]
-    )
-
-    if tipo_entrega == "Entrega":
-        detalhes_tipo = f"*Tipo:* Entrega\n*Endereço:* {endereco}\n*Taxa:* R$ {taxa_entrega:.2f}"
-    else:
-        detalhes_tipo = "*Tipo:* Retirada no Local"
-
-    texto_pagamento = f"Pix (Chave: {CHAVE_PIX_VAL})" if pagamento == "Pix" else pagamento
-
+    itens_txt = "\n".join([f"{i['qtd']}x {i['item']} (R$ {i['subtotal']:.2f})" for i in itens_carrinho])
     mensagem = (
-        f"Olá! Gostaria de fazer um pedido na *Cuca Espetinhos e Lanches*:\n\n"
+        f"Olá! Gostaria de fazer um pedido na *Cuca Espetinhos & Lanches*:\n\n"
         f"*Cliente:* {nome}\n"
-        f"{detalhes_tipo}\n"
-        f"*Pagamento:* {texto_pagamento}\n\n"
+        f"*Tipo:* {tipo_entrega}\n"
+        f"*Endereço:* {endereco if tipo_entrega == 'Entrega' else 'Balcão'}\n"
+        f"*Pagamento:* {pagamento}\n\n"
         f"*Itens:*\n{itens_txt}\n\n"
-        f"*Total a Pagar:* R$ {total_final:.2f}"
+        f"*Total:* R$ {total_final:.2f}"
     )
 
-    if st.button(
-        "🚀 AVANÇAR PARA CONFIRMAÇÃO",
-        type="primary",
-        use_container_width=True,
-        key="btn_avancar_confirmacao"
-    ):
-        agora = time.time()
-        if agora - st.session_state["ultimo_envio_timestamp"] < 3:
-            st.warning("Aguarde um instante antes de clicar novamente.")
-        elif tipo_entrega == "Entrega" and not rua_numero:
-            st.error("Por favor, preencha a Rua e o Número para continuar.")
-        elif not nome:
-            st.error("Por favor, informe seu nome para continuar.")
-        else:
-            st.session_state["ultimo_envio_timestamp"] = agora
-            st.session_state["mostrar_modal"] = True
-
-    if st.session_state.get("mostrar_modal", False):
-        modal_confirmacao(WHATSAPP_NUMBER, mensagem)
-
-    components.html(
-        """
-        <script>
-            var elemento = window.parent.document.getElementById('secao-entrega');
-            if (elemento) {
-                elemento.scrollIntoView({behavior: 'smooth'});
-            }
-        </script>
-        """,
-        height=0,
-    )
+    if st.button("🚀 ENVIAR PEDIDO PELO WHATSAPP", type="primary", use_container_width=True):
+        link_whatsapp = f"https://wa.me/{WHATSAPP_NUMBER}?text={urllib.parse.quote(mensagem)}"
+        st.markdown(f"[Clique aqui para enviar no WhatsApp]({link_whatsapp})")
