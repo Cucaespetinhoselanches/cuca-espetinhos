@@ -178,14 +178,14 @@ st.markdown(
         padding-bottom: 6px;
     }
 
-    /* BLOQUEIO ABSOLUTO DO TAMANHO DE IMAGENS */
-    img, .element-container img, [data-testid="stImage"] img {
-        width: 50px !important;
-        height: 50px !important;
-        max-width: 50px !important;
-        max-height: 50px !important;
-        min-width: 50px !important;
-        min-height: 50px !important;
+    /* FORÇANDO MINIATURAS BEM PEQUENAS (36px) */
+    img, .element-container img, [data-testid="stImage"] img, .thumb-mini {
+        width: 36px !important;
+        height: 36px !important;
+        max-width: 36px !important;
+        max-height: 36px !important;
+        min-width: 36px !important;
+        min-height: 36px !important;
         object-fit: cover !important;
         border-radius: 6px !important;
     }
@@ -193,7 +193,7 @@ st.markdown(
     div[data-testid="stColumn"] > div {
         background-color: #ffffff !important;
         border-radius: 10px;
-        padding: 14px;
+        padding: 12px;
         border: 2px solid #cbd5e1 !important;
         margin-bottom: 12px;
     }
@@ -411,11 +411,11 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
         st.markdown(f"<div class='section-header'>{categoria.upper()} NA BRASA</div>", unsafe_allow_html=True)
         for item, info in itens.items():
             chave_item = f"{categoria}_{item}"
-            col1, col2 = st.columns([1, 5])
+            col1, col2 = st.columns([0.6, 5.4])
             
             with col1:
                 st.markdown(
-                    f"<img src='{info['imagem']}' style='width:50px !important; height:50px !important; max-width:50px !important; object-fit:cover; border-radius:6px; display:block; margin:0 auto;'>",
+                    f"<img class='thumb-mini' src='{info['imagem']}' style='width:36px !important; height:36px !important; max-width:36px !important; max-height:36px !important; min-width:36px !important; min-height:36px !important; object-fit:cover; border-radius:6px; display:block; margin-top:4px;'>",
                     unsafe_allow_html=True
                 )
             with col2:
