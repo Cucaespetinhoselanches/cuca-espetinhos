@@ -154,14 +154,23 @@ st.markdown(
         color: #f8fafc !important;
     }
 
+    /* Permite que as abas do menu quebrem em várias linhas */
+    div[data-baseweb="tab-list"] {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+
     button[data-baseweb="tab"] {
-        font-size: 20px !important;
+        font-size: 16px !important;
         font-weight: 800 !important;
-        padding: 12px 24px !important;
+        padding: 10px 16px !important;
         background-color: #1e293b !important;
         color: #ffffff !important;
         border: none !important;
         border-radius: 12px !important;
+        flex-grow: 1 !important;
+        text-align: center !important;
+    }
     }
 
     button[data-baseweb="tab"][aria-selected="true"] {
