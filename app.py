@@ -307,7 +307,7 @@ menu_categorias = {
             "preco": 9.00,
             "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
         },
-        "ESPETO LINGUIÇA GOURMET": {
+        "ESPETO LINGUIÇA GOURME": {
             "preco": 14.00,
             "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
         },
