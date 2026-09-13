@@ -639,7 +639,7 @@ menu_categorias = {
         "preco": 3.00,
         "imagem": "https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f680.gif",
         },   
-        "Adicional CONFETI": {
+        "Adicional CONFETI (CHOCOLATE)": {
         "preco": 3.00,
         "imagem": "https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f680.gif",
         },     
