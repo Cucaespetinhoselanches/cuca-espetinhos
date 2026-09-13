@@ -378,7 +378,7 @@ menu_categorias = {
             "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
         },
         "HOT FRANGO (Salsinha, frango, purê, batata palha, catchup, mostarda, maionese)": {
-            "preco": 14.50,
+            "preco": 17.50,
             "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
         },
         "Monte seu combo (Acrescente: Batata frita + refrigerante em lata ao seu lanche POR:)": {
