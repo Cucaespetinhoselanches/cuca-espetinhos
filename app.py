@@ -627,6 +627,22 @@ menu_categorias = {
         "preco": 17.00,
         "imagem": "https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/groups/1699640082654e7312e164a.jpeg",
         },
+        "Adicional PAÇOCA": {
+        "preco": 3.00,
+        "imagem": "https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f680.gif",
+        },
+        "Adicional LEITE CONDENSADO": {
+        "preco": 3.00,
+        "imagem": "https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f680.gif",
+        },    
+        "Adicional LEITE EM PÓ NINHO": {
+        "preco": 3.00,
+        "imagem": "https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f680.gif",
+        },   
+        "Adicional LEITE EM PÓ NINHO": {
+        "preco": 3.00,
+        "imagem": "https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f680.gif",
+        },     
     },
 }
 
