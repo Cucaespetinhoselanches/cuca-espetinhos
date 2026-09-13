@@ -371,7 +371,7 @@ menu_categorias = {
             "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
         },
         "HOT PURÊ (Salsinha, purê, batata palha, catchup, mostarda, maionese)": {
-            "preco": 16.50,
+            "preco": 14.50,
             "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
         },
         "HOT CALABRESA (Salsinha, calabresa, purê, batata palha, catchup, mostarda, maionese)": {
