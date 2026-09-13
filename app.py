@@ -313,7 +313,7 @@ menu_categorias = {
             "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
         },
         "ESPETO LINGUIÇA": {
-            "preco": 9.00,
+            "preco": 12.00,
             "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
         },
         "ESPETO LINGUIÇA GOURMET": {
@@ -329,7 +329,7 @@ menu_categorias = {
             "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
         },
         "ESPETO CORAÇÃO": {
-            "preco": 18.00,
+            "preco": 12.00,
             "imagem": "https://content.paodeacucar.com/wp-content/uploads/2017/06/espetinhos-carne-churrasco-festa-junina1.jpg",
         },
         "ESPETO FRANGO": {
@@ -367,7 +367,7 @@ menu_categorias = {
             "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
         },
         "HOT SIMPLES (Salsinha, batata palha, catchup, mostarda, maionese)": {
-            "preco": 16.50,
+            "preco": 8.00,
             "imagem": "https://images.unsplash.com/photo-1613482084286-41f25b486fa2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8SE9UJTIwRE9HfGVufDB8fDB8fHww",
         },
         "HOT PURÊ (Salsinha, purê, batata palha, catchup, mostarda, maionese)": {
