@@ -154,23 +154,28 @@ st.markdown(
         color: #f8fafc !important;
     }
 
-    /* Permite que as abas do menu quebrem em várias linhas */
-    div[data-baseweb="tab-list"] {
+    /* Força o contêiner das abas a quebrar linha */
+    div[data-baseweb="tab-list"], div[role="tablist"] {
         flex-wrap: wrap !important;
+        white-space: normal !important;
         gap: 8px !important;
+        overflow: visible !important;
     }
 
+    /* Desativa a trava de linha única dos botões do Streamlit */
     button[data-baseweb="tab"] {
-        font-size: 16px !important;
+        flex-shrink: 1 !important;
+        flex-grow: 1 !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        font-size: 14px !important;
         font-weight: 800 !important;
-        padding: 10px 16px !important;
+        padding: 8px 12px !important;
         background-color: #1e293b !important;
         color: #ffffff !important;
         border: none !important;
-        border-radius: 12px !important;
-        flex-grow: 1 !important;
+        border-radius: 10px !important;
         text-align: center !important;
-    }
     }
 
     button[data-baseweb="tab"][aria-selected="true"] {
