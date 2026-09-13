@@ -617,6 +617,11 @@ menu_categorias = {
             "preco": 7.00,
             "imagem": "https://hortifrutibr.vtexassets.com/arquivos/ids/173202/Cerveja-Brahma-Duplo-Malte-Lata-Sleek-350Ml.png?v=639239767332900000",
         },
+        " AÇAI": {
+        "Cerveja Original 300ml Garrafinha": {
+            "preco": 6.00,
+            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRllDI7RJyBsZMII0SR2UZhiYstauUqjyhKbGznH27HEw&s=10",
+        },
     },
 }
 
