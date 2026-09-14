@@ -361,7 +361,7 @@ menu_categorias = {
         },
         "X-CATUPIRY EMPANADO (Empanado de Catupiry com frango, queijo cheedar Polenghi, alface americana, tomate e molho da casa)": {
             "preco": 32.90,
-            "imagem": "https://plus.unsplash.com/premium_photo-1675252369719-dd52bc69c3df?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXNwZXRvJTIwZGUlMjBjYXJuZXxlbnwwfHwwfHx8MA%3D%3D",
+            "imagem": "https://github.com/Cucaespetinhoselanches/cuca-espetinhos/blob/main/x%20catupiry%20empanado.jpeg?raw=true",
         },
         "X-CATUPIRY EMPANADO 2.0 (Empanado de Catupiry com frango, hanburguer fourmet, queijo cheedar Polenghi, alface americana, tomate e molho da casa))": {
         "preco": 41.90,
