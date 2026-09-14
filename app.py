@@ -881,14 +881,21 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
     if st.session_state.get("mostrar_modal", False):
         modal_confirmacao(WHATSAPP_NUMBER, mensagem)
 
-    components.html(
-        """
-        <script>
-            var elemento = window.parent.document.getElementById('secao-entrega');
+    import streamlit.components.v1 as components
+
+# Substitua o bloco do componentes por este:
+components.html(
+    """
+    <script>
+        try {
+            var elemento = window.parent.document.getElementById('secao-entr');
             if (elemento) {
                 elemento.scrollIntoView({behavior: 'smooth'});
             }
-        </script>
-        """,
-        height=0,
-    )
+        } catch (e) {
+            console.log("Rolagem bloqueada pelo iFrame.");
+        }
+    </script>
+    """,
+    height=0,
+)
