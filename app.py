@@ -480,7 +480,7 @@ menu_categorias = {
         "AÇAI": {
         "Copo 300ml": {
             "preco": 14.00,
-            "imagem": "https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/groups/1699640082654e7312e164a.jpeg",
+            "imagem": "https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/groups/1699640082654e7312e164a.jpeg"
         },
         "Copo 500ml": {
         "preco": 17.00,
