@@ -1595,16 +1595,16 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                 )
 
                 # Validação de limite máximo de unidades por item
-                qtd = st.number_input(
-                    "Qtd:",
-                    min_value=0,
-                    max_value=20,
-                    step=1,
-                    key=chave_item,
-                    label_visibility="collapsed",
-                    on_change=registrar_alteracao_item,
-                    args=(chave_item,),
-                )
+                # Linha 1598 no app.py: adicione o parâmetro key com identificador único
+
+qtd = st.number_input(
+    "Qtd:",
+    min_value=1,
+    value=item.get("quantidade", 1),
+    key=f"qtd_carrinho_{chave_item}",  # <-- Adicione ou ajuste esta chave única
+    on_change=atualizar_qtd,           # (sua função de callback)
+    args=(chave_item,)
+)
 
                 if qtd > 0:
                     st.session_state["carrinho"][chave_item] = {
