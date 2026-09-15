@@ -427,185 +427,55 @@ menu_categorias = {
             "imagem": "https://images.unsplash.com/photo-1702827495434-629df15aa136?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHBvciVDMyVBNyVDMyVBM28lMjBjb21ib3xlbnwwfHwwfHx8MA%3D%3D",
         },
     },
-    "🥤 Refrigerantes": {
-        "Refrigerante COCA NORMAL Lata 350ml": {
-            "preco": 6.00,
-            "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400",
-        },
-        "Refrigerante COCA ZERO Lata 350ml": {
-            "preco": 6.00,
-            "imagem": "https://acdn-us.mitiendanube.com/stores/001/165/503/products/coca-zero21-16e7cba0588363da7616192142363168-1024-1024.webp",
-        },
-        "Refrigerante FANTA LARANJA Lata 350ml": {
-            "preco": 6.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCj-iJ_ziGZMurwiupsfzkhhmuRr4vDxjEM4V3QapNpg&s=10",
-        },
-        "Refrigerante SPRITE Lata 350ml": {
-            "preco": 6.00,
-            "imagem": "https://www.drogariaminasbrasil.com.br/media/webp/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/228324e3d/refrigerante-sprite-lata-350ml_jpg.webp",
-        },
-        "Refrigerante FANTA UVA Lata 350ml": {
-            "preco": 6.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy8MfxKAF9fZHoP5jOkB_GVC3llWVFJgX8bqaQQsBNTw&s=10",
-        },
-        "Refrigerante GUARANA ANTARCTICA Lata 350ml": {
-            "preco": 6.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo_of1b4lkVoGXo7VNDcQ2zcyItH2BvZ-A2XFU362rbA&s=10",
-        },
-        "Refrigerante TONICA SCHWEPPES Lata 350ml": {
-            "preco": 6.50,
-            "imagem": "https://www.imigrantesbebidas.com.br/bebida/images/products/full/2209-agua-tonica-schweppes-lata-350ml.jpg",
-        },
-        "Refrigerante FANTA LARANJA Garrafinha 200ml": {
-            "preco": 3.50,
-            "imagem": "https://mercantilatacado.vtexassets.com/arquivos/ids/172941/654a33c475d9096810e2cbfc.jpg?v=638349585366670000",
-        },
-        "Refrigerante COCA COLA Garrafinha 200ml": {
-            "preco": 3.50,
-            "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/181329/Refrigerante-COCA-COLA-Garrafa-Pet-200ml.jpg?v=637602425279600000",
-        },
-        "Refrigerante COCA ZERO Garrafinha 200ml": {
-            "preco": 3.50,
-            "imagem": "https://prezunic.vtexassets.com/arquivos/ids/210276-800-auto?v=638568370331100000&width=800&height=auto&aspect=true",
-        },
-        "Refrigerante GUARANITA Garrafinha 200ml": {
-            "preco": 3.50,
-            "imagem": "https://phygital-files.mercafacil.com/fernandes-bucket/uploads/produto/cibal_guaranita_200ml_4762cf0e-e46e-4cb8-b0cf-5e3c11785572.jpg",
-        },
-        "Refrigerante SPRITE Garrafinha 200ml": {
-            "preco": 3.50,
-            "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/170425/Refrigerante-Limao-Sprite-Garrafa-200ml.jpg?v=637442546240970000",
-        },
-        "Refrigerante COCA COLA 2L": {
-            "preco": 17.00,
-            "imagem": "https://gbarbosa.vtexassets.com/arquivos/ids/214289/655268ba8d0743e14888f712.jpg?v=638354963814100000",
-        },
-        "Refrigerante PEPSI 2L": {
-            "preco": 17.00,
-            "imagem": "https://hiperideal.vtexassets.com/arquivos/ids/228374/7892840800000-RefrigerantePEPSIGarrafa2L-1.jpg?v=638733302785230000",
-        },
-        "Refrigerante COCA ZERO 2.5L": {
-            "preco": 17.00,
-            "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/230310/45911-1779911965249.png.png?v=639155088729770000",
-        },
-        "Refrigerante COCA ZERO 1L": {
-            "preco": 10.00,
-            "imagem": "https://mercantilatacado.vtexassets.com/arquivos/ids/168646/653fe3aa752720c144887a35.jpg?v=638342826762370000",
-        },
-        "Refrigerante H20 500ml": {
-            "preco": 8.00,
-            "imagem": "https://savegnagoio.vtexassets.com/arquivos/ids/447261-800-800?v=638525058304970000&width=800&height=800&aspect=true",
-        },
-        "Refrigerante TONICA SCHWEPPES 600ml": {
-            "preco": 8.00,
-            "imagem": "https://almacenestampico.com/wp-content/uploads/2023/03/Almacenes-Tampico-Uruguay-agua-tonica-schwepps-600Mesa-de-trabajo-1.jpg",
-        },
-        "Refrigerante FANTA UVA 600ml": {
-            "preco": 8.00,
-            "imagem": "https://io.convertiez.com.br/m/farmaciasaopaulo/shop/products/images/16728/medium/fanta-uva-600ml_25847.jpg",
-        },
-        "Refrigerante SPRITE 600ml": {
-            "preco": 8.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxBTxJckfXC_FK2APRFPRLnVY8tC68jlixc3fnLgPZAg&s",
-        },
-        "Refrigerante GUARANITA 600ml": {
-            "preco": 8.00,
-            "imagem": "https://tauste.com.br/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/1/5/1584431777359902.jpg",
-        },
-        "Refrigerante COCA COLA 600ml": {
-            "preco": 8.00,
-            "imagem": "https://bretas.vtexassets.com/arquivos/ids/182991-800-auto?v=638375498920300000&width=800&height=auto&aspect=true",
-        },
-        "Refrigerante COCA COLA ZERO 600ml": {
-            "preco": 8.00,
-            "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/232442/Refrigerante-COCA-COLA-Zero-Acucar-Pet-600ml.jpg?v=639179091417330000",
-        },
-        "Refrigerante FANTA 600ml": {
-            "preco": 8.00,
-            "imagem": "https://phygital-files.mercafacil.com/miliozzi/uploads/produto/refrigerante_fanta_laranja_600ml_pet_a8b5c222-e21b-480c-8288-90e22dbb20d7.jpg",
-        },
-        "AGUA MINERAL SEM GAS 500ml": {
-            "preco": 3.00,
-            "imagem": "https://io.convertiez.com.br/m/farmaponte/shop/products/images/22004/medium/agua-mineral-crystal-sem-gas-garrafa-1-unidade-com-500ml_17652.webp",
-        },
-        "AGUA MINERAL COM GAS 500ml": {
-            "preco": 4.00,
-            "imagem": "https://apoioentrega.vteximg.com.br/arquivos/ids/1911515/139272_0.png?v=639213665179000000",
-        },
+    "bebidas": {
+        # Refrigerantes
+        "Refrigerante COCA NORMAL Lata 350ml": {"preco": 6.00, "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400"},
+        "Refrigerante COCA ZERO Lata 350ml": {"preco": 6.00, "imagem": "https://acdn-us.mitiendanube.com/stores/001/165/503/products/coca-zero21-16e7cba0588363da7616192142363168-1024-1024.webp"},
+        "Refrigerante FANTA LARANJA Lata 350ml": {"preco": 6.00, "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRCj-iJ_ziGZMurwiupsfzkhhmuRr4vDxjEM4V3QapNpg&s=10"},
+        "Refrigerante SPRITE Lata 350ml": {"preco": 6.00, "imagem": "https://www.drogariaminasbrasil.com.br/media/webp/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/228324e3d/refrigerante-sprite-lata-350ml_jpg.webp"},
+        "Refrigerante FANTA UVA Lata 350ml": {"preco": 6.00, "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy8MfxKAF9fZHoP5jOkB_GVC3llWVFJgX8bqaQQsBNTw&s=10"},
+        "Refrigerante GUARANA ANTARCTICA Lata 350ml": {"preco": 6.00, "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo_of1b4lkVoGXo7VNDcQ2zcyItH2BvZ-A2XFU362rbA&s=10"},
+        "Refrigerante TONICA SCHWEPPES Lata 350ml": {"preco": 6.50, "imagem": "https://www.imigrantesbebidas.com.br/bebida/images/products/full/2209-agua-tonica-schweppes-lata-350ml.jpg"},
+        "Refrigerante FANTA LARANJA Garrafinha 200ml": {"preco": 3.50, "imagem": "https://mercantilatacado.vtexassets.com/arquivos/ids/172941/654a33c475d9096810e2cbfc.jpg?v=638349585366670000"},
+        "Refrigerante COCA COLA Garrafinha 200ml": {"preco": 3.50, "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/181329/Refrigerante-COCA-COLA-Garrafa-Pet-200ml.jpg?v=637602425279600000"},
+        "Refrigerante COCA ZERO Garrafinha 200ml": {"preco": 3.50, "imagem": "https://prezunic.vtexassets.com/arquivos/ids/210276-800-auto?v=638568370331100000&width=800&height=auto&aspect=true"},
+        "Refrigerante GUARANITA Garrafinha 200ml": {"preco": 3.50, "imagem": "https://phygital-files.mercafacil.com/fernandes-bucket/uploads/produto/cibal_guaranita_200ml_4762cf0e-e46e-4cb8-b0cf-5e3c11785572.jpg"},
+        "Refrigerante SPRITE Garrafinha 200ml": {"preco": 3.50, "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/170425/Refrigerante-Limao-Sprite-Garrafa-200ml.jpg?v=637442546240970000"},
+        "Refrigerante COCA COLA 2L": {"preco": 17.00, "imagem": "https://gbarbosa.vtexassets.com/arquivos/ids/214289/655268ba8d0743e14888f712.jpg?v=638354963814100000"},
+        "Refrigerante PEPSI 2L": {"preco": 17.00, "imagem": "https://hiperideal.vtexassets.com/arquivos/ids/228374/7892840800000-RefrigerantePEPSIGarrafa2L-1.jpg?v=638733302785230000"},
+        "Refrigerante COCA ZERO 2.5L": {"preco": 17.00, "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/230310/45911-1779911965249.png.png?v=639155088729770000"},
+        "Refrigerante COCA ZERO 1L": {"preco": 10.00, "imagem": "https://mercantilatacado.vtexassets.com/arquivos/ids/168646/653fe3aa752720c144887a35.jpg?v=638342826762370000"},
+        "Refrigerante H20 500ml": {"preco": 8.00, "imagem": "https://savegnagoio.vtexassets.com/arquivos/ids/447261-800-800?v=638525058304970000&width=800&height=800&aspect=true"},
+        "Refrigerante TONICA SCHWEPPES 600ml": {"preco": 8.00, "imagem": "https://almacenestampico.com/wp-content/uploads/2023/03/Almacenes-Tampico-Uruguay-agua-tonica-schwepps-600Mesa-de-trabajo-1.jpg"},
+        "Refrigerante FANTA UVA 600ml": {"preco": 8.00, "imagem": "https://io.convertiez.com.br/m/farmaciasaopaulo/shop/products/images/16728/medium/fanta-uva-600ml_25847.jpg"},
+        "Refrigerante SPRITE 600ml": {"preco": 8.00, "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxBTxJckfXC_FK2APRFPRLnVY8tC68jlixc3fnLgPZAg&s"},
+        "Refrigerante GUARANITA 600ml": {"preco": 8.00, "imagem": "https://tauste.com.br/media/catalog/product/cache/207e23213cf636ccdef205098cf3c8a3/1/5/1584431777359902.jpg"},
+        "Refrigerante COCA COLA 600ml": {"preco": 8.00, "imagem": "https://bretas.vtexassets.com/arquivos/ids/182991-800-auto?v=638375498920300000&width=800&height=auto&aspect=true"},
+        "Refrigerante COCA COLA ZERO 600ml": {"preco": 8.00, "imagem": "https://mercantilnovaera.vtexassets.com/arquivos/ids/232442/Refrigerante-COCA-COLA-Zero-Acucar-Pet-600ml.jpg?v=639179091417330000"},
+        "Refrigerante FANTA 600ml": {"preco": 8.00, "imagem": "https://phygital-files.mercafacil.com/miliozzi/uploads/produto/refrigerante_fanta_laranja_600ml_pet_a8b5c222-e21b-480c-8288-90e22dbb20d7.jpg"},
+        "AGUA MINERAL SEM GAS 500ml": {"preco": 3.00, "imagem": "https://io.convertiez.com.br/m/farmaponte/shop/products/images/22004/medium/agua-mineral-crystal-sem-gas-garrafa-1-unidade-com-500ml_17652.webp"},
+        "AGUA MINERAL COM GAS 500ml": {"preco": 4.00, "imagem": "https://apoioentrega.vteximg.com.br/arquivos/ids/1911515/139272_0.png?v=639213665179000000"},
+        
+        # Cervejas e Energéticos
+        "Cerveja Original 300ml Garrafinha": {"preco": 6.00, "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRllDI7RJyBsZMII0SR2UZhiYstauUqjyhKbGznH27HEw&s=10"},
+        "Cerveja Budweiser 300ml Garrafinha": {"preco": 6.00, "imagem": "https://phygital-files.mercafacil.com/comercial-catanio-supermercado/uploads/produto/cerveja_budweiser_garrafinha_300ml_61022027-0c5d-4d8b-9f9f-620188027143.jpg"},
+        "Cerveja Antarctica 300ml Garrafinha": {"preco": 5.00, "imagem": "https://nunesbebidas.com.br/wp-content/uploads/2021/05/Nunes-Bebidas-CERVEJA-ANTARTICA-BOA-GARRAFA-300ML.jpg"},
+        "Cerveja Brahma 300ml Garrafinha": {"preco": 5.00, "imagem": "https://assets.ibecom.com.br/ib.item.image.large/l-27778dbad9724b6fb9695e6315f029e1.jpeg"},
+        "Cerveja Império 300ml Garrafinha": {"preco": 5.00, "imagem": "https://assets.ibecom.com.br/ib.item.image.large/l-ab81028dfcae4433a707b191cbe67d8c.jpeg"},
+        "Cerveja Skol 269ml Lata": {"preco": 5.00, "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSWuMoEZy8_ZGbuqI12QrAUkAjTrwh2VPt6KqEXh8CR6pzKGxtSKXBlQfz&s=10"},
+        "Cerveja Budweiser 269ml Lata": {"preco": 6.00, "imagem": "https://mambodelivery.vtexassets.com/arquivos/ids/212124-800-450?v=638537266038970000&width=800&height=450&aspect=true"},
+        "Cerveja Original 269ml Lata": {"preco": 6.00, "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsK7x1diT-koyfCAdWSUBoHZTgPloiJYMjbRSfxGJzaw&s=10"},
+        "Cerveja Amstel 269ml Lata": {"preco": 5.00, "imagem": "https://m.media-amazon.com/images/I/61gLfj5ExrL._AC_UF1000,1000_QL80_.jpg"},
+        "Cerveja Império 269ml Lata": {"preco": 5.00, "imagem": "https://bretas.vtexassets.com/arquivos/ids/202744-800-auto?v=638376354703200000&width=800&height=auto&aspect=true"},
+        "Cerveja Brahma Duplo Malte 269ml Lata": {"preco": 6.00, "imagem": "https://a-static.mlcdn.com.br/420x420/cerveja-brahma-duplo-malte-lager-15-unidades-lata-269ml/jrr/0f7b0dc65aa911ecb4ca4201ac18503a/3faba7ce5a536589f67a76512b5cbf98.jpg"},
+        "Cerveja Long Neck Heineken": {"preco": 10.00, "imagem": "https://images.unsplash.com/photo-1618885472179-5e474019f2a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D"},
+        "Cerveja Long Neck Budweiser": {"preco": 10.00, "imagem": "https://images.unsplash.com/photo-1587669284207-e8ee0fc74144?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D"},
+        "Cerveja Long Neck Corona": {"preco": 10.00, "imagem": "https://images.unsplash.com/photo-1600213903598-25be92abde40?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D"},
+        "Energético Monster 473ml": {"preco": 14.00, "imagem": "https://andinacocacola.vtexassets.com/arquivos/ids/158541/112666_COCA---MONSTER_GREEN__LT_473ML.jpg?v=639238910718900000"},
+        "Cerveja Amstel 350ml Lata": {"preco": 6.00, "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqQ_3JZ9bzr9LODFFj1Lps0OroT6jJ_PrC24CiZ0nEHg&s=10"},
+        "Cerveja Império 350ml Lata": {"preco": 6.00, "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXKTXeRvTYQBjWEX-eei2xutbAx97LRhZnpOrEEQ_5Dg&s=10"},
+        "Cerveja Brahma Duplo Malte 350ml Lata": {"preco": 7.00, "imagem": "https://hortifrutibr.vtexassets.com/arquivos/ids/173202/Cerveja-Brahma-Duplo-Malte-Lata-Sleek-350Ml.png?v=639239767332900000"}
     },
-    "🍺 Cervejas": {
-        "Cerveja Original 300ml Garrafinha": {
-            "preco": 6.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRllDI7RJyBsZMII0SR2UZhiYstauUqjyhKbGznH27HEw&s=10",
-        },
-        "Cerveja Budweiser 300ml Garrafinha": {
-            "preco": 6.00,
-            "imagem": "https://phygital-files.mercafacil.com/comercial-catanio-supermercado/uploads/produto/cerveja_budweiser_garrafinha_300ml_61022027-0c5d-4d8b-9f9f-620188027143.jpg",
-        },
-        "Cerveja Antarctica 300ml Garrafinha": {
-            "preco": 5.00,
-            "imagem": "https://nunesbebidas.com.br/wp-content/uploads/2021/05/Nunes-Bebidas-CERVEJA-ANTARTICA-BOA-GARRAFA-300ML.jpg",
-        },
-        "Cerveja Brahma 300ml Garrafinha": {
-            "preco": 5.00,
-            "imagem": "https://assets.ibecom.com.br/ib.item.image.large/l-27778dbad9724b6fb9695e6315f029e1.jpeg",
-        },
-        "Cerveja Império 300ml Garrafinha": {
-            "preco": 5.00,
-            "imagem": "https://assets.ibecom.com.br/ib.item.image.large/l-ab81028dfcae4433a707b191cbe67d8c.jpeg",
-        },
-        "Cerveja Skol 269ml Lata": {
-            "preco": 5.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSWuMoEZy8_ZGbuqI12QrAUkAjTrwh2VPt6KqEXh8CR6pzKGxtSKXBlQfz&s=10",
-        },
-        "Cerveja Budweiser 269ml Lata": {
-            "preco": 6.00,
-            "imagem": "https://mambodelivery.vtexassets.com/arquivos/ids/212124-800-450?v=638537266038970000&width=800&height=450&aspect=true",
-        },
-        "Cerveja Original 269ml Lata": {
-            "preco": 6.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsK7x1diT-koyfCAdWSUBoHZTgPloiJYMjbRSfxGJzaw&s=10",
-        },
-        "Cerveja Amstel 269ml Lata": {
-            "preco": 5.00,
-            "imagem": "https://m.media-amazon.com/images/I/61gLfj5ExrL._AC_UF1000,1000_QL80_.jpg",
-        },
-        "Cerveja Império 269ml Lata": {
-            "preco": 5.00,
-            "imagem": "https://bretas.vtexassets.com/arquivos/ids/202744-800-auto?v=638376354703200000&width=800&height=auto&aspect=true",
-        },
-        "Cerveja Brahma Duplo Malte 269ml Lata": {
-            "preco": 6.00,
-            "imagem": "https://a-static.mlcdn.com.br/420x420/cerveja-brahma-duplo-malte-lager-15-unidades-lata-269ml/jrr/0f7b0dc65aa911ecb4ca4201ac18503a/3faba7ce5a536589f67a76512b5cbf98.jpg",
-        },
-        "Cerveja Long Neck Heineken": {
-            "preco": 10.00,
-            "imagem": "https://images.unsplash.com/photo-1618885472179-5e474019f2a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D",
-        },
-        "Cerveja Long Neck Budweiser": {
-            "preco": 10.00,
-            "imagem": "https://images.unsplash.com/photo-1587669284207-e8ee0fc74144?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D",
-        },
-        "Cerveja Long Neck Corona": {
-            "preco": 10.00,
-            "imagem": "https://images.unsplash.com/photo-1600213903598-25be92abde40?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z2FycmFmYSUyMGRlJTIwY2VydmVqYXxlbnwwfHwwfHx8MA%3D%3D",
-        },
-        "Energético Monster 473ml": {
-            "preco": 14.00,
-            "imagem": "https://andinacocacola.vtexassets.com/arquivos/ids/158541/112666_COCA---MONSTER_GREEN__LT_473ML.jpg?v=639238910718900000",
-        },
-        "Cerveja Amstel 350ml Lata": {
-            "preco": 6.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqQ_3JZ9bzr9LODFFj1Lps0OroT6jJ_PrC24CiZ0nEHg&s=10",
-        },
-        "Cerveja Império 350ml Lata": {
-            "preco": 6.00,
-            "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXKTXeRvTYQBjWEX-eei2xutbAx97LRhZnpOrEEQ_5Dg&s=10",
-        },
-        "Cerveja Brahma Duplo Malte 350ml Lata": {
-            "preco": 7.00,
-            "imagem": "https://hortifrutibr.vtexassets.com/arquivos/ids/173202/Cerveja-Brahma-Duplo-Malte-Lata-Sleek-350Ml.png?v=639239767332900000",
-        },
       },
         " 🥤 AÇAI": {
         "Copo 300ml": {
