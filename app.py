@@ -1588,34 +1588,15 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                     unsafe_allow_html=True,
                 )
 
-                # O st.number_input DEVE ficar indentado aqui dentro de col2:
                 qtd = st.number_input(
                     "Qtd:",
                     min_value=1,
                     value=1,
                     key=f"qtd_menu_{chave_item}",
-                    on_change=atualizar_qtd,
-                    args=(chave_item,),
                 )
 
-                # Validação de limite máximo de unidades por item
-                # Linha 1598 no app.py: adicione o parâmetro key com identificador único
-
-qtd = st.number_input(
-    "Qtd:",
-    min_value=1,
-    value=item.get("quantidade", 1),
-    key=f"qtd_carrinho_{chave_item}",  # <-- Adicione ou ajuste esta chave única
-    on_change=atualizar_qtd,           # (sua função de callback)
-    args=(chave_item,)
-)
-
-                if qtd > 0:
-                    st.session_state["carrinho"][chave_item] = {
-                        "item": item,
-                        "qtd": qtd,
-                        "subtotal": info["preco"] * qtd,
-                    }
+                if st.button("Adicionar ao Carrinho", key=f"btn_{chave_item}"):
+                    adicionar_ao_carrinho(chave_item, item, info["preco"], qtd)
 
             if (
                 st.session_state.get("ultimo_item_alterado") == chave_item
