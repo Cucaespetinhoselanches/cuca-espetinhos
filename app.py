@@ -153,18 +153,30 @@ st.markdown(
     label, p, span, div {
         color: #f8fafc !important;
     }
+
+    /* Libera o container do Streamlit para exibir múltiplas linhas */
+    div[data-testid="stTabs"] {
+        overflow: visible !important;
+    }
+
+    /* Permite a quebra de linha e expande a altura */
     div[data-baseweb="tab-list"] {
         flex-wrap: wrap !important;
+        white-space: normal !important;
+        height: auto !important;
         gap: 8px !important;
     }
+
     button[data-baseweb="tab"] {
-        font-size: 20px !important;
+        font-size: 15px !important;
         font-weight: 800 !important;
-        padding: 12px 24px !important;
+        padding: 8px 14px !important;
         background-color: #1e293b !important;
         color: #ffffff !important;
         border: none !important;
         border-radius: 12px !important;
+        margin-bottom: 4px !important;
+        white-space: nowrap !important;
     }
 
     button[data-baseweb="tab"][aria-selected="true"] {
