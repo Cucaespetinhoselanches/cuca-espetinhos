@@ -135,20 +135,25 @@ st.markdown(
         object-fit: contain !important;
     }
 
+    /* === COLE A PARTIR DAQUI DA CHAVE } ABAIXO === */
+    }
+
     div[data-testid="stColumn"] img {
         max-height: 120px !important;
         object-fit: cover !important;
         border-radius: 10px !important;
     }
 
-    div[data-testid="stColumn"] > div {
-        background-color: #1e293b !important;
-        border-radius: 16px;
-        padding: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        border: 1px solid #334155 !important;
-        margin-bottom: 10px;
+    /* ... restante do seu bloco CSS ... */
+
+    div[data-baseweb="input"] input, div[data-baseweb="select"] {
+        background-color: #0f172a !important;
+        color: #ffffff !important;
     }
+    </style>
+""",
+    unsafe_allow_html=True,
+)
 
     label, p, span, div {
         color: #f8fafc !important;
