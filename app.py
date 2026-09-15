@@ -153,7 +153,10 @@ st.markdown(
     label, p, span, div {
         color: #f8fafc !important;
     }
-
+    div[data-baseweb="tab-list"] {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
     button[data-baseweb="tab"] {
         font-size: 20px !important;
         font-weight: 800 !important;
