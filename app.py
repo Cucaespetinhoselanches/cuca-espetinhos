@@ -475,7 +475,7 @@ menu_categorias = {
         "Cerveja Amstel 350ml Lata": {"preco": 6.00, "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqQ_3JZ9bzr9LODFFj1Lps0OroT6jJ_PrC24CiZ0nEHg&s=10"},
         "Cerveja Império 350ml Lata": {"preco": 6.00, "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXKTXeRvTYQBjWEX-eei2xutbAx97LRhZnpOrEEQ_5Dg&s=10"},
         "Cerveja Brahma Duplo Malte 350ml Lata": {"preco": 7.00, "imagem": "https://hortifrutibr.vtexassets.com/arquivos/ids/173202/Cerveja-Brahma-Duplo-Malte-Lata-Sleek-350Ml.png?v=639239767332900000"}
-    }
+    },
       },
        "acai": {
         "Açaí Copo 300ml": {
@@ -485,7 +485,7 @@ menu_categorias = {
         "Açaí Copo 500ml": {
             "preco": 18.00,
             "imagem": "https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/groups/1699640082654e7312e164a.jpeg"
-        }
+        },
         "Adicional PAÇOCA": {
         "preco": 3.00,
         "imagem": "https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f680.gif",
