@@ -154,12 +154,15 @@ st.markdown(
         color: #f8fafc !important;
     }
 
-    /* --- QUEBRA DE LINHA E FORMATO DE BOTÕES NAS ABAS DO MENU --- */
-    div[data-testid="stTabs"] [data-baseweb="tab-list"] {
+   /* --- QUEBRA DE LINHA E FORMATO DE BOTÕES NAS ABAS DO MENU --- */
+    div[data-testid="stTabs"] [role="tablist"],
+    div[data-testid="stTabs"] [data-baseweb="tab-list"],
+    div[data-testid="stTabs"] nav {
         flex-wrap: wrap !important;
         gap: 8px !important;
         height: auto !important;
         overflow: visible !important;
+        white-space: normal !important;
     }
 
     div[data-testid="stTabs"] [data-baseweb="tab-border"],
@@ -167,7 +170,8 @@ st.markdown(
         display: none !important;
     }
 
-    button[data-baseweb="tab"] {
+    button[data-baseweb="tab"],
+    div[data-testid="stTabs"] button[role="tab"] {
         font-size: 15px !important;
         font-weight: 700 !important;
         padding: 8px 14px !important;
@@ -180,7 +184,8 @@ st.markdown(
         text-align: center !important;
     }
 
-    button[data-baseweb="tab"][aria-selected="true"] {
+    button[data-baseweb="tab"][aria-selected="true"],
+    div[data-testid="stTabs"] button[role="tab"][aria-selected="true"] {
         background-color: #ef4444 !important;
         color: #ffffff !important;
         border-color: #ef4444 !important;
