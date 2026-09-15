@@ -135,60 +135,56 @@ st.markdown(
         object-fit: contain !important;
     }
 
-    /* === COLE A PARTIR DAQUI DA CHAVE } ABAIXO === */
-    }
-
     div[data-testid="stColumn"] img {
         max-height: 120px !important;
         object-fit: cover !important;
         border-radius: 10px !important;
     }
 
-    /* ... restante do seu bloco CSS ... */
-
-    div[data-baseweb="input"] input, div[data-baseweb="select"] {
-        background-color: #0f172a !important;
-        color: #ffffff !important;
+    div[data-testid="stColumn"] > div {
+        background-color: #1e293b !important;
+        border-radius: 16px;
+        padding: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        border: 1px solid #334155 !important;
+        margin-bottom: 10px;
     }
-    </style>
-""",
-    unsafe_allow_html=True,
-)
 
     label, p, span, div {
         color: #f8fafc !important;
     }
 
-    /* Libera o container do Streamlit para exibir múltiplas linhas */
-    div[data-testid="stTabs"] {
+    /* --- QUEBRA DE LINHA E FORMATO DE BOTÕES NAS ABAS DO MENU --- */
+    div[data-testid="stTabs"] [data-baseweb="tab-list"] {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        height: auto !important;
         overflow: visible !important;
     }
 
-    /* Permite a quebra de linha e expande a altura */
-    div[data-baseweb="tab-list"] {
-        flex-wrap: wrap !important;
-        white-space: normal !important;
-        height: auto !important;
-        gap: 8px !important;
+    div[data-testid="stTabs"] [data-baseweb="tab-border"],
+    div[data-testid="stTabs"] [data-baseweb="tab-highlight"] {
+        display: none !important;
     }
 
     button[data-baseweb="tab"] {
         font-size: 15px !important;
-        font-weight: 800 !important;
+        font-weight: 700 !important;
         padding: 8px 14px !important;
         background-color: #1e293b !important;
         color: #ffffff !important;
-        border: none !important;
-        border-radius: 12px !important;
-        margin-bottom: 4px !important;
+        border: 1px solid #334155 !important;
+        border-radius: 10px !important;
         white-space: nowrap !important;
+        flex: 1 1 auto !important;
+        text-align: center !important;
     }
 
     button[data-baseweb="tab"][aria-selected="true"] {
         background-color: #ef4444 !important;
         color: #ffffff !important;
-        border: none !important;
-        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+        border-color: #ef4444 !important;
+        box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4) !important;
     }
 
     .preco-badge {
@@ -247,6 +243,7 @@ st.markdown(
         border-left: 5px solid #22c55e !important;
         border-radius: 12px !important;
     }
+
     div[data-testid="stNotification"] p {
         color: #ecfdf5 !important;
         font-size: 16px !important;
@@ -258,7 +255,7 @@ st.markdown(
         color: #ffffff !important;
     }
     </style>
-""",
+    """,
     unsafe_allow_html=True,
 )
 
