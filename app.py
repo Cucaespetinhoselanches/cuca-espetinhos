@@ -477,15 +477,15 @@ menu_categorias = {
         "Cerveja Brahma Duplo Malte 350ml Lata": {"preco": 7.00, "imagem": "https://hortifrutibr.vtexassets.com/arquivos/ids/173202/Cerveja-Brahma-Duplo-Malte-Lata-Sleek-350Ml.png?v=639239767332900000"}
     },
       },
-        "AÇAI": {
-        "Copo 300ml": {
+       "acai": {
+        "Açaí Copo 300ml": {
             "preco": 14.00,
             "imagem": "https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/groups/1699640082654e7312e164a.jpeg"
         },
-        "Copo 500ml": {
-        "preco": 17.00,
-        "imagem": "https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/groups/1699640082654e7312e164a.jpeg",
-        },
+        "Açaí Copo 500ml": {
+            "preco": 18.00,
+            "imagem": "https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/groups/1699640082654e7312e164a.jpeg"
+        }
         "Adicional PAÇOCA": {
         "preco": 3.00,
         "imagem": "https://images.emojiterra.com/google/noto-emoji/animated-emoji/1f680.gif",
