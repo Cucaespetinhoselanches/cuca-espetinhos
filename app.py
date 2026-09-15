@@ -427,7 +427,7 @@ menu_categorias = {
             "imagem": "https://images.unsplash.com/photo-1702827495434-629df15aa136?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fHBvciVDMyVBNyVDMyVBM28lMjBjb21ib3xlbnwwfHwwfHx8MA%3D%3D",
         },
     },
-    "bebidas": {
+    "🥤🍺bebidas": {
         # Refrigerantes
         "Refrigerante COCA NORMAL Lata 350ml": {"preco": 6.00, "imagem": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400"},
         "Refrigerante COCA ZERO Lata 350ml": {"preco": 6.00, "imagem": "https://acdn-us.mitiendanube.com/stores/001/165/503/products/coca-zero21-16e7cba0588363da7616192142363168-1024-1024.webp"},
@@ -476,7 +476,7 @@ menu_categorias = {
         "Cerveja Império 350ml Lata": {"preco": 6.00, "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXKTXeRvTYQBjWEX-eei2xutbAx97LRhZnpOrEEQ_5Dg&s=10"},
         "Cerveja Brahma Duplo Malte 350ml Lata": {"preco": 7.00, "imagem": "https://hortifrutibr.vtexassets.com/arquivos/ids/173202/Cerveja-Brahma-Duplo-Malte-Lata-Sleek-350Ml.png?v=639239767332900000"}
     },
-    "acai": {
+    "🥤acai": {
         "Açaí Copo 300ml": {
             "preco": 14.00,
             "imagem": "https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/groups/1699640082654e7312e164a.jpeg"
