@@ -797,7 +797,7 @@ if itens_carrinho and st.session_state["etapa_pedido"] == "dados_entrega":
         st.markdown(
             f"""
             <div style='background-color: #064e3b; border-left: 5px solid #22c55e; padding: 15px; border-radius: 12px; margin-bottom: 15px;'>
-                <p style='color: #ecfdf5 !important; font-size: 18px !important; margin-bottom: 5px;'>📱 <b>Chave PIX (Telefone):</b></p>
+                <p style='color: #ecfdf5 !important; font-size: 18px !important; margin-bottom: 5px;'>📱 <b>Chave PIX :</b></p>
                 <p style='color: #22c55e !important; font-size: 26px !important; font-weight: 900 !important; letter-spacing: 1px; margin: 0;'>{CHAVE_PIX_VAL}</p>
                 <p style='color: #94a3b8 !important; font-size: 14px !important; margin-top: 8px;'><i>Por favor, envie o comprovante pelo WhatsApp após finalizar o pedido.</i></p>
             </div>
