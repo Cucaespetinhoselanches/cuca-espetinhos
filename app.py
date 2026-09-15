@@ -1587,11 +1587,22 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
 
             with col1:
                 st.image(info["imagem"], use_container_width=True)
+
             with col2:
                 st.markdown(f"**{item}**")
                 st.markdown(
                     f"<span class='preco-badge'>R$ {info['preco']:.2f}</span>",
                     unsafe_allow_html=True,
+                )
+
+                # O st.number_input DEVE ficar indentado aqui dentro de col2:
+                qtd = st.number_input(
+                    "Qtd:",
+                    min_value=1,
+                    value=1,
+                    key=f"qtd_menu_{chave_item}",
+                    on_change=atualizar_qtd,
+                    args=(chave_item,),
                 )
 
                 # Validação de limite máximo de unidades por item
