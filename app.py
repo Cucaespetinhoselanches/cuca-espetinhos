@@ -677,6 +677,7 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
 
             with col1:
                 st.image(info["imagem"], use_container_width=True)
+
             with col2:
                 st.markdown(f"**{item}**")
                 st.markdown(
@@ -684,24 +685,16 @@ for aba, (categoria, itens) in zip(abas, menu_categorias.items()):
                     unsafe_allow_html=True,
                 )
 
-                # Validação de limite máximo de unidades por item
                 qtd = st.number_input(
                     "Qtd:",
-                    min_value=0,
-                    max_value=20,
-                    step=1,
-                    key=chave_item,
-                    label_visibility="collapsed",
-                    on_change=registrar_alteracao_item,
-                    args=(chave_item,),
+                    min_value=1,
+                    value=1,
+                    key=f"qtd_menu_{chave_item}",
                 )
 
                 if qtd > 0:
-                    st.session_state["carrinho"][chave_item] = {
-                        "item": item,
-                        "qtd": qtd,
-                        "subtotal": info["preco"] * qtd,
-                    }
+                    if st.button("Adicionar ao Carrinho", key=f"btn_{chave_item}"):
+                        adicionar_ao_carrinho(chave_item, item, info["preco"], qtd)
 
             if (
                 st.session_state.get("ultimo_item_alterado") == chave_item
